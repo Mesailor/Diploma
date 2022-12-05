@@ -1,0 +1,15 @@
+{% extends 'a_book/chapter_base.html' %}
+
+{% block title %}Добавление данных{% endblock title %}
+
+{% block content %}
+<form method="POST">
+        {% csrf_token %}
+    <table align="center">
+        {{form}}
+    </table>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter'">Вернуться к таблице</button>
+
+{% endblock content %}

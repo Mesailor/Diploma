@@ -1,0 +1,21 @@
+{% extends 'a_book/chapter_base.html' %}
+
+{% block title %}Редактирование данных{% endblock title %}
+
+{% block content %}
+<h1>Редактирование записи</h1>
+
+<form method="POST">
+        {% csrf_token %}
+    <table align="center">
+        <tr align="center">
+        <td><input type="text" name="date" value=" {{record.date}}"></td>
+        <td><input type="text" name="exercise" value="{{record.exercise}}"></td>
+        <td><input type="text" name="time" value="{{record.time}}"></td>
+        <td><input type="number" name="grade" value="{{record.grade}}"></td>
+        <td><input type="text" name="examiner" value="{{record.examiner}}"></td>
+    </table>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter'">Вернуться к таблице</button>
+{% endblock content %}

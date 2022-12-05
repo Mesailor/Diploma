@@ -1,0 +1,44 @@
+{% extends 'a_book/chapter_base.html' %}
+
+{% block title %}Chapter 4{% endblock title %}
+
+{% block content %}
+<h1 align="center">IV. Наземная подготовка</h1>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th>4</th>
+        <th>5</th>
+    </tr>
+    <tr>
+        <th>Дата</th>
+        <th>Упражнение</th>
+        <th>Время</th>
+        <th>Оценка</th>
+        <th>Должность и инициалы</th>
+    </tr>
+    {% if records.count > 0 %}
+    {% for record in records %}
+    <tr align="center">
+        <td>{{record.date}}</td>
+        <td>{{record.exercise}}</td>
+        <td>{{record.time}}</td>
+        <td>{{record.grade}}</td>
+        <td>{{record.examiner}}</td>
+        <td><a href="/edit/{{record.id}}">Редактировать</a>  |
+            <a href="/delete/{{record.id}}">Удалить</a></td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+    <tr align="center">
+        <td><a href="/create">Добавить запись</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+{% endblock content %}
