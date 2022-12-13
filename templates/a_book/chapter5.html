@@ -10,22 +10,36 @@
         <th>1</th>
         <th>2</th>
         <th>3</th>
-        <th>4</th>
+        <th colspan="5">4</th>
         <th>5</th>
     </tr>
     <tr>
-        <th>Дата</th>
-        <th>Упражнение</th>
-        <th>Время</th>
-        <th>Оценка</th>
-        <th>Должность и инициалы</th>
+        <th rowspan="3">Дата</th>
+        <th rowspan="3">Тип тренажера</th>
+        <th rowspan="3">Упражнение, краткое содеражние тренировки</th>
+        <th colspan="4">Время тренировки</th>
+        <th rowspan="3">Оценка</th>
+        <th rowspan="3">Пилот-инструктор</th>
+    </tr>
+    <tr>
+        <th rowspan="2">Час</th>
+        <th rowspan="2">Мин</th>
+        <th colspan="2">Из них по приборам</th>
+    </tr>
+    <tr>
+        <th>час</th>
+        <th>мин</th>
     </tr>
     {% if records.count > 0 %}
     {% for record in records %}
     <tr align="center">
         <td>{{record.date}}</td>
+        <td>{{record.type}}</td>
         <td>{{record.exercise}}</td>
-        <td>{{record.time}}</td>
+        <td>{{record.time_hours}}</td>
+        <td>{{record.time_mins}}</td>
+        <td>{{record.instrumental_time_hours}}</td>
+        <td>{{record.instrumental_time_mins}}</td>
         <td>{{record.grade}}</td>
         <td>{{record.examiner}}</td>
         <td><a href="/edit/{{number}}/{{record.id}}">Редактировать</a>  |
@@ -33,12 +47,17 @@
     </tr>
     {% endfor %}
     {% endif %}
-    <tr align="center">
+        <tr>
         <td><a href="/create/{{number}}">Добавить запись</a></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
     </tr>
+
 </table>
 {% endblock content %}
