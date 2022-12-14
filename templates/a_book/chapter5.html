@@ -3,9 +3,10 @@
 {% block title %}Chapter 4{% endblock title %}
 
 {% block content %}
-<h1 align="center">IV. Наземная подготовка</h1>
+<h1 align="center">V. Тренировка на летном тренажере</h1>
 
 <table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
     <tr>
         <th>1</th>
         <th>2</th>
@@ -30,6 +31,8 @@
         <th>час</th>
         <th>мин</th>
     </tr>
+    </thead>
+    <tbody>
     {% if records.count > 0 %}
     {% for record in records %}
     <tr align="center">
@@ -58,6 +61,24 @@
         <td></td>
         <td></td>
     </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="3" align="right">Всего на данной странице:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td rowspan="2" colspan="2">Записи поденого учета тренировок проверил.<br>Пилот-инструктор<br>Фамилия И.О. </td>
+    </tr>
+    <tr>
+        <td colspan="3" align="right">Итого с начала уровня:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tfoot>
 
 </table>
 {% endblock content %}
