@@ -1,6 +1,7 @@
 from django.db import models
 
-class Table_Ch4(models.Model):
+
+class TableCh4(models.Model):
     date = models.CharField(max_length=11)
     exercise = models.CharField(max_length=120)
     time = models.CharField(max_length=5)
@@ -9,7 +10,8 @@ class Table_Ch4(models.Model):
     objects = models.Manager()
     DoesNotExist = models.Manager
 
-class Table_Ch5(models.Model):
+
+class TableCh5(models.Model):
     date = models.CharField(max_length=11)
     type = models.CharField(max_length=10)
     exercise = models.CharField(max_length=120)
@@ -21,3 +23,7 @@ class Table_Ch5(models.Model):
     examiner = models.CharField(max_length=50)
     objects = models.Manager()
     DoesNotExist = models.Manager
+
+
+tables = {4: TableCh4,
+          5: TableCh5}

@@ -1,14 +1,15 @@
 from django import forms
 
 
-class Form_Ch4(forms.Form):
+class FormCh4(forms.Form):
     date = forms.CharField(label='Дата')
     exercise = forms.CharField(label='Упражнение, краткое содержание занятия', widget=forms.Textarea)
     time = forms.CharField(label='Время')
     grade = forms.IntegerField(label='Оценка', min_value=2, max_value=5)
     examiner = forms.CharField(label='Должность, фамилия и инициалы лица проводившего Н.П.')
 
-class Form_Ch5(forms.Form):
+
+class FormCh5(forms.Form):
     date = forms.CharField(label='Дата', max_length=11)
     type = forms.CharField(label='Тип тренажера', max_length=10)
     exercise = forms.CharField(label='Упражнение, краткое содержание тренировки', max_length=120, widget=forms.Textarea)
@@ -18,3 +19,7 @@ class Form_Ch5(forms.Form):
     instrumental_time_mins = forms.IntegerField(label='Из них по приборам(мин)', max_value=60)
     grade = forms.IntegerField(label='Оценка', min_value=2, max_value=5)
     examiner = forms.CharField(label='Пилот-инструктор', max_length=50)
+
+
+forms = {4: FormCh4,
+         5: FormCh5}
