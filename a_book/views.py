@@ -30,7 +30,6 @@ def chapter(request, number):
 def create(request, number):
     '''Функция добавления записей в таблицу раздела'''
     record = models.tables[number]()
-
     if request.method == 'POST':
         create_functions[number](request, record)
         record.save()
@@ -42,9 +41,17 @@ def create(request, number):
 
 def edit(request, number, id):
     '''Функция редактирования добавленных в таблицу записей'''
-    htmls = {4: 'a_book/edit4.html',
-             5: 'a_book/edit5.html'}
-
+    htmls = {1: '',
+             2: '',
+             3: '',
+             4: 'a_book/edit4.html',
+             5: 'a_book/edit5.html',
+             6: '',
+             7: '',
+             8: '',
+             9: '',
+             10: '',
+             11: ''}
     try:
         record = models.tables[number].objects.get(id=id)
         if request.method == "POST":
