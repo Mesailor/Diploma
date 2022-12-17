@@ -3,7 +3,7 @@ from django.shortcuts import render
 from a_book import models
 from a_book.change_functions import change_funcs
 
-htmls = {1: '',
+htmls = {1: 'a_book/chapter1.html',
          2: '',
          3: '',
          4: 'a_book/chapter4.html',
@@ -48,7 +48,7 @@ def edit(request, number, id):
             record.save()
             return HttpResponseRedirect("/chapter/" + str(number))
         else:
-            return render(request, htmls[number], {'records': records, 'number': number, 'id': id})
+            return render(request, htmls[number], {'records': records, 'number': number, 'id': id, 'editing': True})
     except models.tables[number].DoesNotExist:
         return HttpResponseNotFound('Запись не найдена')
 
