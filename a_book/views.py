@@ -1,9 +1,19 @@
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
+from django.http import HttpResponseRedirect, HttpResponseNotFound
 from django.shortcuts import render
-from a_book import forms as frms
 from a_book import models
-from a_book.create_functions import create_functions
-from a_book.edit_functions import edit_functions
+from a_book.change_functions import change_funcs
+
+htmls = {1: '',
+         2: '',
+         3: '',
+         4: 'a_book/chapter4.html',
+         5: 'a_book/chapter5.html',
+         6: '',
+         7: '',
+         8: '',
+         9: '',
+         10: '',
+         11: ''}
 
 
 def home(request):
@@ -12,17 +22,6 @@ def home(request):
 
 def chapter(request, number):
     '''Данная функция предназначена для отображения информации каждого раздела.'''
-    htmls = {1: '',
-             2: '',
-             3: '',
-             4: 'a_book/chapter4.html',
-             5: 'a_book/chapter5.html',
-             6: '',
-             7: '',
-             8: '',
-             9: '',
-             10: '',
-             11: ''}
     records = models.tables[number].objects.all()
     return render(request, htmls[number], {'records': records, 'number': number})
 
@@ -30,36 +29,26 @@ def chapter(request, number):
 def create(request, number):
     '''Функция добавления записей в таблицу раздела'''
     record = models.tables[number]()
+    records = models.tables[number].objects.all()
     if request.method == 'POST':
-        create_functions[number](request, record)
+        change_funcs[number](request, record)
         record.save()
         return HttpResponseRedirect('/chapter/' + str(number))
     else:
-        chapter_form = frms.forms[number]()
-        return render(request, 'a_book/create.html', {'form': chapter_form, 'number': number})
+        return render(request, htmls[number], {'records': records, 'number': number, 'creating': True})
 
 
 def edit(request, number, id):
     '''Функция редактирования добавленных в таблицу записей'''
-    htmls = {1: '',
-             2: '',
-             3: '',
-             4: 'a_book/edit4.html',
-             5: 'a_book/edit5.html',
-             6: '',
-             7: '',
-             8: '',
-             9: '',
-             10: '',
-             11: ''}
+    records = models.tables[number].objects.all()
     try:
         record = models.tables[number].objects.get(id=id)
         if request.method == "POST":
-            edit_functions[number](request, record)
+            change_funcs[number](request, record)
             record.save()
             return HttpResponseRedirect("/chapter/" + str(number))
         else:
-            return render(request, htmls[number], {'record': record, 'number': number})
+            return render(request, htmls[number], {'records': records, 'number': number, 'id': id})
     except models.tables[number].DoesNotExist:
         return HttpResponseNotFound('Запись не найдена')
 

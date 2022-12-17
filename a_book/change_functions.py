@@ -1,4 +1,4 @@
-def edit_ch4(request, record):
+def change_ch4(request, record):
     record.date = request.POST.get('date')
     record.exercise = request.POST.get('exercise')
     record.time = request.POST.get('time')
@@ -6,7 +6,7 @@ def edit_ch4(request, record):
     record.examiner = request.POST.get('examiner')
 
 
-def edit_ch5(request, record):
+def change_ch5(request, record):
     record.date = request.POST.get('date')
     record.type = request.POST.get('type')
     record.exercise = request.POST.get('exercise')
@@ -18,5 +18,5 @@ def edit_ch5(request, record):
     record.examiner = request.POST.get('examiner')
 
 
-edit_functions = {4: edit_ch4,
-                  5: edit_ch5}
+change_funcs = {4: change_ch4,
+                5: change_ch5}

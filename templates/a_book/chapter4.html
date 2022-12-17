@@ -22,17 +22,48 @@
     </tr>
     {% if records.count > 0 %}
     {% for record in records %}
-    <tr align="center">
-        <td>{{record.date}}</td>
-        <td>{{record.exercise}}</td>
-        <td>{{record.time}}</td>
-        <td>{{record.grade}}</td>
-        <td>{{record.examiner}}</td>
-        <td><a href="/edit/{{number}}/{{record.id}}">Редактировать</a>  |
-            <a href="/delete/{{number}}/{{record.id}}">Удалить</a></td>
-    </tr>
+       <!-- Блок редактирования записи в таблице -->
+       {% if record.id == id %}
+           <form method="POST">
+           {% csrf_token %}
+             <tr align="center">
+               <td><input type="text" name="date" value=" {{record.date}}"></td>
+               <td><input type="text" name="exercise" value="{{record.exercise}}"></td>
+               <td><input type="text" name="time" value="{{record.time}}"></td>
+               <td><input type="number" name="grade" value="{{record.grade}}"></td>
+               <td><input type="text" name="examiner" value="{{record.examiner}}"></td>
+               <td><input type="submit" value="Сохранить"></td>
+           </form>
+                 <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
+       <!-- -->
+       {% else %}
+           <tr align="center">
+               <td>{{record.date}}</td>
+               <td>{{record.exercise}}</td>
+               <td>{{record.time}}</td>
+               <td>{{record.grade}}</td>
+               <td>{{record.examiner}}</td>
+               <td><a href="/edit/{{number}}/{{record.id}}">Редактировать</a>  |
+                   <a href="/delete/{{number}}/{{record.id}}">Удалить</a></td>
+           </tr>
+       {% endif %}
     {% endfor %}
     {% endif %}
+    <!-- Блок добавления новой строки в таблицу -->
+    {% if creating %}
+    <form method="POST">
+        {% csrf_token %} >
+        <tr align="center">
+        <td><input type="text" name="date" value=""></td>
+        <td><input type="text" name="exercise" value=""></td>
+        <td><input type="text" name="time" value=""></td>
+        <td><input type="number" name="grade" value=""></td>
+        <td><input type="text" name="examiner" value=""></td>
+        <td><input type="submit" value="Сохранить"></td>
+    </form>
+        <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
+    {% endif %}
+    <!-- -->
     <tr align="center">
         <td><a href="/create/{{number}}">Добавить запись</a></td>
         <td></td>
