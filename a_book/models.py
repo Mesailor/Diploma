@@ -9,10 +9,14 @@ class TableCh1(models.Model):
     instructor2 = models.CharField(max_length=50)
     instructor3 = models.CharField(max_length=50)
     instructor4 = models.CharField(max_length=50)
+    objects = models.Manager()
+    DoesNotExist = models.Manager
 
 
 class TableCh2(models.Model):
     student = models.CharField(max_length=50)
+    objects = models.Manager()
+    DoesNotExist = models.Manager
 
 
 class TableCh4(models.Model):
