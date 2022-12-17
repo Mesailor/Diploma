@@ -4,7 +4,7 @@ from a_book import models
 from a_book.change_functions import change_funcs
 
 htmls = {1: 'a_book/chapter1.html',
-         2: '',
+         2: 'a_book/chapter2.html',
          3: '',
          4: 'a_book/chapter4.html',
          5: 'a_book/chapter5.html',

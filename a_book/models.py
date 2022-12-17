@@ -11,6 +11,10 @@ class TableCh1(models.Model):
     instructor4 = models.CharField(max_length=50)
 
 
+class TableCh2(models.Model):
+    student = models.CharField(max_length=50)
+
+
 class TableCh4(models.Model):
     date = models.CharField(max_length=11)
     exercise = models.CharField(max_length=120)
@@ -36,5 +40,6 @@ class TableCh5(models.Model):
 
 
 tables = {1: TableCh1,
+          2: TableCh2,
           4: TableCh4,
           5: TableCh5}

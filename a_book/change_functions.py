@@ -8,6 +8,10 @@ def change_ch1(request, record):
     record.instructor4 = request.POST.get('instructor4')
 
 
+def change_ch2(request, record):
+    record.student = request.POST.get('student')
+
+
 def change_ch4(request, record):
     record.date = request.POST.get('date')
     record.exercise = request.POST.get('exercise')
@@ -29,5 +33,6 @@ def change_ch5(request, record):
 
 
 change_funcs = {1: change_ch1,
+                2: change_ch2,
                 4: change_ch4,
                 5: change_ch5}
