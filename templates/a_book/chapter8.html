@@ -1,0 +1,93 @@
+{% extends 'a_book/chapter_base.html' %}
+
+{% block title %}VIII. Допуски пилота-курсанта к выполнению полетов{% endblock title %}
+
+{% block content %}
+<h1 align="center">VIII. Допуски пилота-курсанта к выполнению полетов</h1>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <th rowspan="2">Дата</th>
+        <th rowspan="2">Тип ВС</th>
+        <th rowspan="2">Время суток</th>
+        <th rowspan="2">К каким полетам допускается(подготовлен)</th>
+        <th colspan="3">Метеоусловия</th> <!-- , в которых разрешается выполнять полет -->
+        <th rowspan="2">Должность, фамилия, инициалы</th> <!-- и подпись лица, допустившего курсанта к данному виду полетов -->
+    </tr>
+    <tr>
+        <th>Высота Нго, м</th>
+        <th>Видим. км.</th>
+        <th>Ветер м/с</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% if records.count > 0 %}
+        {% for record in records %}
+        <!--EDITING-->
+        {% if record.id == id %}
+    <tr>
+        <form method="POST">
+            {% csrf_token %}
+        <td><input type="text" name="date" value=" {{record.date}}"></td>
+        <td><input type="text" name="type" value=" {{record.type}}"></td>
+        <td><input type="text" name="times_of_day" value=" {{record.times_of_day}}"></td>
+        <td><input type="text" name="flight_permit" value=" {{record.flight_permit}}"></td>
+        <td><input type="text" name="meteo_height" value=" {{record.meteo_height}}"></td>
+        <td><input type="text" name="meteo_vis" value=" {{record.meteo_vis}}"></td>
+        <td><input type="text" name="meteo_wind" value=" {{record.meteo_wind}}"></td>
+        <td><input type="text" name="examiner" value=" {{record.examiner}}"></td>
+            <td><input type="submit" value="Сохранить"></td>
+        </form>
+        <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
+    </tr>
+        <!-- END OF EDITING -->
+        {% else %}
+    <tr>
+        <td>{{record.date}}</td>
+        <td>{{record.type}}</td>
+        <td>{{record.times_of_day}}</td>
+        <td>{{record.flight_permit}}</td>
+        <td>{{record.meteo_height}}</td>
+        <td>{{record.meteo_vis}}</td>
+        <td>{{record.meteo_wind}}</td>
+        <td>{{record.examiner}}</td>
+        <td><a href="/edit/{{number}}/{{record.id}}">Редактировать</a>  |
+            <a href="/delete/{{number}}/{{record.id}}">Удалить</a></td>
+    </tr>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <!-- CREATING -->
+        {% if creating %}
+    <tr>
+        <form method="POST">
+            {% csrf_token %}
+        <td><input type="text" name="date" value=""></td>
+        <td><input type="text" name="type" value=""></td>
+        <td><input type="text" name="times_of_day" value=""></td>
+        <td><input type="text" name="flight_permit" value=""></td>
+        <td><input type="text" name="meteo_height" value=""></td>
+        <td><input type="text" name="meteo_vis" value=""></td>
+        <td><input type="text" name="meteo_wind" value=""></td>
+        <td><input type="text" name="examiner" value=""></td>
+            <td><input type="submit" value="Сохранить"></td>
+        </form>
+        <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
+    </tr>
+        <!-- END OF CREATING -->
+        {% else %}
+    <tr>
+        <td><a href="/create/{{number}}">Добавить запись</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock content %}

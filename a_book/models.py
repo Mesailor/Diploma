@@ -43,7 +43,21 @@ class TableCh5(models.Model):
     DoesNotExist = models.Manager
 
 
+class TableCh8(models.Model):
+    date = models.CharField(max_length=11)
+    type = models.CharField(max_length=10)
+    times_of_day = models.CharField(max_length=10)
+    flight_permit = models.CharField(max_length=100)
+    meteo_height = models.PositiveSmallIntegerField()
+    meteo_vis = models.PositiveSmallIntegerField()
+    meteo_wind = models.PositiveSmallIntegerField()
+    examiner = models.CharField(max_length=70)
+    objects = models.Manager()
+    DoesNotExist = models.Manager
+
+
 tables = {1: TableCh1,
           2: TableCh2,
           4: TableCh4,
-          5: TableCh5}
+          5: TableCh5,
+          8: TableCh8}

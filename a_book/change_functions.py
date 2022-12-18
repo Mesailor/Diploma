@@ -32,7 +32,19 @@ def change_ch5(request, record):
     record.examiner = request.POST.get('examiner')
 
 
+def change_ch8(request, record):
+    record.date = request.POST.get('date')
+    record.type = request.POST.get('type')
+    record.times_of_day = request.POST.get('times_of_day')
+    record.flight_permit = request.POST.get('flight_permit')
+    record.meteo_height = request.POST.get('meteo_height')
+    record.meteo_vis = request.POST.get('meteo_vis')
+    record.meteo_wind = request.POST.get('meteo_wind')
+    record.examiner = request.POST.get('examiner')
+
+
 change_funcs = {1: change_ch1,
                 2: change_ch2,
                 4: change_ch4,
-                5: change_ch5}
+                5: change_ch5,
+                8: change_ch8}
