@@ -11,7 +11,7 @@ htmls = {1: 'a_book/chapter1.html',
          6: '',
          7: '',
          8: 'a_book/chapter8.html',
-         9: '',
+         9: 'a_book/chapter9.html',
          10: '',
          11: ''}
 

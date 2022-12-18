@@ -1,0 +1,40 @@
+{% extends 'a_book/chapter_base.html' %}
+
+{% block title %}IX. Летная характеристика{% endblock title %}
+
+{% block content %}
+<h1 align="center">IX. Летная характеристика</h1>
+
+        {% if records.count > 0 %}
+        {% for record in records %}
+        <!--EDITING-->
+        {% if record.id == id %}
+        <form method="POST">
+            {% csrf_token %}
+          <p><input type="textarea" name="characteristic" value=" {{record.characteristic}}">
+            <input type="submit" value="Сохранить"></p>
+        </form>
+        <button onclick="document.location='/chapter/{{number}}'">Отмена</button>
+        <!-- END OF EDITING -->
+        {% else %}
+          <p>{{record.characteristic}}</p>
+        <td><a href="/edit/{{number}}/{{record.id}}">Редактировать</a>  |
+            <a href="/delete/{{number}}/{{record.id}}">Удалить</a></td>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <!-- CREATING -->
+        {% if creating %}
+        <form method="POST">
+            {% csrf_token %}
+          <p><input type="textarea" name="characteristic" value="">
+            <input type="submit" value="Сохранить"></p>
+        </form>
+        <button onclick="document.location='/chapter/{{number}}'">Отмена</button>
+        <!-- END OF CREATING -->
+        {% else %}
+        {% if records.count == 0 %}
+          <p><a href="/create/{{number}}">Добавить характеристику</a></p>
+        {% endif %}
+        {% endif %}
+{% endblock content %}

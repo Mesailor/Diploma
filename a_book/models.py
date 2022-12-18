@@ -56,8 +56,15 @@ class TableCh8(models.Model):
     DoesNotExist = models.Manager
 
 
+class TableCh9(models.Model):
+    characteristic = models.TextField()
+    objects = models.Manager()
+    DoesNotExist = models.Manager
+
+
 tables = {1: TableCh1,
           2: TableCh2,
           4: TableCh4,
           5: TableCh5,
-          8: TableCh8}
+          8: TableCh8,
+          9: TableCh9}

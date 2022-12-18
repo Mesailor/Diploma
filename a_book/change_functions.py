@@ -43,8 +43,13 @@ def change_ch8(request, record):
     record.examiner = request.POST.get('examiner')
 
 
+def change_ch9(request, record):
+    record.characteristic = request.POST.get('characteristic')
+
+
 change_funcs = {1: change_ch1,
                 2: change_ch2,
                 4: change_ch4,
                 5: change_ch5,
-                8: change_ch8}
+                8: change_ch8,
+                9: change_ch9}
