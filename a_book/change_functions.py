@@ -47,9 +47,17 @@ def change_ch9(request, record):
     record.characteristic = request.POST.get('characteristic')
 
 
+def change_ch10(request, record):
+    record.date = request.POST.get('date')
+    record.remarks = request.POST.get('remarks')
+    record.examiner = request.POST.get('examiner')
+    record.deletion_mark = request.POST.get('deletion_mark')
+
+
 change_funcs = {1: change_ch1,
                 2: change_ch2,
                 4: change_ch4,
                 5: change_ch5,
                 8: change_ch8,
-                9: change_ch9}
+                9: change_ch9,
+                10: change_ch10}

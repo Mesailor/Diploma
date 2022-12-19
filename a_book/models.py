@@ -62,9 +62,19 @@ class TableCh9(models.Model):
     DoesNotExist = models.Manager
 
 
+class TableCh10(models.Model):
+    date = models.CharField(max_length=11)
+    remarks = models.TextField()
+    examiner = models.CharField(max_length=70)
+    deletion_mark = models.CharField(max_length=100)
+    objects = models.Manager()
+    DoesNotExist = models.Manager
+
+
 tables = {1: TableCh1,
           2: TableCh2,
           4: TableCh4,
           5: TableCh5,
           8: TableCh8,
-          9: TableCh9}
+          9: TableCh9,
+          10: TableCh10}

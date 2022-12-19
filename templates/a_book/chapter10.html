@@ -1,0 +1,70 @@
+{% extends 'a_book/chapter_base.html' %}
+
+{% block title %}X. Замечания по ведению книжки{% endblock title %}
+
+{% block content %}
+<h1 align="center">X. Замечания по ведению книжки</h1>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <th>Дата проверки</th>
+        <th>Замечания по ведению книжки</th>
+        <th>Должность, подпись и фамилия проверяющего</th>
+        <th>Отметка об устранении</th> <!-- замечания, подпись владельца летной книжки-->
+    </tr>
+    </thead>
+    <tbody>
+        {% if records.count > 0 %}
+        {% for record in records %}
+        <!--EDITING-->
+        {% if record.id == id %}
+    <tr>
+        <form method="POST">
+            {% csrf_token %}
+        <td><input type="text" name="date" value=" {{record.date}}"></td>
+        <td><input type="text" name="remarks" value=" {{record.remarks}}"></td>
+        <td><input type="text" name="examiner" value=" {{record.examiner}}"></td>
+        <td><input type="text" name="deletion_mark" value=" {{record.deletion_mark}}"></td>
+            <td><input type="submit" value="Сохранить"></td>
+        </form>
+        <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
+    </tr>
+        <!-- END OF EDITING -->
+        {% else %}
+    <tr>
+        <td>{{record.date}}</td>
+        <td>{{record.remarks}}</td>
+        <td>{{record.examiner}}</td>
+        <td>{{record.deletion_mark}}</td>
+        <td><a href="/edit/{{number}}/{{record.id}}">Редактировать</a>  |
+            <a href="/delete/{{number}}/{{record.id}}">Удалить</a></td>
+    </tr>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <!-- CREATING -->
+        {% if creating %}
+    <tr>
+        <form method="POST">
+            {% csrf_token %}
+        <td><input type="text" name="date" value=""></td>
+        <td><input type="text" name="remarks" value=""></td>
+        <td><input type="text" name="examiner" value=""></td>
+        <td><input type="text" name="deletion_mark" value=""></td>
+            <td><input type="submit" value="Сохранить"></td>
+        </form>
+        <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
+    </tr>
+        <!-- END OF CREATING -->
+        {% else %}
+    <tr>
+        <td><a href="/create/{{number}}">Добавить запись</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock content %}
