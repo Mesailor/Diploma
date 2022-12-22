@@ -43,6 +43,30 @@ class TableCh5(models.Model):
     DoesNotExist = models.Manager
 
 
+class TableCh6(models.Model):
+    date = models.CharField(max_length=11)
+    type = models.CharField(max_length=10)
+    exercise = models.CharField(max_length=120)
+    quantity_approach = models.PositiveSmallIntegerField()
+    quantity_landing = models.PositiveSmallIntegerField()
+    time_hours = models.PositiveSmallIntegerField()
+    time_mins = models.PositiveSmallIntegerField()
+    instrumental_time_hours = models.PositiveSmallIntegerField()
+    instrumental_time_mins = models.PositiveSmallIntegerField()
+    extra_time_hours = models.PositiveSmallIntegerField()
+    extra_time_mins = models.PositiveSmallIntegerField()
+    captain_hours = models.PositiveSmallIntegerField()
+    captain_mins = models.PositiveSmallIntegerField()
+    captain_route_hours = models.PositiveSmallIntegerField()
+    captain_route_mins = models.PositiveSmallIntegerField()
+    captain_night_hours = models.PositiveSmallIntegerField()
+    captain_night_mins = models.PositiveSmallIntegerField()
+    grade = models.PositiveSmallIntegerField()
+    examiner = models.CharField(max_length=50)
+    objects = models.Manager()
+    DoesNotExist = models.Manager
+
+
 class TableCh8(models.Model):
     date = models.CharField(max_length=11)
     type = models.CharField(max_length=10)
@@ -75,6 +99,7 @@ tables = {1: TableCh1,
           2: TableCh2,
           4: TableCh4,
           5: TableCh5,
+          6: TableCh6,
           8: TableCh8,
           9: TableCh9,
           10: TableCh10}

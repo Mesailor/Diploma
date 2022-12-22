@@ -1,0 +1,172 @@
+{% extends 'a_book/chapter_base.html' %}
+
+{% block title %}VI. Поденный учет налета{% endblock title %}
+
+{% block content %}
+<h1>VI. Поденный учет налета</h1>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+        <th colspan="2">4</th>
+        <th colspan="2">5</th>
+        <th colspan="2">6</th>
+        <th colspan="2">7</th>
+        <th colspan="2">8</th>
+        <th colspan="2">9</th>
+        <th colspan="2">10</th>
+        <th>11</th>
+        <th>12</th>
+    </tr>
+    <tr>
+        <th rowspan="3">Дата</th>
+        <th rowspan="3">Тип ВС</th>
+        <th rowspan="3">Упражнение</th> <!--, краткое содержание задания -->
+        <th colspan="2">Кол-во</th>
+        <th colspan="2">Общий налет</th>
+        <th colspan="4">Налет:</th>
+        <th colspan="6">В качестве КВС</th>
+        <th rowspan="3">Оценка</th>
+        <th rowspan="3">Пилот-инструктор</th>
+    </tr>
+    <tr>
+        <th rowspan="2">Зах</th>
+        <th rowspan="2">Пос</th>
+        <th rowspan="2">Час</th>
+        <th rowspan="2">Мин</th>
+        <th colspan="2">По приборам</th>
+        <th colspan="2"></th>
+        <th colspan="2">Всего</th>
+        <th colspan="2">По маршруту</th>
+        <th colspan="2">Ночью</th>
+    </tr>
+    <tr>
+        <th>час</th>
+        <th>мин</th>
+        <th>час</th>
+        <th>мин</th>
+        <th>час</th>
+        <th>мин</th>
+        <th>час</th>
+        <th>мин</th>
+        <th>час</th>
+        <th>мин</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% if records.count > 0 %}
+        {% for record in records %}
+        <!--EDITING-->
+        {% if record.id == id %}
+    <tr>
+        <form method="POST">
+            {% csrf_token %}
+        <td><input type="text" name="date" value=" {{record.date}}"></td>
+        <td><input type="text" name="type" value=" {{record.type}}"></td>
+        <td><input type="text" name="exercise" value=" {{record.exercise}}"></td>
+        <td><input type="text" name="quantity_approach" value=" {{record.quantity_approach}}"></td>
+        <td><input type="text" name="quantity_landing" value=" {{record.quantity_landing}}"></td>
+        <td><input type="text" name="time_hours" value=" {{record.time_hours}}"></td>
+        <td><input type="text" name="time_mins" value=" {{record.time_mins}}"></td>
+        <td><input type="text" name="instrumental_time_hours" value=" {{record.instrumental_time_hours}}"></td>
+        <td><input type="text" name="instrumental_time_mins" value=" {{record.instrumental_time_mins}}"></td>
+        <td><input type="text" name="extra_time_hours" value=" {{record.extra_time_hours}}"></td>
+        <td><input type="text" name="extra_time_mins" value=" {{record.extra_time_mins}}"></td>
+        <td><input type="text" name="captain_hours" value=" {{record.captain_hours}}"></td>
+        <td><input type="text" name="captain_mins" value=" {{record.captain_mins}}"></td>
+        <td><input type="text" name="captain_route_hours" value=" {{record.captain_route_hours}}"></td>
+        <td><input type="text" name="captain_route_mins" value=" {{record.captain_route_mins}}"></td>
+        <td><input type="text" name="captain_night_hours" value=" {{record.captain_night_hours}}"></td>
+        <td><input type="text" name="captain_night_mins" value=" {{record.captain_night_mins}}"></td>
+        <td><input type="text" name="grade" value=" {{record.grade}}"></td>
+        <td><input type="text" name="examiner" value=" {{record.examiner}}"></td>
+            <td><input type="submit" value="Сохранить"></td>
+        </form>
+        <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
+    </tr>
+        <!-- END OF EDITING -->
+        {% else %}
+    <tr>
+        <td>{{record.date}}</td>
+        <td>{{record.type}}</td>
+        <td>{{record.exercise}}</td>
+        <td>{{record.quantity_approach}}</td>
+        <td>{{record.quantity_landing}}</td>
+        <td>{{record.time_hours}}</td>
+        <td>{{record.time_mins}}</td>
+        <td>{{record.instrumental_time_hours}}</td>
+        <td>{{record.instrumental_time_mins}}</td>
+        <td>{{record.extra_time_hours}}</td>
+        <td>{{record.extra_time_mins}}</td>
+        <td>{{record.captain_hours}}</td>
+        <td>{{record.captain_mins}}</td>
+        <td>{{record.captain_route_hours}}</td>
+        <td>{{record.captain_route_mins}}</td>
+        <td>{{record.captain_night_hours}}</td>
+        <td>{{record.captain_night_mins}}</td>
+        <td>{{record.grade}}</td>
+        <td>{{record.examiner}}</td>
+        <td><a href="/edit/{{number}}/{{record.id}}">Редактировать</a>  |
+            <a href="/delete/{{number}}/{{record.id}}">Удалить</a></td>
+    </tr>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <!-- CREATING -->
+        {% if creating %}
+    <tr>
+        <form method="POST">
+            {% csrf_token %}
+        <td><input type="text" name="date" value=""></td>
+        <td><input type="text" name="type" value=""></td>
+        <td><input type="text" name="exercise" value=""></td>
+        <td><input type="text" name="quantity_approach" value=""></td>
+        <td><input type="text" name="quantity_landing" value=""></td>
+        <td><input type="text" name="time_hours" value=""></td>
+        <td><input type="text" name="time_mins" value=""></td>
+        <td><input type="text" name="instrumental_time_hours" value=""></td>
+        <td><input type="text" name="instrumental_time_mins" value=""></td>
+        <td><input type="text" name="extra_time_hours" value=""></td>
+        <td><input type="text" name="extra_time_mins" value=""></td>
+        <td><input type="text" name="captain_hours" value=""></td>
+        <td><input type="text" name="captain_mins" value=""></td>
+        <td><input type="text" name="captain_route_hours" value=""></td>
+        <td><input type="text" name="captain_route_mins" value=""></td>
+        <td><input type="text" name="captain_night_hours" value=""></td>
+        <td><input type="text" name="captain_night_mins" value=""></td>
+        <td><input type="text" name="grade" value=""></td>
+        <td><input type="text" name="examiner" value=""></td>
+            <td><input type="submit" value="Сохранить"></td>
+        </form>
+        <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
+    </tr>
+        <!-- END OF CREATING -->
+        {% else %}
+    <tr>
+        <td><a href="/create/{{number}}">Добавить запись</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock content %}
