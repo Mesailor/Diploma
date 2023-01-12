@@ -1,0 +1,373 @@
+{% extends 'a_book/chapter_base.html' %}
+
+{% block title %}III. Общие данные о летной подготовке{% endblock title %}
+
+{% block content %}
+III. Общие данные о летной подготовке
+
+<h2 align="center">Учет опыта летной эксплуатации воздушных судов</h2>
+
+<p>В каких авиационных организациях выполнял полеты и на каких типах ВС летал:</p>
+{% if records1.count == 0 %}
+<p><a href="chapter3/create/1">Добавить запись</a></p>
+{% else %}
+{% for record in records1 %}
+<p>{{record.prev_experience}}</p> <a href="chapter3/delete/1/{{record.id}}">Стереть данные</a>
+<a href="chapter3/edit/1/{{record.id}}">Редактировать данные</a>
+{% endfor %}
+{% endif %}
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <th rowspan="2">Тип ВС</th>
+        <th rowspan="2">Налет на ВС</th>
+        <th colspan="4">В том числе:</th>
+    </tr>
+    <tr>
+        <th>в качестве КВС</th>
+        <th>по маршруту</th>
+        <th>ночью</th>
+        <th>по приборам</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if records2.count > 0 %}
+    {% for record in records2 %}
+    <tr>
+        <td>{{record.type}}</td>
+        <td>{{record.time}}</td>
+        <td>{{record.captain_time}}</td>
+        <td>{{record.route_time}}</td>
+        <td>{{record.night_time}}</td>
+        <td>{{record.instrumental_time}}</td>
+        <td><a href="chapter3/delete/2/{{record.id}}">Стереть данные</a></td>
+        <td><a href="chapter3/edit/2/{{record.id}}">Редактировать данные</a></td>
+    </tr>
+    {% endfor %}
+    {% endif %}
+    <tr>
+        <td><a href="chapter3/create/2">Добавить запись</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+        <td>ВСЕГО:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </tfoot>
+</table>
+
+<p>Начальник штаба ЛТК</p>
+{% if records1.count == 0 %}
+<p>(Фамилия И.О.)</p>
+{% else %}
+{% for record in records1 %}
+<p>{{record.head_ltk}}</p>
+{% endfor %}
+{% endif %}
+
+
+<h2 align="center">Итоги выполнения программы I уровня</h2>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <th rowspan="3">Тип ВС</th>
+        <th colspan="5">Общий налет час,мин.</th>
+        <th rowspan="2" colspan="2">Самостоятельный налет час,мин.</th>
+        <th colspan="3">Полетное время в качестве КВС час,мин.</th>
+    </tr>
+    <tr>
+        <th colspan="3">Тренировка на летном тренажере</th>
+        <th colspan="2">Полетное время на ВС</th>
+        <th rowspan="2">всего</th>
+        <th rowspan="2">из них по маршруту</th>
+        <th rowspan="2">из них ночью</th>
+    </tr>
+    <tr>
+        <th>всего</th>
+        <th>из них по приборам</th>
+        <th>из них в зачет подготовки</th>
+        <th>всего</th>
+        <th>из них по приборам</th>
+        <th>всего</th>
+        <th>из них по маршруту</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if records3.count > 0 %}
+    {% for record in records3 %}
+    <tr>
+        <td>{{record.type}}</td>
+        <td>{{record.trainer_time}}</td>
+        <td>{{record.trainer_instrumental}}</td>
+        <td>{{record.trainer_passed}}</td>
+        <td>{{record.time}}</td>
+        <td>{{record.instrumental_time}}</td>
+        <td>{{record.solo_time}}</td>
+        <td>{{record.solo_route}}</td>
+        <td>{{record.captain_time}}</td>
+        <td>{{record.captain_route}}</td>
+        <td>{{record.captain_night}}</td>
+        <td><a href="chapter3/delete/3/{{record.id}}">Стереть данные</a></td>
+        <td><a href="chapter3/edit/3/{{record.id}}">Редактировать данные</a></td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <td><a href="chapter3/create/3">Добавить запись</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+
+<h5>Пилот-инструктор</h5>
+{% if records3.count > 0 %}
+{% for record in records3 %}
+<p>{{record.instructor}}</p>
+{% endfor %}
+{% else %}
+<p>(Фамилия И.О.)</p>
+{% endif %}
+
+
+<h2 align="center">Итоги выполнения программы II уровня</h2>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <th rowspan="3">Тип ВС</th>
+        <th colspan="5">Общий налет час,мин.</th>
+        <th rowspan="2" colspan="2">Полетное время в качестве ВП час,мин.</th>
+        <th colspan="3">Полетное время в качестве КВС час,мин.</th>
+    </tr>
+    <tr>
+        <th colspan="3">Тренировка на летном тренажере</th>
+        <th colspan="2">Полетное время на ВС</th>
+        <th rowspan="2">всего</th>
+        <th rowspan="2">из них по маршруту</th>
+        <th rowspan="2">из них ночью</th>
+    </tr>
+    <tr>
+        <th>всего</th>
+        <th>из них по приборам</th>
+        <th>из них в зачет подготовки</th>
+        <th>всего</th>
+        <th>из них по приборам</th>
+        <th>всего</th>
+        <th>из них в зачет подготовки</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if records4.count > 0 %}
+    {% for record in records4 %}
+    <tr>
+        <td>{{record.type}}</td>
+        <td>{{record.trainer_time}}</td>
+        <td>{{record.trainer_instrumental}}</td>
+        <td>{{record.trainer_passed}}</td>
+        <td>{{record.time}}</td>
+        <td>{{record.instrumental_time}}</td>
+        <td>{{record.FO_time}}</td>
+        <td>{{record.FO_passed}}</td>
+        <td>{{record.captain_time}}</td>
+        <td>{{record.captain_route}}</td>
+        <td>{{record.captain_night}}</td>
+        <td><a href="chapter3/delete/4/{{record.id}}">Стереть данные</a></td>
+        <td><a href="chapter3/edit/4/{{record.id}}">Редактировать данные</a></td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <td><a href="chapter3/create/4">Добавить запись</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+
+<h5>Пилот-инструктор</h5>
+{% if records4.count > 0 %}
+{% for record in records4 %}
+<p>{{record.instructor}}</p>
+{% endfor %}
+{% else %}
+<p>(Фамилия И.О.)</p>
+{% endif %}
+
+
+<h2 align="center">Итоги выполнения программы III уровня</h2>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <th rowspan="3">Тип ВС</th>
+        <th colspan="5">Общий налет час,мин.</th>
+        <th colspan="3">Полетное время в качестве КВС час,мин.</th>
+    </tr>
+    <tr>
+        <th colspan="3">Тренировка на летном тренажере</th>
+        <th colspan="2">Полетное время на ВС</th>
+        <th rowspan="2">всего</th>
+        <th rowspan="2">из них по маршруту</th>
+        <th rowspan="2">из них ночью</th>
+    </tr>
+    <tr>
+        <th>всего</th>
+        <th>из них по приборам</th>
+        <th>из них в зачет подготовки</th>
+        <th>всего</th>
+        <th>из них по приборам</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if records5.count > 0 %}
+    {% for record in records5 %}
+    <tr>
+        <td>{{record.type}}</td>
+        <td>{{record.trainer_time}}</td>
+        <td>{{record.trainer_instrumental}}</td>
+        <td>{{record.trainer_passed}}</td>
+        <td>{{record.time}}</td>
+        <td>{{record.instrumental_time}}</td>
+        <td>{{record.captain_time}}</td>
+        <td>{{record.captain_route}}</td>
+        <td>{{record.captain_night}}</td>
+        <td><a href="chapter3/delete/5/{{record.id}}">Стереть данные</a></td>
+        <td><a href="chapter3/edit/5/{{record.id}}">Редактировать данные</a></td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <td><a href="chapter3/create/5">Добавить запись</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+
+<h5>Пилот-инструктор</h5>
+{% if records5.count > 0 %}
+{% for record in records5 %}
+<p>{{record.instructor}}</p>
+{% endfor %}
+{% else %}
+<p>(Фамилия И.О.)</p>
+{% endif %}
+
+
+<h2 align="center">Общие итоги выполнения программы</h2>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <th colspan="5">Общий налет час,мин.</th>
+        <th rowspan="2" colspan="2">Самостоятельный налет час,мин.</th>
+        <th rowspan="2" colspan="2">Полетное время в качестве ВП час,мин.</th>
+        <th colspan="3">Полетное время в качестве КВС час,мин.</th>
+    </tr>
+    <tr>
+        <th colspan="3">Тренировка на летном тренажере</th>
+        <th colspan="2">Полетное время на ВС</th>
+        <th rowspan="2">всего</th>
+        <th rowspan="2">из них по маршруту</th>
+        <th rowspan="2">из них ночью</th>
+    </tr>
+    <tr>
+        <th>всего</th>
+        <th>из них по приборам</th>
+        <th>из них в зачет подготовки</th>
+        <th>всего</th>
+        <th>из них по приборам</th>
+        <th>всего</th>
+        <th>из них по маршруту</th>
+        <th>всего</th>
+        <th>из них в зачет подготовки</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% if records6.count > 0 %}
+    {% for record in records6 %}
+    <tr>
+        <td>{{record.trainer_time}}</td>
+        <td>{{record.trainer_instrumental}}</td>
+        <td>{{record.trainer_passed}}</td>
+        <td>{{record.time}}</td>
+        <td>{{record.instrumental_time}}</td>
+        <td>{{record.solo_time}}</td>
+        <td>{{record.solo_route}}</td>
+        <td>{{record.FO_time}}</td>
+        <td>{{record.FO_passed}}</td>
+        <td>{{record.captain_time}}</td>
+        <td>{{record.captain_route}}</td>
+        <td>{{record.captain_night}}</td>
+        <td><a href="chapter3/delete/6/{{record.id}}">Стереть данные</a></td>
+        <td><a href="chapter3/edit/6/{{record.id}}">Редактировать данные</a></td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <td><a href="chapter3/create/6">Добавить запись</a></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    {% endif %}
+    </tbody>
+</table>
+
+<h5>Пилот-инструктор</h5>
+{% if records6.count > 0 %}
+{% for record in records6 %}
+<p>{{record.instructor}}</p>
+{% endfor %}
+{% else %}
+<p>(Фамилия И.О.)</p>
+{% endif %}
+
+
+{% endblock content %}

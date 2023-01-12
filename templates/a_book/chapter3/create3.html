@@ -1,0 +1,13 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}III. Общие данные о летной подготовке{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <table>
+        {{form}}
+    </table>
+    <input type="submit" value="Сохранить">
+</form>
+{% endblock content %}
