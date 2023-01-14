@@ -28,6 +28,7 @@ def create3(request, table_num):
 
 
 def edit3(request, table_num, id):
+    """Функция редактирования записей в таблицах раздела"""
     htmls = {1: 'a_book/chapter3/edit31.html',
              2: 'a_book/chapter3/edit32.html',
              3: 'a_book/chapter3/edit33.html',
