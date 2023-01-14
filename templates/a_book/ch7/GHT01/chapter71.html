@@ -1,0 +1,606 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - GHT.01{% endblock title %}
+
+{% block content %}
+<h1>ОТЧЕТ О РЕЗУЛЬТАТАХ ЛЕТНОЙ ПРОВЕРКИ - GHT01</h1>
+
+{% if records0.count == 0 %}
+<p>Кандидат _________________________(Фамилия, Имя, Отчество)</p>
+<p>Тип и регистрационный номер воздушного судна _____________________________________</p>
+<p>Аэродром взлёта/посадки _______________________________</p>
+<p>Дата проверки _________________ Время полета ______________________ Общий налет __________________</p>
+<p>Общий результат проверки ___________(соответствует/не соответствует) требованиям, предъявляемым к частному пилоту -
+    техника пилотирования.</p>
+<p>Экзаменатор _______________________________________________(Занимаемая должность, фамилия, инициалы)</p>
+<p><a href="/chapter7/GHT01/create/0">Добавить данные</a></p>
+{% else %}
+{% for record in records0 %}
+<p><a href="/chapter7/GHT01/delete/0/{{record.id}}">Удалить данные</a></p>
+<p><a href="/chapter7/GHT01/edit/0/{{record.id}}">Редактировать данные</a></p>
+<p>Кандидат - {{record.candidate}}</p>
+<p>Тип и регистрационный номер воздушного судна - {{record.type_n_number}}</p>
+<p>Аэродром взлёта/посадки - {{record.aerodrome}}</p>
+<p>Дата проверки - {{record.date}} Время полета - {{record.time}} Общий налет -{{record.sum_time}}</p>
+<p>Общий результат проверки - {{record.result}} требованиям, предъявляемым к частному пилоту -
+    техника пилотирования.</p>
+<p>Экзаменатор - {{record.examiner}} </p>
+{% endfor %}
+{% endif %}
+
+
+<h3>РАЗДЕЛ 1. Предполетная подготовка</h3>
+{% if records1.count == 0 %}
+<p><a href="/chapter7/GHT01/create/1">Добавить данные</a></p>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>1.1</td>
+        <td>Подготовка к полету</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1.2</td>
+        <td>Знание РЛЭ самолета</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1.3</td>
+        <td>Запуск двигателя и проверки</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1.4</td>
+        <td>Руление и процедуры перед взлетом</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
+<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
+{% else %}
+{% for record in records1 %}
+<p><a href="/chapter7/GHT01/delete/1/{{record.id}}">Удалить данные</a></p>
+<p><a href="/chapter7/GHT01/edit/1/{{record.id}}">Редактировать данные</a></p>
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>1.1</td>
+        <td>Подготовка к полету</td>
+        <td>{{record.preparation}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1.2</td>
+        <td>Знание РЛЭ самолета</td>
+        <td>{{record.knowledge}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1.3</td>
+        <td>Запуск двигателя и проверки</td>
+        <td>{{record.startup}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>1.4</td>
+        <td>Руление и процедуры перед взлетом</td>
+        <td>{{record.taxiing}}</td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу: {{record.attestation}}</p>
+<p>Экзаменатор {{record.examiner}}</p>
+{% endfor %}
+{% endif %}
+<br>
+
+
+<h3>РАЗДЕЛ 2. Выполнение полета по кругу</h3>
+{% if records2.count == 0 %}
+<p><a href="/chapter7/GHT01/create/2">Добавить данные</a></p>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>2.1</td>
+        <td>Взлет</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.2</td>
+        <td>Полет по кругу</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.3</td>
+        <td>Заход на посадку и посадка</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.4</td>
+        <td>Взлет с короткой площадки/с боковым ветром*</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.5</td>
+        <td>Посадка с боковым ветром/убранными закрылками/на площадку ограниченных размеров*</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.6</td>
+        <td>Уход на второй круг</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
+<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
+{% else %}
+{% for record in records2 %}
+<p><a href="/chapter7/GHT01/delete/2/{{record.id}}">Удалить данные</a></p>
+<p><a href="/chapter7/GHT01/edit/2/{{record.id}}">Редактировать данные</a></p>
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>2.1</td>
+        <td>Взлет</td>
+        <td>{{record.takeoff}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.2</td>
+        <td>Полет по кругу</td>
+        <td>{{record.circle_flight}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.3</td>
+        <td>Заход на посадку и посадка</td>
+        <td>{{record.app_n_landing}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.4</td>
+        <td>Взлет с короткой площадки/с боковым ветром*</td>
+        <td>{{record.complicated_takeoff}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.5</td>
+        <td>Посадка с боковым ветром/убранными закрылками/на площадку ограниченных размеров*</td>
+        <td>{{record.complicated_landing}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>2.6</td>
+        <td>Уход на второй круг</td>
+        <td>{{record.missed_approach}}</td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу: {{record.attestation}}</p>
+<p>Экзаменатор {{record.examiner}}</p>
+{% endfor %}
+{% endif %}
+<br>
+
+
+<h3>РАЗДЕЛ 3. Маневрирование</h3>
+{% if records3.count == 0 %}
+<p><a href="/chapter7/GHT01/create/3">Добавить данные</a></p>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>3.1</td>
+        <td>Набор высоты и снижение</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3.2</td>
+        <td>Виражи с креном 45°</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3.3</td>
+        <td>Глубоки виражи с креном 60°</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3.4</td>
+        <td>Вывод из режима сваливания</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
+<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
+{% else %}
+{% for record in records3 %}
+<p><a href="/chapter7/GHT01/delete/3/{{record.id}}">Удалить данные</a></p>
+<p><a href="/chapter7/GHT01/edit/3/{{record.id}}">Редактировать данные</a></p>
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>3.1</td>
+        <td>Набор высоты и снижение</td>
+        <td>{{record.climb_n_descent}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3.2</td>
+        <td>Виражи с креном 45°</td>
+        <td>{{record.turn45}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3.3</td>
+        <td>Глубоки виражи с креном 60°</td>
+        <td>{{record.turn60}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>3.4</td>
+        <td>Вывод из режима сваливания</td>
+        <td>{{record.stall}}</td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу: {{record.attestation}}</p>
+<p>Экзаменатор {{record.examiner}}</p>
+{% endfor %}
+{% endif %}
+<br>
+
+
+<h3>РАЗДЕЛ 4. Порядок действия в аварийных случаях</h3>
+{% if records4.count == 0 %}
+<p><a href="/chapter7/GHT01/create/4">Добавить данные</a></p>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>4.1</td>
+        <td>Имитация отказа двигателя после взлета/на кругу*</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4.2</td>
+        <td>Имитация вынужденной посадки вне аэродрома с неработающим двигателем</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4.3</td>
+        <td>Имитация вынужденной посадки с подбором площадки</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4.4</td>
+        <td>Имитация пожара двигателя на земле/в полете*</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
+<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
+{% else %}
+{% for record in records4 %}
+<p><a href="/chapter7/GHT01/delete/4/{{record.id}}">Удалить данные</a></p>
+<p><a href="/chapter7/GHT01/edit/4/{{record.id}}">Редактировать данные</a></p>
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>4.1</td>
+        <td>Имитация отказа двигателя после взлета/на кругу*</td>
+        <td>{{record.eng_failure}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4.2</td>
+        <td>Имитация вынужденной посадки вне аэродрома с неработающим двигателем</td>
+        <td>{{record.no_eng_landing}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4.3</td>
+        <td>Имитация вынужденной посадки с подбором площадки</td>
+        <td>{{record.emerg_landing}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>4.4</td>
+        <td>Имитация пожара двигателя на земле/в полете*</td>
+        <td>{{record.eng_fire}}</td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу: {{record.attestation}}</p>
+<p>Экзаменатор {{record.examiner}}</p>
+{% endfor %}
+{% endif %}
+<br>
+
+
+<h3>РАЗДЕЛ 5. Основы полета по приборам</h3>
+{% if records5.count == 0 %}
+<p><a href="/chapter7/GHT01/create/5">Добавить данные</a></p>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>5.1</td>
+        <td>Прямолинейный горизонтальный полет</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5.2</td>
+        <td>Набор высоты до заданной и снижение на заданную высоту</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5.3</td>
+        <td>Развороты на заданный курс с креном 20° и 30°</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
+<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
+{% else %}
+{% for record in records5 %}
+<p><a href="/chapter7/GHT01/delete/5/{{record.id}}">Удалить данные</a></p>
+<p><a href="/chapter7/GHT01/edit/5/{{record.id}}">Редактировать данные</a></p>
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>5.1</td>
+        <td>Прямолинейный горизонтальный полет</td>
+        <td>{{record.horiz_flight}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5.2</td>
+        <td>Набор высоты до заданной и снижение на заданную высоту</td>
+        <td>{{record.climb_n_descent}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>5.3</td>
+        <td>Развороты на заданный курс с креном 20° и 30°</td>
+        <td>{{record.turns}}</td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу: {{record.attestation}}</p>
+<p>Экзаменатор {{record.examiner}}</p>
+{% endfor %}
+{% endif %}
+<br>
+
+
+<h3>РАЗДЕЛ 6. Общие положения</h3>
+{% if records6.count == 0 %}
+<p><a href="/chapter7/GHT01/create/6">Добавить данные</a></p>
+
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>6.1</td>
+        <td>Соблюдение правил осмотрительности на земле и в полете</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.2</td>
+        <td>Наблюдение за погодными условиями, ведение визуальной ориентировки</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.3</td>
+        <td>Эксплуатация двигателя, систем и оборудования самолете</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.4</td>
+        <td>Выполнение технологии производства полета</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.5</td>
+        <td>Ведение радиосвязи и фразеология радиообмена</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.6</td>
+        <td>Послеполетные процедуры</td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
+<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
+{% else %}
+{% for record in records6 %}
+<p><a href="/chapter7/GHT01/delete/6/{{record.id}}">Удалить данные</a></p>
+<p><a href="/chapter7/GHT01/edit/6/{{record.id}}">Редактировать данные</a></p>
+<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+    <thead>
+    <tr>
+        <td>№ п/п</td>
+        <td>Элементы, подлежащие оценке</td>
+        <td>Оценка (A-F)</td>
+        <td>Примечание</td>
+    </tr>
+    </thead>
+    <tr>
+        <td>6.1</td>
+        <td>Соблюдение правил осмотрительности на земле и в полете</td>
+        <td>{{record.circumspection}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.2</td>
+        <td>Наблюдение за погодными условиями, ведение визуальной ориентировки</td>
+        <td>{{record.weather}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.3</td>
+        <td>Эксплуатация двигателя, систем и оборудования самолете</td>
+        <td>{{record.exploitation}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.4</td>
+        <td>Выполнение технологии производства полета</td>
+        <td>{{record.technology}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.5</td>
+        <td>Ведение радиосвязи и фразеология радиообмена</td>
+        <td>{{record.radio}}</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>6.6</td>
+        <td>Послеполетные процедуры</td>
+        <td>{{record.afterflight_proc}}</td>
+        <td></td>
+    </tr>
+</table>
+<p>Аттестация по разделу: {{record.attestation}}</p>
+<p>Экзаменатор {{record.examiner}}</p>
+{% endfor %}
+{% endif %}
+<br>
+
+
+<h3>РЕЗУЛЬТАТЫ ЛЕТНОЙ ПРОВЕРКИ GHT.01</h3>
+{% if records7.count == 0 %}
+<p><a href="/chapter7/GHT01/create/7">Добавить данные</a></p>
+
+<p>Общий результат проверки - ___________</p>
+<p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
+<p>___________________________________________________________________________________</p>
+<p>___________________________________________________________________________________</p>
+<p>___________________________________________________________________________________</p>
+<p>Подпись экзаменатора______________________________</p>
+<p>Фамилия_________________________________________</p>
+<p>Номер пилотского свидетельства_____________________</p>
+<p>Дата_____________________________________________</p>
+{% else %}
+{% for record in records7 %}
+<p><a href="/chapter7/GHT01/delete/7/{{record.id}}">Удалить данные</a></p>
+<p><a href="/chapter7/GHT01/edit/7/{{record.id}}">Редактировать данные</a></p>
+<p>Общий результат проверки - {{record.attestation}}</p>
+<p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
+<p>{{record.recommendations}}</p>
+<p>Подпись экзаменатора </p>
+<img src="{{record.signature}}"> <!-- Необходимо наладить ссылку, чтобы изображение выводилось корректно -->
+<p>Фамилия {{record.examiner}}</p>
+<p>Номер пилотского свидетельства {{record.license_num}}</p>
+<p>Дата {{record.date}}</p>
+{% endfor %}
+{% endif %}
+
+{% endblock content %}

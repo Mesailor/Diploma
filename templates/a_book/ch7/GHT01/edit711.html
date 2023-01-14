@@ -1,0 +1,41 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - GHT.01{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Подготовка к полету</label>
+        <br>
+        <input type="text" name="preparation" value="{{record.preparation}}"/>
+    </p>
+    <p>
+        <label>Знание РЛЭ самолета</label>
+        <br>
+        <input type="text" name="knowledge" value="{{record.knowledge}}"/>
+    </p>
+    <p>
+        <label>Запуск двигателя и проверки</label>
+        <br>
+        <input type="text" name="startup" value="{{record.startup}}"/>
+    </p>
+    <p>
+        <label>Руление и процедуры перед взлетом</label>
+        <br>
+        <input type="text" name="taxiing" value="{{record.taxiing}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter3'">Отмена</button>
+{% endblock content %}
