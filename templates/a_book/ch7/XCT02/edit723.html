@@ -1,0 +1,46 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - XCT.02{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Правила визуальной навигации</label>
+        <br>
+        <input type="text" name="VFR" value="{{record.VFR}}"/>
+    </p>
+    <p>
+        <label>Ведение рабочего плана полета, радиообмена</label>
+        <br>
+        <input type="text" name="radio" value="{{record.radio}}"/>
+    </p>
+    <p>
+        <label>Осмотрительность и наблюдение</label>
+        <br>
+        <input type="text" name="circumspection" value="{{record.circumspection}}"/>
+    </p>
+    <p>
+        <label>Выдерживание параметров полета</label>
+        <br>
+        <input type="text" name="maintaining" value="{{record.maintaining}}"/>
+    </p>
+    <p>
+        <label>Действия при изменении маршрута</label>
+        <br>
+        <input type="text" name="route_changes" value="{{record.route_changes}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/XCT02'">Отмена</button>
+{% endblock content %}

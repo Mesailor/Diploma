@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from a_book import views
 from a_book.chapter3 import views as views3
 from a_book.ch7.GHT01 import views as views71
+from a_book.ch7.XCT02 import views as views72
 
 urlpatterns = [
     path('', views.home),
@@ -12,6 +13,10 @@ urlpatterns = [
     path('chapter7/GHT01/create/<int:table_num>', views71.create71),
     path('chapter7/GHT01/edit/<int:table_num>/<int:id>', views71.edit71),
     path('chapter7/GHT01/delete/<int:table_num>/<int:id>', views71.delete71),
+    path('chapter7/XCT02', views72.chapter72),
+    path('chapter7/XCT02/create/<int:table_num>', views72.create72),
+    path('chapter7/XCT02/edit/<int:table_num>/<int:id>', views72.edit72),
+    path('chapter7/XCT02/delete/<int:table_num>/<int:id>', views72.delete72),
     path('chapter3', views3.chapter3),
     path('chapter3/create/<int:table_num>', views3.create3),
     path('chapter3/edit/<int:table_num>/<int:id>', views3.edit3),

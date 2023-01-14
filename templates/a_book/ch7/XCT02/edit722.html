@@ -1,0 +1,41 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - XCT.02{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Проверка документации и оборудования на борту ВС</label>
+        <br>
+        <input type="text" name="docs_check" value="{{record.docs_check}}"/>
+    </p>
+    <p>
+        <label>Принятие и осмотр ВС</label>
+        <br>
+        <input type="text" name="aircraft_inspection" value="{{record.aircraft_inspection}}"/>
+    </p>
+    <p>
+        <label>Запуск двигателя, руление, подготовка к взлету</label>
+        <br>
+        <input type="text" name="startup" value="{{record.startup}}"/>
+    </p>
+    <p>
+        <label>Взлет, набор высоты</label>
+        <br>
+        <input type="text" name="takeoff" value="{{record.takeoff}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/XCT02'">Отмена</button>
+{% endblock content %}
