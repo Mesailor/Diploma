@@ -1,0 +1,46 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - IFT.03{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Прямолинейный горизонтальный полет</label>
+        <br>
+        <input type="text" name="horiz_flight" value="{{record.horiz_flight}}"/>
+    </p>
+    <p>
+        <label>Набор высоты и снижение</label>
+        <br>
+        <input type="text" name="climb_n_descent" value="{{record.climb_n_descent}}"/>
+    </p>
+    <p>
+        <label>Виражи и развороты на заданный курс с креном до 30°</label>
+        <br>
+        <input type="text" name="turns30" value="{{record.turns30}}"/>
+    </p>
+    <p>
+        <label>Развороты с набором высоты и снижением на заданный курс</label>
+        <br>
+        <input type="text" name="spirals" value="{{record.spirals}}"/>
+    </p>
+    <p>
+        <label>Виражи и развороты на заданный курс с креном до 45°</label>
+        <br>
+        <input type="text" name="turns45" value="{{record.turns45}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/IFT03'">Отмена</button>
+{% endblock content %}

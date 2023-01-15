@@ -5,6 +5,7 @@ from a_book import views
 from a_book.chapter3 import views as views3
 from a_book.ch7.GHT01 import views as views71
 from a_book.ch7.XCT02 import views as views72
+from a_book.ch7.IFT03 import views as views73
 
 urlpatterns = [
     path('', views.home),
@@ -17,6 +18,10 @@ urlpatterns = [
     path('chapter7/XCT02/create/<int:table_num>', views72.create72),
     path('chapter7/XCT02/edit/<int:table_num>/<int:id>', views72.edit72),
     path('chapter7/XCT02/delete/<int:table_num>/<int:id>', views72.delete72),
+    path('chapter7/IFT03', views73.chapter73),
+    path('chapter7/IFT03/create/<int:table_num>', views73.create73),
+    path('chapter7/IFT03/edit/<int:table_num>/<int:id>', views73.edit73),
+    path('chapter7/IFT03/delete/<int:table_num>/<int:id>', views73.delete73),
     path('chapter3', views3.chapter3),
     path('chapter3/create/<int:table_num>', views3.create3),
     path('chapter3/edit/<int:table_num>/<int:id>', views3.edit3),

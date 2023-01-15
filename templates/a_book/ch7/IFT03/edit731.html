@@ -1,0 +1,41 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - IFT.03{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Подготовка к полету</label>
+        <br>
+        <input type="text" name="preparation" value="{{record.preparation}}"/>
+    </p>
+    <p>
+        <label>Предполетный осмотр</label>
+        <br>
+        <input type="text" name="pref_inspection" value="{{record.pref_inspection}}"/>
+    </p>
+    <p>
+        <label>Проверки пилотажно-навигационного оборудования</label>
+        <br>
+        <input type="text" name="deck_check" value="{{record.deck_check}}"/>
+    </p>
+    <p>
+        <label>Предполетные процедуры</label>
+        <br>
+        <input type="text" name="pref_proc" value="{{record.pref_proc}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/IFT03'">Отмена</button>
+{% endblock content %}
