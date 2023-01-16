@@ -1,0 +1,71 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - NFT.04{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Подготовка к полету</label>
+        <br>
+        <input type="text" name="preparation" value="{{record.preparation}}"/>
+    </p>
+    <p>
+        <label>Осмотры и проверки</label>
+        <br>
+        <input type="text" name="inspection" value="{{record.inspection}}"/>
+    </p>
+    <p>
+        <label>Запуск двигателя, проверки и руление перед взлетом</label>
+        <br>
+        <input type="text" name="startup" value="{{record.startup}}"/>
+    </p>
+    <p>
+        <label>Взлет в ночное время, набор высоты</label>
+        <br>
+        <input type="text" name="takeoff" value="{{record.takeoff}}"/>
+    </p>
+    <p>
+        <label>Полет по кругу в ночное время</label>
+        <br>
+        <input type="text" name="circle_flight" value="{{record.circle_flight}}"/>
+    </p>
+    <p>
+        <label>Посадка в ночное время</label>
+        <br>
+        <input type="text" name="landing" value="{{record.landing}}"/>
+    </p>
+    <p>
+        <label>Заход на посадку без использования системы визуальной индикации глиссады</label>
+        <br>
+        <input type="text" name="approach" value="{{record.approach}}"/>
+    </p>
+    <p>
+        <label>Уход на второй круг</label>
+        <br>
+        <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
+    </p>
+    <p>
+        <label>Знание действий при отказе радио и электрооборудования</label>
+        <br>
+        <input type="text" name="radio_failure" value="{{record.radio_failure}}"/>
+    </p>
+    <p>
+        <label>Знание действий при отказе двигателя</label>
+        <br>
+        <input type="text" name="eng_failure" value="{{record.eng_failure}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/NFT04'">Отмена</button>
+{% endblock content %}
