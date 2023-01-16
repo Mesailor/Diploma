@@ -1,0 +1,41 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - XCT.05{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Инструктаж пассажиров</label>
+        <br>
+        <input type="text" name="briefing" value="{{record.briefing}}"/>
+    </p>
+    <p>
+        <label>Взлет, набор высоты</label>
+        <br>
+        <input type="text" name="takeoff" value="{{record.takeoff}}"/>
+    </p>
+    <p>
+        <label>Выход на маршрут полета, действия на начальном этапе крейсерского полета</label>
+        <br>
+        <input type="text" name="route_entering" value="{{record.route_entering}}"/>
+    </p>
+    <p>
+        <label>Ведение радиообмена</label>
+        <br>
+        <input type="text" name="radio" value="{{record.radio}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/XCT05'">Отмена</button>
+{% endblock content %}

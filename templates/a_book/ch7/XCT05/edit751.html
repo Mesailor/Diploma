@@ -1,0 +1,51 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - XCT.05{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Изучение района полета и метеоусловий</label>
+        <br>
+        <input type="text" name="research" value="{{record.research}}"/>
+    </p>
+    <p>
+        <label>Выбор маршрута полета</label>
+        <br>
+        <input type="text" name="route_choice" value="{{record.route_choice}}"/>
+    </p>
+    <p>
+        <label>Подготовка карты и рабочего плана</label>
+        <br>
+        <input type="text" name="flightplan_prep" value="{{record.flightplan_prep}}"/>
+    </p>
+    <p>
+        <label>Проведение необходимых расчетов</label>
+        <br>
+        <input type="text" name="calculation" value="{{record.calculation}}"/>
+    </p>
+    <p>
+        <label>Проверка документации и оборудования на борту ВС</label>
+        <br>
+        <input type="text" name="docs_check" value="{{record.docs_check}}"/>
+    </p>
+    <p>
+        <label>Осмотр ВС, запуск и руление</label>
+        <br>
+        <input type="text" name="inspection" value="{{record.inspection}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/XCT05'">Отмена</button>
+{% endblock content %}

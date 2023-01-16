@@ -1,0 +1,41 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - XCT.05{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Заход на посадку и посадка</label>
+        <br>
+        <input type="text" name="app_n_landing" value="{{record.app_n_landing}}"/>
+    </p>
+    <p>
+        <label>Получение и использование информации для полета</label>
+        <br>
+        <input type="text" name="info_using" value="{{record.info_using}}"/>
+    </p>
+    <p>
+        <label>Послеполетные процедуры и заправка топливом</label>
+        <br>
+        <input type="text" name="postflight_proc" value="{{record.postflight_proc}}"/>
+    </p>
+    <p>
+        <label>Оформление документации</label>
+        <br>
+        <input type="text" name="paperwork" value="{{record.paperwork}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/XCT05'">Отмена</button>
+{% endblock content %}
