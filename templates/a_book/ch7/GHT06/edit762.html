@@ -1,0 +1,56 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - GHT.06{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Набор высоты, горизонтальный полет, снижение, развороты на заданный курс</label>
+        <br>
+        <input type="text" name="standard_maneuvers" value="{{record.standard_maneuvers}}"/>
+    </p>
+    <p>
+        <label>Виражи, глубокие виражи и развороты на заданный курс</label>
+        <br>
+        <input type="text" name="turns" value="{{record.turns}}"/>
+    </p>
+    <p>
+        <label>Вывод из режима сваливания</label>
+        <br>
+        <input type="text" name="stall" value="{{record.stall}}"/>
+    </p>
+    <p>
+        <label>Имитация аварийной посадки вне аэродрома с неработающим двигателем</label>
+        <br>
+        <input type="text" name="no_eng_landing" value="{{record.no_eng_landing}}"/>
+    </p>
+    <p>
+        <label>Имитация вынужденной посадки с подбором площадки</label>
+        <br>
+        <input type="text" name="emerg_landing" value="{{record.emerg_landing}}"/>
+    </p>
+    <p>
+        <label>Подготовка кандидата к действиям в аварийной обстановке</label>
+        <br>
+        <input type="text" name="emerg_situation" value="{{record.emerg_situation}}"/>
+    </p>
+    <p>
+        <label>Вход в круг полетов</label>
+        <br>
+        <input type="text" name="circle_entering" value="{{record.circle_entering}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/GHT06'">Отмена</button>
+{% endblock content %}

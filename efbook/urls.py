@@ -8,6 +8,7 @@ from a_book.ch7.XCT02 import views as views72
 from a_book.ch7.IFT03 import views as views73
 from a_book.ch7.NFT04 import views as views74
 from a_book.ch7.XCT05 import views as views75
+from a_book.ch7.GHT06 import views as views76
 
 urlpatterns = [
     path('', views.home),
@@ -32,6 +33,10 @@ urlpatterns = [
     path('chapter7/XCT05/create/<int:table_num>', views75.create75),
     path('chapter7/XCT05/edit/<int:table_num>/<int:id>', views75.edit75),
     path('chapter7/XCT05/delete/<int:table_num>/<int:id>', views75.delete75),
+    path('chapter7/GHT06', views76.chapter76),
+    path('chapter7/GHT06/create/<int:table_num>', views76.create76),
+    path('chapter7/GHT06/edit/<int:table_num>/<int:id>', views76.edit76),
+    path('chapter7/GHT06/delete/<int:table_num>/<int:id>', views76.delete76),
     path('chapter3', views3.chapter3),
     path('chapter3/create/<int:table_num>', views3.create3),
     path('chapter3/edit/<int:table_num>/<int:id>', views3.edit3),
