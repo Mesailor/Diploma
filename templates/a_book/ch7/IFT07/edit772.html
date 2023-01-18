@@ -1,0 +1,41 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - IFT.07{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Развороты с креном до 30° с выходом на заданный курс</label>
+        <br>
+        <input type="text" name="turns30" value="{{record.turns30}}"/>
+    </p>
+    <p>
+        <label>Развороты на заданный курс с набором высоты и снижением</label>
+        <br>
+        <input type="text" name="spirals" value="{{record.spirals}}"/>
+    </p>
+    <p>
+        <label>Виражи и развороты с креном 45°</label>
+        <br>
+        <input type="text" name="turns45" value="{{record.turns45}}"/>
+    </p>
+    <p>
+        <label>Маневрирование при изменении скорости и конфигурации</label>
+        <br>
+        <input type="text" name="maneuvering" value="{{record.maneuvering}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/IFT07'">Отмена</button>
+{% endblock content %}

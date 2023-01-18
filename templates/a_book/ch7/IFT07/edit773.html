@@ -1,0 +1,41 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - IFT.07{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Нобор высоты и снижение</label>
+        <br>
+        <input type="text" name="climb_n_descent" value="{{record.climb_n_descent}}"/>
+    </p>
+    <p>
+        <label>Развороты с набором высоты и снижением для выхода на заданный курс</label>
+        <br>
+        <input type="text" name="stby_spirals" value="{{record.stby_spirals}}"/>
+    </p>
+    <p>
+        <label>Маневрирование при изменении скорости и конфигурации</label>
+        <br>
+        <input type="text" name="stby_maneuvering" value="{{record.stby_maneuvering}}"/>
+    </p>
+    <p>
+        <label>Вывод самолета из сложного пространственного положения</label>
+        <br>
+        <input type="text" name="compl_spatial_pos" value="{{record.compl_spatial_pos}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/IFT07'">Отмена</button>
+{% endblock content %}
