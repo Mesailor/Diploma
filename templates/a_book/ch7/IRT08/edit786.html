@@ -1,0 +1,46 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - IRT.08{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Контроль и наблюдение в полете</label>
+        <br>
+        <input type="text" name="observation" value="{{record.observation}}"/>
+    </p>
+    <p>
+        <label>Применение навигационного оборудования, использование справочников АНИ</label>
+        <br>
+        <input type="text" name="flight_info" value="{{record.flight_info}}"/>
+    </p>
+    <p>
+        <label>Ведение радиообмена</label>
+        <br>
+        <input type="text" name="radio" value="{{record.radio}}"/>
+    </p>
+    <p>
+        <label>Знание правил полета по приборам</label>
+        <br>
+        <input type="text" name="IFR_knowledge" value="{{record.IFR_knowledge}}"/>
+    </p>
+    <p>
+        <label>Инструктаж и организация работы в экипаже</label>
+        <br>
+        <input type="text" name="briefing" value="{{record.briefing}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/IRT08'">Отмена</button>
+{% endblock content %}

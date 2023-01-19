@@ -1,0 +1,46 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - IRT.08{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Полет на начальном этапе</label>
+        <br>
+        <input type="text" name="initial_stage" value="{{record.initial_stage}}"/>
+    </p>
+    <p>
+        <label>Выход на посадочный курс</label>
+        <br>
+        <input type="text" name="landing_course" value="{{record.landing_course}}"/>
+    </p>
+    <p>
+        <label>Захват курсового маяка и глиссады</label>
+        <br>
+        <input type="text" name="ILS_established" value="{{record.ILS_established}}"/>
+    </p>
+    <p>
+        <label>Снижение до высоты принятия решения</label>
+        <br>
+        <input type="text" name="decision_alt" value="{{record.decision_alt}}"/>
+    </p>
+    <p>
+        <label>Уход на второй круг или переход на визуальное пилотирование</label>
+        <br>
+        <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/IRT08'">Отмена</button>
+{% endblock content %}

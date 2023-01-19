@@ -1,0 +1,46 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - IRT.08{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Вход в зону ожидания</label>
+        <br>
+        <input type="text" name="hold_area_entering" value="{{record.hold_area_entering}}"/>
+    </p>
+    <p>
+        <label>Выдерживание схемы полета в зоне ожидания</label>
+        <br>
+        <input type="text" name="accuracy_hold_area" value="{{record.accuracy_hold_area}}"/>
+    </p>
+    <p>
+        <label>Выдерживание высоты</label>
+        <br>
+        <input type="text" name="maintaining_alt" value="{{record.maintaining_alt}}"/>
+    </p>
+    <p>
+        <label>Учет ветра</label>
+        <br>
+        <input type="text" name="wind_correction" value="{{record.wind_correction}}"/>
+    </p>
+    <p>
+        <label>Выход из зоны ожидания</label>
+        <br>
+        <input type="text" name="hold_area_leaving" value="{{record.hold_area_leaving}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/IRT08'">Отмена</button>
+{% endblock content %}

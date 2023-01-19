@@ -1,0 +1,46 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - IRT.08{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Общий результат проверки</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Дата успешного прохождения летной проверки IFT.07</label>
+        <br>
+        <input type="text" name="dateIFT07" value="{{record.dateIFT07}}"/>
+    </p>
+    <p>
+        <label>РЕКОМЕНДАЦИИ</label>
+        <br>
+        <input type="text" name="recommendations" value="{{record.recommendations}}"/>
+    </p>
+    <p>
+        <label>Подпись экзаменатора</label>
+        <br>
+        <input type="image" name="signature" value="{{record.signature}}"/>
+    </p>
+    <p>
+        <label>Фамилия</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <p>
+        <label>Номер пилотского свидетельства</label>
+        <br>
+        <input type="text" name="license_num" value="{{record.license_num}}"/>
+    </p>
+    <p>
+        <label>Дата</label>
+        <br>
+        <input type="text" name="date" value="{{record.date}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/IRT08'">Отмена</button>
+{% endblock content %}

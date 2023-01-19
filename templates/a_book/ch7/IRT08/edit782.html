@@ -1,0 +1,41 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - IRT.08{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Выдерживание линии заданного пути</label>
+        <br>
+        <input type="text" name="maintaining_track" value="{{record.maintaining_track}}"/>
+    </p>
+    <p>
+        <label>Ведение рабочего плана полета</label>
+        <br>
+        <input type="text" name="flightplan" value="{{record.flightplan}}"/>
+    </p>
+    <p>
+        <label>Доклады о месте воздушного судна</label>
+        <br>
+        <input type="text" name="reports" value="{{record.reports}}"/>
+    </p>
+    <p>
+        <label>Полет по приборам</label>
+        <br>
+        <input type="text" name="instrumental_flight" value="{{record.instrumental_flight}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/IRT08'">Отмена</button>
+{% endblock content %}
