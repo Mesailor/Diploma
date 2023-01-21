@@ -1,0 +1,71 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - MET.09{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Взлет</label>
+        <br>
+        <input type="text" name="takeoff" value="{{record.takeoff}}"/>
+    </p>
+    <p>
+        <label>Прерванный взлет</label>
+        <br>
+        <input type="text" name="aborted_takeoff" value="{{record.aborted_takeoff}}"/>
+    </p>
+    <p>
+        <label>Имитация отказа двигателя после взлета</label>
+        <br>
+        <input type="text" name="eng_failure" value="{{record.eng_failure}}"/>
+    </p>
+    <p>
+        <label>Полет по кругу</label>
+        <br>
+        <input type="text" name="circle_flight" value="{{record.circle_flight}}"/>
+    </p>
+    <p>
+        <label>Заход на посадку и посадка</label>
+        <br>
+        <input type="text" name="app_n_landing" value="{{record.app_n_landing}}"/>
+    </p>
+    <p>
+        <label>Взлет с короткой площадки/с боковым ветром*</label>
+        <br>
+        <input type="text" name="complicated_takeoff" value="{{record.complicated_takeoff}}"/>
+    </p>
+    <p>
+        <label>Посадка при боковом ветре/с убранными закрылками/на площадку ограниченных размеров*</label>
+        <br>
+        <input type="text" name="complicated_landing" value="{{record.complicated_landing}}"/>
+    </p>
+    <p>
+        <label>Посадка с одним неработающим двигателем</label>
+        <br>
+        <input type="text" name="one_eng_landing" value="{{record.one_eng_landing}}"/>
+    </p>
+    <p>
+        <label>Уход на второй круг с обоими работающими двигателями</label>
+        <br>
+        <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
+    </p>
+    <p>
+        <label>Уход на второй круг с одним неработающим двигателем</label>
+        <br>
+        <input type="text" name="one_eng_mis_apr" value="{{record.one_eng_mis_apr}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/MET09'">Отмена</button>
+{% endblock content %}

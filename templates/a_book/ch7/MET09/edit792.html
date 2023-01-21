@@ -1,0 +1,51 @@
+{% extends 'a_book/base.html' %}
+
+{% block title %}VII. Отчет о результатах летной проверки - MET.09{% endblock title %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Набор высоты, горизонтальный полет, снижение, развороты на заданный курс</label>
+        <br>
+        <input type="text" name="standard_maneuvering" value="{{record.standard_maneuvering}}"/>
+    </p>
+    <p>
+        <label>Вывод из режима сваливания в полетной конфигурации</label>
+        <br>
+        <input type="text" name="stall_flight_conf" value="{{record.stall_flight_conf}}"/>
+    </p>
+    <p>
+        <label>Вывод из режима сваливания в посадочной конфигурации</label>
+        <br>
+        <input type="text" name="stall_land_conf" value="{{record.stall_land_conf}}"/>
+    </p>
+    <p>
+        <label>Имитация пожара одного двигателя в воздухе</label>
+        <br>
+        <input type="text" name="eng_fire" value="{{record.eng_fire}}"/>
+    </p>
+    <p>
+        <label>Пилотирование с несимметричной тягой</label>
+        <br>
+        <input type="text" name="one_eng_flight" value="{{record.one_eng_flight}}"/>
+    </p>
+    <p>
+        <label>Вход в круг полетов</label>
+        <br>
+        <input type="text" name="circle_entrance" value="{{record.circle_entrance}}"/>
+    </p>
+    <p>
+        <label>Аттестация по разделу</label>
+        <br>
+        <input type="text" name="attestation" value="{{record.attestation}}"/>
+    </p>
+    <p>
+        <label>Экзаменатор</label>
+        <br>
+        <input type="text" name="examiner" value="{{record.examiner}}"/>
+    </p>
+    <input type="submit" value="Сохранить">
+</form>
+<button onclick="document.location='/chapter7/MET09'">Отмена</button>
+{% endblock content %}
