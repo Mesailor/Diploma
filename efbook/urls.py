@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
@@ -17,6 +19,11 @@ from a_book.ch7.QFT11 import views as views711
 
 urlpatterns = [
     path('', views.home),
+    path('chapter/<int:number>', views.chapter),
+    path('create/<int:number>', views.create),
+    path('edit/<int:number>/<int:id>/', views.edit),
+    path('delete/<int:number>/<int:id>/', views.delete),
+    path('admin/', admin.site.urls),
     path('chapter7', TemplateView.as_view(template_name='a_book/ch7/chapter7.html')),
     path('chapter7/GHT01', views71.chapter71),
     path('chapter7/GHT01/create/<int:table_num>', views71.create71),
@@ -66,10 +73,4 @@ urlpatterns = [
     path('chapter3/create/<int:table_num>', views3.create3),
     path('chapter3/edit/<int:table_num>/<int:id>', views3.edit3),
     path('chapter3/delete/<int:table_num>/<int:id>', views3.delete3),
-    path('chapter/<int:number>', views.chapter),
-    path('create/<int:number>', views.create),
-    path('edit/<int:number>/<int:id>/', views.edit),
-    path('delete/<int:number>/<int:id>/', views.delete),
-    path('contents/', TemplateView.as_view(template_name='a_book/contents.html')),
-    path('admin/', admin.site.urls),
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

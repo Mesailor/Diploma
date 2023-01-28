@@ -17,7 +17,7 @@ htmls = {1: 'a_book/chapter1.html',
 
 
 def home(request):
-    return HttpResponseRedirect('/contents')
+    return HttpResponseRedirect('/chapter/1')
 
 
 def chapter(request, number):
