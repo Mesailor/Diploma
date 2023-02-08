@@ -11,11 +11,11 @@ body {
 height: 100%;
 }
 
-.top {
+header {
 background: #090066;
 }
 
-.top .title {
+header .title {
 color: gold;
 }
 
@@ -30,18 +30,48 @@ border-right: 8px double grey;
 font-size: 20px;
 }
 
-aside a {
+nav h1{
+padding: 8px;
+font-size: 25px;
+}
+
+nav ul {
+list-style-type: none;
+margin: 0px 0px 0px -20px;
+}
+
+nav li {
+padding: 7px;
+}
+
+nav li:hover {
+padding-left: 20px;
+background: lightgrey;
+border-left: 2px solid #090066;
+}
+
+nav a {
 color: black;
+text-decoration: none;
+}
+
+nav a:active {
+color: blue;
 }
 
 main {
-width: 80%;
+width: 79%;
 height: 100%;
 overflow: auto;
+overflow-x: hidden;
 float: left;
 background: white;
 border: 10px solid #090066;
 border-left: 8px double grey;
 border-right:5px solid #090066;
-font-size: 20px;
+}
+
+.hand-write {
+color: darkblue;
+font-style: italic;
 }

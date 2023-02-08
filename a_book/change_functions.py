@@ -5,7 +5,6 @@ def change_ch1(request, record):
     record.instructor1 = request.POST.get('instructor1')
     record.instructor2 = request.POST.get('instructor2')
     record.instructor3 = request.POST.get('instructor3')
-    record.instructor4 = request.POST.get('instructor4')
 
 
 def change_ch2(request, record):

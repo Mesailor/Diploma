@@ -1,0 +1,158 @@
+/* title page */
+.title-page {
+padding: 15px;
+}
+
+.title-page .header {
+font-size: 17px;
+}
+
+.emblem {
+width: 14%;
+}
+
+div.portrait {
+border: 1px solid black;
+width: 162px;
+height: 208px;
+position: relative;
+top: -50px;
+right: -80%;
+}
+
+div.portrait p {
+padding-top: 50%;
+padding-left: 25%;
+padding-right: 25%;
+position: absolute;
+z-index: 1;
+}
+
+.portrait img {
+width: 100%;
+position: relative;
+z-index: 2;
+}
+
+.title-page .content {
+padding-left: 2.5%;
+padding-right: 4%;
+font-size: 25px;
+position: relative;
+top: -50px;
+}
+
+.title-page .link-edit {
+position: absolute;
+}
+
+.title-page .link-create {
+position: absolute;
+}
+
+.title-page .link-cancel {
+position: absolute;
+}
+
+.title-page input {
+border: 0;
+font-size: 20px;
+}
+
+.title-page .student input {
+width: 500px;
+position: relative;
+right: -300px;
+}
+
+.title-page .group-n-date {
+width: 110%;
+}
+
+.title-page .group {
+position: relative;
+left: -670px;
+}
+
+.title-page .group input {
+width: 80px;
+position: relative;
+left: -30px;
+top: -2px;
+}
+
+.title-page .date {
+position: relative;
+left: -240px;
+}
+
+.title-page .date input {
+width: 200px;
+position: relative;
+left: -120px;
+top: -2px;
+}
+
+.title-page div.lines {
+position: relative;
+right: -500px;
+top: -20px;
+}
+
+.title-page .instructor1 {
+position: relative;
+left: -250px;
+}
+
+.title-page .instructor1 input {
+width: 300px;
+position: relative;
+left: -80px;
+top: -2px;
+}
+
+.title-page .instructor2 {
+position: relative;
+left: -250px;
+}
+
+.title-page .instructor2 input {
+width: 300px;
+position: relative;
+left: -80px;
+top: -2px;
+}
+
+.title-page .instructor3 {
+position: relative;
+left: -250px;
+}
+
+.title-page .instructor3 input {
+width: 300px;
+position: relative;
+left: -80px;
+top: -2px;
+}
+
+.title-page .hint1 {
+font-size: 82%;
+}
+
+.title-page .hint2 {
+font-size: 82%;
+position: relative;
+right:  -100px;
+}
+
+.title-page .hint3 {
+font-size: 82%;
+position: relative;
+right:  -100px;
+}
+
+.title-page .hint4 {
+font-size: 82%;
+position: relative;
+right:  -100px;
+}

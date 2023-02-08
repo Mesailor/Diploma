@@ -1,70 +1,144 @@
-{% extends 'a_book/chapter_base.html' %}
+{% extends 'a_book/base.html' %}
 <!-- Титульная страница. Через блоки if, elif, else реализовано четыре варианта отображения страницы: -->
 <!-- 1. Заполнение полей на титульном листе. -->
 <!-- 2. Редактирование полей на титульном листе. -->
 <!-- 3. Отображение титульного листа с заполненными полями. -->
 <!-- 4. Отображение титульного листа с незаполненными полями. -->
-{% block title %}Title page{% endblock title %}
+{% block title %}Титульный лист{% endblock title %}
 
 {% block content %}
-  {% if creating %}
-    <h1 align="center">Летная книжка</h1>
-    <img align="right" src="" alt="Фото студента">
-    <h3 align="center">пилот-курсант</h3>
-      <form method="POST">
-        {% csrf_token %} >
-      <input align="center" type="text" name="student" value="{{record.student}}">
-    <p>Группа№ <input type="number" name="group" value="{{record.group}}">
-       Дата заведения летной книжки <input type="text" name="date" value="{{record.date}}"></p>
-    <p>Летное обучение проводил пилот-инструктор:
-       <input type="text" name="instructor1" value="{{record.instructor1}}"></p>
-    <p><input type="text" name="instructor2" value="{{record.instructor2}}"></p>
-    <p><input type="text" name="instructor3" value="{{record.instructor3}}"></p>
-    <p><input type="text" name="instructor4" value="{{record.instructor4}}"></p>
-    <input type="submit" value="Сохранить">
-      </form>
-  {% elif editing %}
+<div class="title-page">
+    {% load static %}
+    {% if creating %}
+    <div class="header" align="center"><img class='emblem' src="{% static 'a_book/images/emblem.jpg' %}" alt="Эмблема">
+        <h1>ЛЕТНАЯ КНИЖКА</h1>
+    </div>
+    <div class="portrait">
+        <p align="center">Фото студента</p>
+        <img src="{% static 'a_book/images/portrait.jpg' %}" alt="Фото студента">
+    </div>
+    <div class="content">
+        <p align="center">пилот-курсант</p>
+        <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">Отмена</button>
+        <form method="POST">
+            {% csrf_token %}
+            <span class="hand-write student"><input type="text" name="student"></span>
+            <hr size="2px" color="black">
+            <p align="center" class="hint1">(фамилия, имя, отчество)</p>
+        <p class="group-n-date">Группа № _______ Дата заведения летной книжки _____________________
+            <span class="hand-write group"><input type="number" name="group"></span>
+            <span class="hand-write date"><input type="text" name="date" size="10"></span></p>
+        <div><p>Летное обучение проводил пилот-инструктор:</p>
+            <div class="lines">
+                <p>___________________________<span class="hand-write instructor1">
+                   <input type="text" name="instructor1" value=""></span></p>
+                <p class="hint2">(фамилия, и.о.)</p>
+                <p>___________________________<span class="hand-write instructor2">
+                   <input type="text" name="instructor2" value=""></span></p>
+                <p class="hint3">(фамилия, и.о.)</p>
+                <p>___________________________<span class="hand-write instructor3">
+                   <input type="text" name="instructor3" value=""></span></p>
+                <p class="hint4">(фамилия, и.о.)</p>
+            </div>
+            <button type="submit">Сохранить</button>
+        </div>
+        </form>
+    </div>
+    {% elif editing %}
     {% for record in records %}
-    <h1 align="center">Летная книжка</h1>
-    <img align="right" src="" alt="Фото студента">
-    <h3 align="center">пилот-курсант</h3>
-      <form method="POST">
-        {% csrf_token %}
-      <input align="center" type="text" name="student" value="{{record.student}}">
-    <p>Группа№ <input type="number" name="group" value="{{record.group}}">
-       Дата заведения летной книжки <input type="text" name="date" value="{{record.date}}"></p>
-    <p>Летное обучение проводил пилот-инструктор:
-       <input type="text" name="instructor1" value="{{record.instructor1}}"></p>
-    <p><input type="text" name="instructor2" value="{{record.instructor2}}"></p>
-    <p><input type="text" name="instructor3" value="{{record.instructor3}}"></p>
-    <p><input type="text" name="instructor4" value="{{record.instructor4}}"></p>
-    <input type="submit" value="Сохранить">
-      </form>
+    <div class="header" align="center"><img class='emblem' src="{% static 'a_book/images/emblem.jpg' %}" alt="Эмблема">
+        <h1>ЛЕТНАЯ КНИЖКА</h1>
+    </div>
+    <div class="portrait">
+        <p align="center">Фото студента</p>
+        <img src="{% static 'a_book/images/portrait.jpg' %}" alt="Фото студента">
+    </div>
+    <div class="content">
+        <p align="center">пилот-курсант</p>
+        <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">Отмена</button>
+        <form method="POST">
+            {% csrf_token %}
+            <span class="hand-write student"><input type="text" name="student" value="{{record.student}}"></span>
+            <hr size="2px" color="black">
+            <p align="center" class="hint1">(фамилия, имя, отчество)</p>
+        <p class="group-n-date">Группа № _______ Дата заведения летной книжки _____________________
+            <span class="hand-write group"><input type="number" name="group" value="{{record.group}}"></span>
+            <span class="hand-write date"><input type="text" name="date" value="{{record.date}}"></span></p>
+        <div><p>Летное обучение проводил пилот-инструктор:</p>
+            <div class="lines">
+                <p>___________________________<span class="hand-write instructor1">
+                   <input type="text" name="instructor1" value="{{record.instructor1}}"></span></p>
+                <p class="hint2">(фамилия, и.о.)</p>
+                <p>___________________________<span class="hand-write instructor2">
+                   <input type="text" name="instructor2" value="{{record.instructor2}}"></span></p>
+                <p class="hint3">(фамилия, и.о.)</p>
+                <p>___________________________<span class="hand-write instructor3">
+                   <input type="text" name="instructor3" value="{{record.instructor3}}"></span></p>
+                <p class="hint4">(фамилия, и.о.)</p>
+            </div>
+            <button type="submit">Сохранить</button>
+        </div>
+        </form>
+    </div>
     {% endfor %}
-  {% elif records.count > 0 %}
+    {% elif records.count > 0 %}
     {% for record in records %}
-    <h1 align="center">Летная книжка</h1>
-    <img align="right" src="" alt="Фото студента">
-    <h3 align="center">пилот-курсант</h3>
-    <p align="center">{{record.student}}</p>
-    <p>Группа№ {{record.group}} Дата заведения летной книжки {{record.date}}</p>
-    <p>Летное обучение проводил пилот-инструктор: {{record.instructor1}}</p>
-    <p>{{record.instructor2}}</p>
-    <p>{{record.instructor3}}</p>
-    <p>{{record.instructor4}}</p>
-        <button onclick="document.location='/edit/{{number}}/{{record.id}}'">Редактировать</button>
+    <div class="header" align="center"><img class='emblem' src="{% static 'a_book/images/emblem.jpg' %}" alt="Эмблема">
+        <h1>ЛЕТНАЯ КНИЖКА</h1>
+    </div>
+    <div class="portrait">
+        <p align="center">Фото студента</p>
+        <img src="{% static 'a_book/images/portrait.jpg' %}" alt="Фото студента">
+    </div>
+    <div class="content">
+        <p align="center">пилот-курсант</p>
+        <button class="link-edit" onclick="document.location='/edit/{{number}}/{{record.id}}'">Редактировать</button>
+        <p align="center"><span class="hand-write student">{{record.student}}</span></p>
+        <hr size="2px" color="black">
+        <p align="center" class="hint1">(фамилия, имя, отчество)</p>
+        <p class="group-n-date">Группа № _______ Дата заведения летной книжки _____________________
+            <span class="hand-write group">{{record.group}}</span>
+            <span class="hand-write date">{{record.date}}</span></p>
+        <div><p>Летное обучение проводил пилот-инструктор:</p>
+            <div class="lines">
+                <p>___________________________<span class="hand-write instructor1">{{record.instructor1}}</span></p>
+                <p class="hint2">(фамилия, и.о.)</p>
+                <p>___________________________<span class="hand-write instructor2">{{record.instructor2}}</span></p>
+                <p class="hint3">(фамилия, и.о.)</p>
+                <p>___________________________<span class="hand-write instructor3">{{record.instructor3}}</span></p>
+                <p class="hint4">(фамилия, и.о.)</p>
+            </div>
+        </div>
+    </div>
     {% endfor %}
-  {% else %}
-    <h1 align="center">Летная книжка</h1>
-    <img align="right" src="" alt="Фото студента">
-    <h3 align="center">пилот-курсант</h3>
-<p align="center">_____________</p>
-    <p align="center"></p>
-    <p>Группа№______ Дата заведения летной книжки_________ </p>
-    <p>Летное обучение проводил пилот-инструктор: _____________</p>
-    <p>_____________</p>
-    <p>_____________</p>
-    <p>_____________</p>
-        <button onclick="document.location='/create/{{number}}'">Создать</button>
-  {% endif %}
+    {% else %}
+    <div class="header" align="center"><img class='emblem' src="{% static 'a_book/images/emblem.jpg' %}" alt="Эмблема">
+        <h1>ЛЕТНАЯ КНИЖКА</h1>
+    </div>
+    <div class="portrait">
+        <p align="center">Фото студента</p>
+        <img src="{% static 'a_book/images/portrait.jpg' %}" alt="Фото студента">
+    </div>
+    <div class="content">
+        <p align="center">пилот-курсант</p>
+        <button class="link-create" onclick="document.location='/create/{{number}}'">Создать</button>
+        <pre align="center"> </pre>
+        <hr size="2px" color="black">
+        <p align="center" class="hint1">(фамилия, имя, отчество)</p>
+        <p class="group-n-date">Группа № _______ Дата заведения летной книжки _____________________
+            <span class="hand-write group"></span>
+            <span class="hand-write date"></span></p>
+        <div><p>Летное обучение проводил пилот-инструктор:</p>
+            <div class="lines">
+                <p>___________________________<span class="hand-write instructor1"></span></p>
+                <p class="hint2">(фамилия, и.о.)</p>
+                <p>___________________________<span class="hand-write instructor2"></span></p>
+                <p class="hint3">(фамилия, и.о.)</p>
+                <p>___________________________<span class="hand-write instructor3"></span></p>
+                <p class="hint4">(фамилия, и.о.)</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
 {% endblock content %}

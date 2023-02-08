@@ -8,7 +8,6 @@ class TableCh1(models.Model):
     instructor1 = models.CharField(max_length=50)
     instructor2 = models.CharField(max_length=50)
     instructor3 = models.CharField(max_length=50)
-    instructor4 = models.CharField(max_length=50)
     objects = models.Manager()
     DoesNotExist = models.Manager
 
