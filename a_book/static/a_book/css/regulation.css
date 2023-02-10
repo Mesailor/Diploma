@@ -1,0 +1,29 @@
+/* regulation */
+.regulation {
+padding: 15px;
+padding-left: 30px;
+font-size: 20px;
+}
+
+.regulation h1 {
+width: 40%;
+padding-left: 30%;
+padding-right: 30%;
+}
+
+.regulation input {
+/*border: 0;*/
+font-size: 20px;
+}
+
+.regulation .student {
+position: relative;
+left: -220px;
+}
+
+.regulation .hint {
+font-size: 80%;
+position: relative;
+right: -190px;
+}
+
