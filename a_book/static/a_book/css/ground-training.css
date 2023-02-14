@@ -1,0 +1,96 @@
+/*ground-training*/
+.ground-training {
+padding: 15px;
+padding-left: 30px;
+font-size: 19px;
+}
+
+.ground-training h1 {
+height: 60px;
+}
+
+.ground-training table {
+width: 98%;
+border: 2px solid black;
+border-collapse: collapse;
+}
+
+.ground-training table td {
+text-align: left;
+border: 2px solid black;
+padding-left: 5px;
+}
+
+.ground-training table th {
+border: 2px solid black;
+}
+
+.ground-training table .col1 {
+width: 6%;
+}
+
+.ground-training table .col2 {
+width: 55%;
+}
+
+.ground-training table .col3 {
+width: 4%;
+}
+
+.ground-training table .col4 {
+width: 4%;
+text-align: center;
+}
+
+.ground-training table .col6 {
+border: 0;
+background: #e1e1fa;
+}
+
+.ground-training table .cell_vertical {
+writing-mode: vertical-lr;
+transform: rotate(-180deg);
+}
+
+.ground-training input {
+border: 0;
+font-size: 15px;
+color: darkblue;
+font-style: italic;
+width: 99%;
+height: 60px;
+}
+
+.ground-training textarea {
+border: 0;
+font-size: 17px;
+color: darkblue;
+font-style: italic;
+width: 100%;
+height: 60px;
+}
+
+.ground-training .img-delete {
+width: 20px;
+height: 20px;
+}
+
+.ground-training .img-edit {
+width: 20px;
+height: 20px;
+}
+
+.ground-training .img-save {
+width: 20px;
+height: 20px;
+}
+
+.ground-training .img-cancel {
+width: 20px;
+height: 20px;
+}
+
+.ground-training .img-create {
+width: 20px;
+height: 20px;
+}
