@@ -1,123 +1,155 @@
-{% extends 'a_book/chapter_base.html' %}
+{% extends 'a_book/base.html' %}
 
-{% block title %}Chapter 5{% endblock title %}
+{% block title %}Тренировка на летном тренажере{% endblock title %}
 
 {% block content %}
-<h1 align="center">V. Тренировка на летном тренажере</h1>
+<div class="sim-training">
+    {% load static %}
+    <h1 align="center">V. Тренировка на летном тренажере</h1>
 
-<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
-    <thead>
-    <tr>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-        <th colspan="5">4</th>
-        <th>5</th>
-    </tr>
-    <tr>
-        <th rowspan="3">Дата</th>
-        <th rowspan="3">Тип тренажера</th>
-        <th rowspan="3">Упражнение, краткое содеражние тренировки</th>
-        <th colspan="4">Время тренировки</th>
-        <th rowspan="3">Оценка</th>
-        <th rowspan="3">Пилот-инструктор</th>
-    </tr>
-    <tr>
-        <th rowspan="2">Час</th>
-        <th rowspan="2">Мин</th>
-        <th colspan="2">Из них по приборам</th>
-    </tr>
-    <tr>
-        <th>час</th>
-        <th>мин</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% if records.count > 0 %}
-    {% for record in records %}
-       <!-- Блок редактирования записи в таблице -->
-       {% if record.id == id %}
-    <form method="POST">
-        {% csrf_token %}
+    <table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
+        <thead>
+        <tr>
+            <th class="col1">1</th>
+            <th class="col2">2</th>
+            <th class="col3">3</th>
+            <th class="col4" colspan="5">4</th>
+            <th class="col5">5</th>
+            <th class="col-last"></th>
+        </tr>
+        <tr>
+            <th rowspan="3">Дата</th>
+            <th rowspan="3">Тип тренажера</th>
+            <th rowspan="3">Упражнение, краткое содеражние тренировки</th>
+            <th class="total-time" colspan="4">Время тренировки</th>
+            <th class="grade cell_vertical" rowspan="3">Оценка</th>
+            <th rowspan="3">Пилот-инструктор</th>
+            <th class="col-last"></th>
+        </tr>
+        <tr>
+            <th class="cell_vertical" rowspan="2">час</th>
+            <th class="cell_vertical" rowspan="2">мин</th>
+            <th colspan="2">Из них по приборам</th>
+            <th class="col-last"></th>
+        </tr>
+        <tr>
+            <th>час</th>
+            <th>мин</th>
+            <th class="col-last"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if records.count > 0 %}
+        {% for record in records %}
+        <!-- Блок редактирования записи в таблице -->
+        {% if record.id == id %}
+        <form method="POST">
+            {% csrf_token %}
+            <tr align="center">
+                <td><input type="text" name="date" value="{{record.date}}"></td>
+                <td><textarea name="type">{{record.type}}</textarea></td>
+                <td><textarea name="exercise">{{record.exercise}}</textarea></td>
+                <td><input type="text" name="time_hours" value="{{record.time_hours}}"></td>
+                <td><input type="text" name="time_mins" value="{{record.time_mins}}"></td>
+                <td><input type="text" name="instrumental_time_hours" value="{{record.instrumental_time_hours}}"></td>
+                <td><input type="text" name="instrumental_time_mins" value="{{record.instrumental_time_mins}}"></td>
+                <td><input type="text" name="grade" value="{{record.grade}}"></td>
+                <td><textarea name="examiner">{{record.examiner}}</textarea></td>
+                <td class="col-last">
+                    <button class="link-save">
+                        <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить"></button>
+        </form>
+        <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">
+            <img class="img-cancel" src="{% static 'a_book/images/cancel.png' %}" alt="Отмена"></button>
+        </td>
+        <!-- -->
+        {% else %}
         <tr align="center">
-        <td><input type="text" name="date" value=" {{record.date}}"></td>
-        <td><input type="text" name="type" value=" {{record.type}}"></td>
-        <td><input type="text" name="exercise" value="{{record.exercise}}"></td>
-        <td><input type="text" name="time_hours" value="{{record.time_hours}}"></td>
-        <td><input type="text" name="time_mins" value="{{record.time_mins}}"></td>
-        <td><input type="text" name="instrumental_time_hours" value="{{record.instrumental_time_hours}}"></td>
-        <td><input type="text" name="instrumental_time_mins" value="{{record.instrumental_time_mins}}"></td>
-        <td><input type="number" name="grade" value="{{record.grade}}"></td>
-        <td><input type="text" name="examiner" value="{{record.examiner}}"></td>
-        <td><input type="submit" value="Сохранить"></td>
-    </form>
-        <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
-       <!-- -->
-       {% else %}
-        <tr align="center">
-        <td>{{record.date}}</td>
-        <td>{{record.type}}</td>
-        <td>{{record.exercise}}</td>
-        <td>{{record.time_hours}}</td>
-        <td>{{record.time_mins}}</td>
-        <td>{{record.instrumental_time_hours}}</td>
-        <td>{{record.instrumental_time_mins}}</td>
-        <td>{{record.grade}}</td>
-        <td>{{record.examiner}}</td>
-        <td><a href="/edit/{{number}}/{{record.id}}">Редактировать</a>  |
-            <a href="/delete/{{number}}/{{record.id}}">Удалить</a></td>
-    </tr>
-       {% endif %}
-    {% endfor %}
-    {% endif %}
+            <td><span class="hand-write">{{record.date}}</span></td>
+            <td><span class="hand-write">{{record.type}}</span></td>
+            <td><span class="hand-write">{{record.exercise}}</span></td>
+            <td><span class="hand-write">{{record.time_hours}}</span></td>
+            <td><span class="hand-write">{{record.time_mins}}</span></td>
+            <td><span class="hand-write">{{record.instrumental_time_hours}}</span></td>
+            <td><span class="hand-write">{{record.instrumental_time_mins}}</span></td>
+            <td><span class="hand-write">{{record.grade}}</span></td>
+            <td><span class="hand-write">{{record.examiner}}</span></td>
+            <td class="col-last">
+                <button class="link-edit" onclick="document.location='/edit/{{number}}/{{record.id}}'">
+                    <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+                <button class="link-delete" onclick="document.location='/delete/{{number}}/{{record.id}}'">
+                    <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+            </td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
         <!-- Блок добавления новой строки в таблицу -->
-    {% if creating %}
-    <form method="POST">
-        {% csrf_token %} >
-        <tr align="center">
-        <td><input type="text" name="date" value=""></td>
-        <td><input type="text" name="type" value=""></td>
-        <td><input type="text" name="exercise" value=""></td>
-        <td><input type="text" name="time_hours" value=""></td>
-        <td><input type="text" name="time_mins" value=""></td>
-        <td><input type="text" name="instrumental_time_hours" value=""></td>
-        <td><input type="text" name="instrumental_time_mins" value=""></td>
-        <td><input type="number" name="grade" value=""></td>
-        <td><input type="text" name="examiner" value=""></td>
-        <td><input type="submit" value="Сохранить"></td>
-    </form>
-        <td><button onclick="document.location='/chapter/{{number}}'">Отмена</button></td>
-    {% endif %}
+        {% if creating %}
+        <form method="POST">
+            {% csrf_token %}
+            <tr align="center">
+                <td><input type="text" name="date" value=""></td>
+                <td><textarea name="type"></textarea></td>
+                <td><textarea name="exercise"></textarea></td>
+                <td><input type="text" name="time_hours" value=""></td>
+                <td><input type="text" name="time_mins" value=""></td>
+                <td><input type="text" name="instrumental_time_hours" value=""></td>
+                <td><input type="text" name="instrumental_time_mins" value=""></td>
+                <td><input type="text" name="grade" value=""></td>
+                <td><textarea name="examiner"></textarea></td>
+                <td class="col-last">
+                    <button class="link-save">
+                        <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить"></button>
+        </form>
+        <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">
+            <img class="img-cancel" src="{% static 'a_book/images/cancel.png' %}" alt="Отмена"></button>
+        </td>
+        </tr>
+        {% endif %}
         <!-- -->
         <tr>
-        <td><a href="/create/{{number}}">Добавить запись</a></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    </tbody>
-    <tfoot>
-    <tr>
-        <td colspan="3" align="right">Всего на данной странице:</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td rowspan="2" colspan="2">Записи поденого учета тренировок проверил.<br>Пилот-инструктор<br>Фамилия И.О. </td>
-    </tr>
-    <tr>
-        <td colspan="3" align="right">Итого с начала уровня:</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-    </tfoot>
-
-</table>
+            <td>
+                <button class="link-create" onclick="document.location='/create/{{number}}'">
+                    <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+                </button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="col-last"></td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="3" align="right">Всего на данной странице:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="checked-by" rowspan="2" colspan="2">
+                <p><b>Записи поденого учета тренировок проверил.</b></p>
+                ________________<br>
+                (должность)<br>
+                ________________<br>
+                (подпись, фамилия, и.о.)
+            </td>
+            <td class="col-last"></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="right">Итого с начала уровня:</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="col-last"></td>
+        </tr>
+        </tfoot>
+    </table>
+</div>
 {% endblock content %}

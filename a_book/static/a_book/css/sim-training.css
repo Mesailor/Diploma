@@ -1,0 +1,112 @@
+/*sim-training*/
+.sim-training {
+padding: 15px;
+padding-left: 30px;
+font-size: 19px;
+}
+
+.sim-training h1 {
+height: 60px;
+}
+
+.sim-training table {
+width: 98%;
+border: 2px solid black;
+border-collapse: collapse;
+}
+
+.sim-training table td {
+text-align: left;
+border: 2px solid black;
+padding-left: 5px;
+}
+
+.sim-training table th {
+border: 2px solid black;
+font-size: 17px;
+}
+
+.sim-training table .col1 {
+width: 5%;
+}
+
+.sim-training table .col2 {
+width: 5%;
+}
+
+.sim-training table .col3 {
+width: 45%;
+}
+
+.sim-training table .col4 {
+width: 1%;
+}
+
+.sim-training table .col5 {
+width: 15%;
+}
+
+.sim-training table .col-last {
+border: 0;
+background: #e1e1fa;
+}
+
+.sim-training table .cell_vertical {
+writing-mode: vertical-lr;
+transform: rotate(-180deg);
+}
+
+.sim-training .total-time {
+width: 2%;
+}
+
+.sim-training .grade {
+width: 1%;
+}
+
+.sim-training .checked-by {
+font-size: 10px;
+}
+
+.sim-training input {
+border: 0;
+font-size: 15px;
+color: darkblue;
+font-style: italic;
+width: 99%;
+height: 60px;
+}
+
+.sim-training textarea {
+border: 0;
+font-size: 17px;
+color: darkblue;
+font-style: italic;
+width: 100%;
+height: 60px;
+}
+
+.sim-training .img-delete {
+width: 20px;
+height: 20px;
+}
+
+.sim-training .img-edit {
+width: 20px;
+height: 20px;
+}
+
+.sim-training .img-save {
+width: 20px;
+height: 20px;
+}
+
+.sim-training .img-cancel {
+width: 20px;
+height: 20px;
+}
+
+.sim-training .img-create {
+width: 20px;
+height: 20px;
+}
