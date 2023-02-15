@@ -12,13 +12,16 @@ padding-right: 30%;
 }
 
 .regulation input {
-/*border: 0;*/
+border: 0;
 font-size: 20px;
+color: darkblue;
+font-style: italic;
 }
 
 .regulation .student {
 position: relative;
 left: -220px;
+top: -3px;
 }
 
 .regulation .hint {

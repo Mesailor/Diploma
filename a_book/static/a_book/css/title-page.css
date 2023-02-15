@@ -44,19 +44,28 @@ top: -50px;
 
 .title-page .link-edit {
 position: absolute;
+top: 25px;
 }
 
 .title-page .link-create {
 position: absolute;
 }
 
+.title-page .link-save {
+position: absolute;
+top: -10px;
+}
+
 .title-page .link-cancel {
 position: absolute;
+top: 25px;
 }
 
 .title-page input {
 border: 0;
 font-size: 20px;
+color: darkblue;
+font-style: italic;
 }
 
 .title-page .student input {
@@ -155,4 +164,29 @@ right:  -100px;
 font-size: 82%;
 position: relative;
 right:  -100px;
+}
+
+.title-page .img-delete {
+width: 20px;
+height: 20px;
+}
+
+.title-page .img-edit {
+width: 20px;
+height: 20px;
+}
+
+.title-page .img-save {
+width: 20px;
+height: 20px;
+}
+
+.title-page .img-cancel {
+width: 20px;
+height: 20px;
+}
+
+.title-page .img-create {
+width: 20px;
+height: 20px;
 }

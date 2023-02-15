@@ -19,30 +19,33 @@
     </div>
     <div class="content">
         <p align="center">пилот-курсант</p>
-        <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">Отмена</button>
         <form method="POST">
             {% csrf_token %}
             <span class="hand-write student"><input type="text" name="student"></span>
             <hr size="2px" color="black">
             <p align="center" class="hint1">(фамилия, имя, отчество)</p>
-        <p class="group-n-date">Группа № _______ Дата заведения летной книжки _____________________
-            <span class="hand-write group"><input type="number" name="group"></span>
-            <span class="hand-write date"><input type="text" name="date" size="10"></span></p>
-        <div><p>Летное обучение проводил пилот-инструктор:</p>
-            <div class="lines">
-                <p>___________________________<span class="hand-write instructor1">
+            <p class="group-n-date">Группа № _______ Дата заведения летной книжки _____________________
+                <span class="hand-write group"><input type="number" name="group"></span>
+                <span class="hand-write date"><input type="text" name="date" size="10"></span></p>
+            <div><p>Летное обучение проводил пилот-инструктор:</p>
+                <div class="lines">
+                    <p>___________________________<span class="hand-write instructor1">
                    <input type="text" name="instructor1" value=""></span></p>
-                <p class="hint2">(фамилия, и.о.)</p>
-                <p>___________________________<span class="hand-write instructor2">
+                    <p class="hint2">(фамилия, и.о.)</p>
+                    <p>___________________________<span class="hand-write instructor2">
                    <input type="text" name="instructor2" value=""></span></p>
-                <p class="hint3">(фамилия, и.о.)</p>
-                <p>___________________________<span class="hand-write instructor3">
+                    <p class="hint3">(фамилия, и.о.)</p>
+                    <p>___________________________<span class="hand-write instructor3">
                    <input type="text" name="instructor3" value=""></span></p>
-                <p class="hint4">(фамилия, и.о.)</p>
+                    <p class="hint4">(фамилия, и.о.)</p>
+                </div>
+                <button class="link-save" type="submit">
+                    <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить"></button>
             </div>
-            <button type="submit">Сохранить</button>
-        </div>
         </form>
+        <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">
+            <img class="img-cancel" src="{% static 'a_book/images/cancel.png' %}" alt="Отмена">
+        </button>
     </div>
     {% elif editing %}
     {% for record in records %}
@@ -55,30 +58,35 @@
     </div>
     <div class="content">
         <p align="center">пилот-курсант</p>
-        <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">Отмена</button>
+
         <form method="POST">
             {% csrf_token %}
             <span class="hand-write student"><input type="text" name="student" value="{{record.student}}"></span>
             <hr size="2px" color="black">
             <p align="center" class="hint1">(фамилия, имя, отчество)</p>
-        <p class="group-n-date">Группа № _______ Дата заведения летной книжки _____________________
-            <span class="hand-write group"><input type="number" name="group" value="{{record.group}}"></span>
-            <span class="hand-write date"><input type="text" name="date" value="{{record.date}}"></span></p>
-        <div><p>Летное обучение проводил пилот-инструктор:</p>
-            <div class="lines">
-                <p>___________________________<span class="hand-write instructor1">
+            <p class="group-n-date">Группа № _______ Дата заведения летной книжки _____________________
+                <span class="hand-write group"><input type="number" name="group" value="{{record.group}}"></span>
+                <span class="hand-write date"><input type="text" name="date" value="{{record.date}}"></span></p>
+            <div><p>Летное обучение проводил пилот-инструктор:</p>
+                <div class="lines">
+                    <p>___________________________<span class="hand-write instructor1">
                    <input type="text" name="instructor1" value="{{record.instructor1}}"></span></p>
-                <p class="hint2">(фамилия, и.о.)</p>
-                <p>___________________________<span class="hand-write instructor2">
+                    <p class="hint2">(фамилия, и.о.)</p>
+                    <p>___________________________<span class="hand-write instructor2">
                    <input type="text" name="instructor2" value="{{record.instructor2}}"></span></p>
-                <p class="hint3">(фамилия, и.о.)</p>
-                <p>___________________________<span class="hand-write instructor3">
+                    <p class="hint3">(фамилия, и.о.)</p>
+                    <p>___________________________<span class="hand-write instructor3">
                    <input type="text" name="instructor3" value="{{record.instructor3}}"></span></p>
-                <p class="hint4">(фамилия, и.о.)</p>
+                    <p class="hint4">(фамилия, и.о.)</p>
+                </div>
+                <button class="link-save" type="submit">
+                    <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить">
+                </button>
             </div>
-            <button type="submit">Сохранить</button>
-        </div>
         </form>
+        <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">
+            <img class="img-cancel" src="{% static 'a_book/images/cancel.png' %}" alt="Отмена">
+        </button>
     </div>
     {% endfor %}
     {% elif records.count > 0 %}
@@ -92,7 +100,9 @@
     </div>
     <div class="content">
         <p align="center">пилот-курсант</p>
-        <button class="link-edit" onclick="document.location='/edit/{{number}}/{{record.id}}'">Редактировать</button>
+        <button class="link-edit" onclick="document.location='/edit/{{number}}/{{record.id}}'">
+            <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать">
+        </button>
         <p align="center"><span class="hand-write student">{{record.student}}</span></p>
         <hr size="2px" color="black">
         <p align="center" class="hint1">(фамилия, имя, отчество)</p>
@@ -121,7 +131,6 @@
     </div>
     <div class="content">
         <p align="center">пилот-курсант</p>
-        <button class="link-create" onclick="document.location='/create/{{number}}'">Создать</button>
         <pre align="center"> </pre>
         <hr size="2px" color="black">
         <p align="center" class="hint1">(фамилия, имя, отчество)</p>
@@ -139,6 +148,9 @@
             </div>
         </div>
     </div>
+    <button class="link-create" onclick="document.location='/create/{{number}}'">
+        <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+    </button>
     {% endif %}
 </div>
 {% endblock content %}

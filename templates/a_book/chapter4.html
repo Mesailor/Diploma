@@ -34,11 +34,11 @@
         <form method="POST">
             {% csrf_token %}
             <tr align="center">
-                <td><input class="date" type="text" name="date" value="{{record.date}}"></td>
-                <td><textarea class="exercise" name="exercise">{{record.exercise}}</textarea>
-                <td><input class="time" type="text" name="time" value="{{record.time}}"></td>
-                <td><input class="grade" type="number" name="grade" value="{{record.grade}}"></td>
-                <td><textarea class="examiner" name="examiner">{{record.examiner}}</textarea></td>
+                <td><input type="text" name="date" value="{{record.date}}"></td>
+                <td><textarea name="exercise">{{record.exercise}}</textarea>
+                <td><input type="text" name="time" value="{{record.time}}"></td>
+                <td><input type="number" name="grade" value="{{record.grade}}"></td>
+                <td><textarea name="examiner">{{record.examiner}}</textarea></td>
                 <td class="col6">
                     <button class="link-save">
                         <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить"></button>
