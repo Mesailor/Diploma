@@ -1,0 +1,133 @@
+/*piloting-time*/
+.piloting-time {
+padding: 15px;
+padding-left: 30px;
+font-size: 19px;
+}
+
+.piloting-time h1 {
+height: 60px;
+}
+
+.piloting-time table {
+width: 98%;
+border: 2px solid black;
+border-collapse: collapse;
+}
+
+.piloting-time table td {
+text-align: left;
+border: 2px solid black;
+padding-left: 5px;
+}
+
+.piloting-time table th {
+border: 2px solid black;
+font-size: 14px;
+}
+
+.piloting-time table .col1 {
+width: 10%;
+}
+
+.piloting-time table .col2 {
+width: 5%;
+}
+
+.piloting-time table .col3 {
+width: 15%;
+}
+
+.piloting-time table .col4 {
+width: 6%;
+}
+
+.piloting-time table .col5 {
+width: 6%;
+}
+
+.piloting-time table .col6 {
+width: 6%;
+}
+
+.piloting-time table .col7 {
+width: 6%;
+}
+
+.piloting-time table .col8 {
+width: 6%;
+}
+
+.piloting-time table .col9 {
+width: 6%;
+}
+
+.piloting-time table .col10 {
+width: 6%;
+}
+
+.piloting-time table .col11 {
+width: 3%;
+}
+
+.piloting-time table .col12 {
+width: 14%;
+}
+
+.piloting-time table .col-last {
+border: 0;
+background: #e1e1fa;
+}
+
+.piloting-time .checked-by {
+font-size: 10px;
+text-align: center;
+}
+
+.piloting-time table .cell_vertical {
+writing-mode: vertical-lr;
+transform: rotate(-180deg);
+}
+
+.piloting-time input {
+border: 0;
+font-size: 15px;
+color: darkblue;
+font-style: italic;
+width: 99%;
+height: 60px;
+}
+
+.piloting-time textarea {
+border: 0;
+font-size: 17px;
+color: darkblue;
+font-style: italic;
+width: 100%;
+height: 60px;
+}
+
+.piloting-time .img-delete {
+width: 20px;
+height: 20px;
+}
+
+.piloting-time .img-edit {
+width: 20px;
+height: 20px;
+}
+
+.piloting-time .img-save {
+width: 20px;
+height: 20px;
+}
+
+.piloting-time .img-cancel {
+width: 20px;
+height: 20px;
+}
+
+.piloting-time .img-create {
+width: 20px;
+height: 20px;
+}
