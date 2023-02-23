@@ -1,0 +1,92 @@
+/*remarks*/
+.remarks {
+padding: 15px;
+padding-left: 30px;
+font-size: 19px;
+}
+
+.remarks h1 {
+height: 60px;
+}
+
+.remarks table {
+width: 98%;
+border: 2px solid black;
+border-collapse: collapse;
+}
+
+.remarks table td {
+text-align: left;
+border: 2px solid black;
+padding-left: 5px;
+}
+
+.remarks table th {
+border: 2px solid black;
+font-size: 17px;
+}
+
+.remarks table .col1 {
+width: 5%;
+}
+
+.remarks table .col2 {
+width: 60%;
+}
+
+.remarks table .col3 {
+width: 15%;
+}
+
+.remarks table .col4 {
+width: 15%;
+}
+
+.remarks table .col-last {
+width: 5%;
+border: 0;
+background: #e1e1fa;
+}
+
+.remarks input {
+border: 0;
+font-size: 15px;
+color: darkblue;
+font-style: italic;
+width: 99%;
+height: 60px;
+}
+
+.remarks textarea {
+border: 0;
+font-size: 17px;
+color: darkblue;
+font-style: italic;
+width: 100%;
+height: 60px;
+}
+
+.remarks .img-delete {
+width: 20px;
+height: 20px;
+}
+
+.remarks .img-edit {
+width: 20px;
+height: 20px;
+}
+
+.remarks .img-save {
+width: 20px;
+height: 20px;
+}
+
+.remarks .img-cancel {
+width: 20px;
+height: 20px;
+}
+
+.remarks .img-create {
+width: 20px;
+height: 20px;
+}
