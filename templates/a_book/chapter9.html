@@ -1,40 +1,55 @@
-{% extends 'a_book/chapter_base.html' %}
+{% extends 'a_book/base.html' %}
 
-{% block title %}IX. Летная характеристика{% endblock title %}
+{% block title %}Летная характеристика{% endblock title %}
 
 {% block content %}
-<h1 align="center">IX. Летная характеристика</h1>
+<div class="characteristic">
+    {% load static %}
+    <h1 align="center">IX. Летная характеристика</h1>
 
-        {% if records.count > 0 %}
-        {% for record in records %}
-        <!--EDITING-->
-        {% if record.id == id %}
-        <form method="POST">
-            {% csrf_token %}
-          <p><input type="textarea" name="characteristic" value=" {{record.characteristic}}">
-            <input type="submit" value="Сохранить"></p>
-        </form>
-        <button onclick="document.location='/chapter/{{number}}'">Отмена</button>
-        <!-- END OF EDITING -->
-        {% else %}
-          <p>{{record.characteristic}}</p>
-        <td><a href="/edit/{{number}}/{{record.id}}">Редактировать</a>  |
-            <a href="/delete/{{number}}/{{record.id}}">Удалить</a></td>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
-        <!-- CREATING -->
-        {% if creating %}
-        <form method="POST">
-            {% csrf_token %}
-          <p><input type="textarea" name="characteristic" value="">
-            <input type="submit" value="Сохранить"></p>
-        </form>
-        <button onclick="document.location='/chapter/{{number}}'">Отмена</button>
-        <!-- END OF CREATING -->
-        {% else %}
-        {% if records.count == 0 %}
-          <p><a href="/create/{{number}}">Добавить характеристику</a></p>
-        {% endif %}
-        {% endif %}
+    {% if records.count > 0 %}
+    {% for record in records %}
+    <!--EDITING-->
+    {% if record.id == id %}
+    <form method="POST">
+        {% csrf_token %}
+        <p><textarea name="characteristic">{{record.characteristic}}"</textarea>
+            <button class="link-save">
+                <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить"></button>
+        </p>
+    </form>
+    <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">
+        <img class="img-cancel" src="{% static 'a_book/images/cancel.png' %}" alt="Отмена"></button>
+    <!-- END OF EDITING -->
+    {% else %}
+    <p class="hand-write">{{record.characteristic}}</p>
+    <button class="link-edit" onclick="document.location='/edit/{{number}}/{{record.id}}'">
+        <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+    <button class="link-delete" onclick="document.location='/delete/{{number}}/{{record.id}}'">
+        <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+    <!-- CREATING -->
+    {% if creating %}
+    <form method="POST">
+        {% csrf_token %}
+        <p><textarea name="characteristic" autofocus></textarea>
+            <button class="link-save">
+                <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить"></button>
+        </p>
+    </form>
+    <button class="link-cancel" onclick="document.location='/chapter/{{number}}'">
+        <img class="img-cancel" src="{% static 'a_book/images/cancel.png' %}" alt="Отмена"></button>
+    <!-- END OF CREATING -->
+    {% else %}
+    {% if records.count == 0 %}
+    <p align="center">
+        <button class="link-create" onclick="document.location='/create/{{number}}'">
+            <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+        </button>
+    </p>
+    {% endif %}
+    {% endif %}
+</div>
 {% endblock content %}

@@ -1,0 +1,44 @@
+/*characteristic*/
+.characteristic {
+padding: 15px;
+padding-left: 30px;
+font-size: 19px;
+}
+
+.characteristic h1 {
+height: 60px;
+}
+
+.characteristic textarea {
+border: 0;
+font-size: 17px;
+color: darkblue;
+font-style: italic;
+width: 100%;
+height: 250px;
+}
+
+.characteristic .img-delete {
+width: 20px;
+height: 20px;
+}
+
+.characteristic .img-edit {
+width: 20px;
+height: 20px;
+}
+
+.characteristic .img-save {
+width: 20px;
+height: 20px;
+}
+
+.characteristic .img-cancel {
+width: 20px;
+height: 20px;
+}
+
+.characteristic .img-create {
+width: 20px;
+height: 20px;
+}
