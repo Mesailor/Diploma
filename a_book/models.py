@@ -71,9 +71,9 @@ class TableCh8(models.Model):
     type = models.CharField(max_length=10)
     times_of_day = models.CharField(max_length=10)
     flight_permit = models.CharField(max_length=100)
-    meteo_height = models.PositiveSmallIntegerField()
-    meteo_vis = models.PositiveSmallIntegerField()
-    meteo_wind = models.PositiveSmallIntegerField()
+    meteo_height = models.CharField(max_length=100)
+    meteo_vis = models.CharField(max_length=100)
+    meteo_wind = models.CharField(max_length=100)
     examiner = models.CharField(max_length=70)
     objects = models.Manager()
     DoesNotExist = models.Manager

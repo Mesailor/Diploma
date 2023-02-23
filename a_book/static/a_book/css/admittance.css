@@ -1,0 +1,108 @@
+/*admittance*/
+.admittance {
+padding: 15px;
+padding-left: 30px;
+font-size: 19px;
+}
+
+.admittance h1 {
+height: 60px;
+}
+
+.admittance table {
+width: 98%;
+border: 2px solid black;
+border-collapse: collapse;
+}
+
+.admittance table td {
+text-align: left;
+border: 2px solid black;
+padding-left: 5px;
+}
+
+.admittance table th {
+border: 2px solid black;
+font-size: 17px;
+}
+
+.admittance table .col1 {
+width: 5%;
+}
+
+.admittance table .col2 {
+width: 5%;
+}
+
+.admittance table .col3 {
+width: 5%;
+}
+
+.admittance table .col4 {
+width: 35%;
+}
+
+.admittance table .col5 {
+width: 1%;
+}
+
+.admittance table .col6 {
+width: 18%;
+}
+
+.admittance table .col7 {
+width: 5%;
+}
+
+.admittance table .col-last {
+border: 0;
+background: #e1e1fa;
+}
+
+.admittance table .cell_vertical {
+writing-mode: vertical-lr;
+transform: rotate(-180deg);
+}
+
+.admittance input {
+border: 0;
+font-size: 15px;
+color: darkblue;
+font-style: italic;
+width: 99%;
+height: 60px;
+}
+
+.admittance textarea {
+border: 0;
+font-size: 17px;
+color: darkblue;
+font-style: italic;
+width: 100%;
+height: 60px;
+}
+
+.admittance .img-delete {
+width: 20px;
+height: 20px;
+}
+
+.admittance .img-edit {
+width: 20px;
+height: 20px;
+}
+
+.admittance .img-save {
+width: 20px;
+height: 20px;
+}
+
+.admittance .img-cancel {
+width: 20px;
+height: 20px;
+}
+
+.admittance .img-create {
+width: 20px;
+height: 20px;
+}
