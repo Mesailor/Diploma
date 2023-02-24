@@ -1,21 +1,26 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}III. Общие данные о летной подготовке{% endblock title %}
+{% block title %}Общие данные о летной подготовке{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Предыдущий опыт</label>
-        <br>
-        <input type="text" name="prev_experience" value="{{record.prev_experience}}"/>
-    </p>
-    <p>
-        <label>Начальник штаба ЛТК</label>
-        <br>
-        <input type="text" name="head_ltk" value="{{record.head_ltk}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter3'">Отмена</button>
+<div class="prev-experience form">
+    {% load static %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Предыдущий опыт:</label>
+            <br>
+            <input type="text" name="prev_experience" value="{{record.prev_experience}}"/>
+        </p>
+        <p>
+            <label>Начальник штаба ЛТК:</label>
+            <br>
+            <input type="text" name="head_ltk" value="{{record.head_ltk}}"/>
+        </p>
+        <button class="link-save">
+            <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить"></button>
+    </form>
+    <button class="link-cancel" onclick="document.location='/chapter3'">
+        <img class="img-cancel" src="{% static 'a_book/images/cancel.png' %}" alt="Отмена"></button>
+</div>
 {% endblock content %}

@@ -1,76 +1,81 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}III. Общие данные о летной подготовке{% endblock title %}
+{% block title %}Общие данные о летной подготовке{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Тренажер(всего)</label>
-        <br>
-        <input type="text" name="trainer_time" value="{{record.trainer_time}}"/>
-    </p>
-    <p>
-        <label>Тренажер(по приборам)</label>
-        <br>
-        <input type="text" name="trainer_instrumental" value="{{record.trainer_instrumental}}"/>
-    </p>
-    <p>
-        <label>Тренажер(в зачет подготовки)</label>
-        <br>
-        <input type="text" name="trainer_passed" value="{{record.trainer_passed}}"/>
-    </p>
-    <p>
-        <label>Полетное время на ВС(всего)</label>
-        <br>
-        <input type="text" name="time" value="{{record.time}}"/>
-    </p>
-    <p>
-        <label>Полетное время на ВС(по приборам)</label>
-        <br>
-        <input type="text" name="instrumental_time" value="{{record.instrumental_time}}"/>
-    </p>
-    <p>
-        <label>Самостоятельный налет(всего)</label>
-        <br>
-        <input type="text" name="solo_time" value="{{record.solo_time}}"/>
-    </p>
-    <p>
-        <label>Самостоятельный налет(по маршруту)</label>
-        <br>
-        <input type="text" name="solo_route" value="{{record.solo_route}}"/>
-    </p>
-    <p>
-        <label>Налет в качестве ВП(всего)</label>
-        <br>
-        <input type="text" name="FO_time" value="{{record.FO_time}}"/>
-    </p>
-    <p>
-        <label>Налет в качестве ВП(в зачет подготовки)</label>
-        <br>
-        <input type="text" name="FO_passed" value="{{record.FO_passed}}"/>
-    </p>
-    <p>
-        <label>В качестве КВС(всего)</label>
-        <br>
-        <input type="text" name="captain_time" value="{{record.captain_time}}"/>
-    </p>
-    <p>
-        <label>В качестве КВС(по маршруту)</label>
-        <br>
-        <input type="text" name="captain_route" value="{{record.captain_route}}"/>
-    </p>
-    <p>
-        <label>В качестве КВС(Ночью)</label>
-        <br>
-        <input type="text" name="captain_night" value="{{record.captain_night}}"/>
-    </p>
-    <p>
-        <label>Пилот-инструктор</label>
-        <br>
-        <input type="text" name="instructor" value="{{record.instructor}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter3'">Отмена</button>
+<div class="prev-experience form">
+    {% load static %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Тренажер(всего):</label>
+            <br>
+            <input type="text" name="trainer_time" value="{{record.trainer_time}}"/>
+        </p>
+        <p>
+            <label>Тренажер(по приборам):</label>
+            <br>
+            <input type="text" name="trainer_instrumental" value="{{record.trainer_instrumental}}"/>
+        </p>
+        <p>
+            <label>Тренажер(в зачет подготовки):</label>
+            <br>
+            <input type="text" name="trainer_passed" value="{{record.trainer_passed}}"/>
+        </p>
+        <p>
+            <label>Полетное время на ВС(всего):</label>
+            <br>
+            <input type="text" name="time" value="{{record.time}}"/>
+        </p>
+        <p>
+            <label>Полетное время на ВС(по приборам):</label>
+            <br>
+            <input type="text" name="instrumental_time" value="{{record.instrumental_time}}"/>
+        </p>
+        <p>
+            <label>Самостоятельный налет(всего):</label>
+            <br>
+            <input type="text" name="solo_time" value="{{record.solo_time}}"/>
+        </p>
+        <p>
+            <label>Самостоятельный налет(по маршруту):</label>
+            <br>
+            <input type="text" name="solo_route" value="{{record.solo_route}}"/>
+        </p>
+        <p>
+            <label>Налет в качестве ВП(всего):</label>
+            <br>
+            <input type="text" name="FO_time" value="{{record.FO_time}}"/>
+        </p>
+        <p>
+            <label>Налет в качестве ВП(в зачет подготовки):</label>
+            <br>
+            <input type="text" name="FO_passed" value="{{record.FO_passed}}"/>
+        </p>
+        <p>
+            <label>В качестве КВС(всего):</label>
+            <br>
+            <input type="text" name="captain_time" value="{{record.captain_time}}"/>
+        </p>
+        <p>
+            <label>В качестве КВС(по маршруту):</label>
+            <br>
+            <input type="text" name="captain_route" value="{{record.captain_route}}"/>
+        </p>
+        <p>
+            <label>В качестве КВС(Ночью):</label>
+            <br>
+            <input type="text" name="captain_night" value="{{record.captain_night}}"/>
+        </p>
+        <p>
+            <label>Пилот-инструктор:</label>
+            <br>
+            <input type="text" name="instructor" value="{{record.instructor}}"/>
+        </p>
+        <button class="link-save">
+            <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить"></button>
+    </form>
+    <button class="link-cancel" onclick="document.location='/chapter3'">
+        <img class="img-cancel" src="{% static 'a_book/images/cancel.png' %}" alt="Отмена"></button>
+</div>
 {% endblock content %}

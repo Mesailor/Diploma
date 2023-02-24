@@ -1,41 +1,46 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}III. Общие данные о летной подготовке{% endblock title %}
+{% block title %}Общие данные о летной подготовке{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Тип ВС</label>
-        <br>
-        <input type="text" name="type" value="{{record.type}}"/>
-    </p>
-    <p>
-        <label>Налет на ВС</label>
-        <br>
-        <input type="text" name="time" value="{{record.time}}"/>
-    </p>
-    <p>
-        <label>В качестве КВС</label>
-        <br>
-        <input type="text" name="captain_time" value="{{record.captain_time}}"/>
-    </p>
-    <p>
-        <label>По маршруту</label>
-        <br>
-        <input type="text" name="route_time" value="{{record.route_time}}"/>
-    </p>
-    <p>
-        <label>Ночью</label>
-        <br>
-        <input type="text" name="night_time" value="{{record.night_time}}"/>
-    </p>
-    <p>
-        <label>По приборам</label>
-        <br>
-        <input type="text" name="instrumental_time" value="{{record.instrumental_time}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter3'">Отмена</button>
+<div class="prev-experience form">
+    {% load static %}
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Тип ВС:</label>
+            <br>
+            <input type="text" name="type" value="{{record.type}}"/>
+        </p>
+        <p>
+            <label>Налет на ВС:</label>
+            <br>
+            <input type="text" name="time" value="{{record.time}}"/>
+        </p>
+        <p>
+            <label>В качестве КВС:</label>
+            <br>
+            <input type="text" name="captain_time" value="{{record.captain_time}}"/>
+        </p>
+        <p>
+            <label>По маршруту:</label>
+            <br>
+            <input type="text" name="route_time" value="{{record.route_time}}"/>
+        </p>
+        <p>
+            <label>Ночью:</label>
+            <br>
+            <input type="text" name="night_time" value="{{record.night_time}}"/>
+        </p>
+        <p>
+            <label>По приборам:</label>
+            <br>
+            <input type="text" name="instrumental_time" value="{{record.instrumental_time}}"/>
+        </p>
+        <button class="link-save">
+            <img class="img-save" src="{% static 'a_book/images/save.png' %}" alt="Сохранить"></button>
+    </form>
+    <button class="link-cancel" onclick="document.location='/chapter3'">
+        <img class="img-cancel" src="{% static 'a_book/images/cancel.png' %}" alt="Отмена"></button>
+</div>
 {% endblock content %}
