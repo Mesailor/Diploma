@@ -42,7 +42,6 @@ class TableCh741(models.Model):
 class TableCh742(models.Model):
     attestation = models.CharField(max_length=10)
     recommendations = models.CharField(max_length=200)
-    signature = models.ImageField()
     examiner = models.CharField(max_length=60)
     license_num = models.CharField(max_length=10)
     date = models.CharField(max_length=10)

@@ -47,7 +47,6 @@ def change_ch793(request, record):
 def change_ch794(request, record):
     record.attestation = request.POST.get('attestation')
     record.recommendations = request.POST.get('recommendations')
-    record.signature = request.POST.get('signature')
     record.examiner = request.POST.get('examiner')
     record.license_num = request.POST.get('license_num')
     record.date = request.POST.get('date')

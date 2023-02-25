@@ -53,7 +53,6 @@ class FormCh725(forms.Form):
     attestation = forms.CharField(label='Результаты летной проверки(сдал/не сдал)')
     dateGHT01 = forms.CharField(label='Дата успешного прохождения проверки GHT.01')
     recommendations = forms.CharField(label='РЕКОМЕНДАЦИИ', widget=forms.Textarea)
-    signature = forms.ImageField(label='Подпись экзаменатора')
     examiner = forms.CharField(label='Фамилия')
     license_num = forms.CharField(label='Номер пилотского свидетельства')
     date = forms.CharField(label='Дата')

@@ -60,7 +60,6 @@ def change_ch7115(request, record):
     record.dateMET09 = request.POST.get('dateMET09')
     record.dateMET10 = request.POST.get('dateMET10')
     record.recommendations = request.POST.get('recommendations')
-    record.signature = request.POST.get('signature')
     record.examiner = request.POST.get('examiner')
     record.license_num = request.POST.get('license_num')
     record.date = request.POST.get('date')

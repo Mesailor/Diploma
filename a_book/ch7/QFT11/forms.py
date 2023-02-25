@@ -59,7 +59,6 @@ class FormCh7115(forms.Form):
     dateMET09 = forms.CharField(label='Дата успешного прохождения проверки MET.09')
     dateMET10 = forms.CharField(label='Дата успешного прохождения проверки MET.10')
     recommendations = forms.CharField(label='РЕКОМЕНДАЦИИ', widget=forms.Textarea)
-    signature = forms.ImageField(label='Подпись экзаменатора')
     examiner = forms.CharField(label='Фамилия')
     license_num = forms.CharField(label='Номер пилотского свидетельства')
     date = forms.CharField(label='Дата')

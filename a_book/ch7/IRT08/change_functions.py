@@ -73,7 +73,6 @@ def change_ch787(request, record):
     record.attestation = request.POST.get('attestation')
     record.dateIFT07 = request.POST.get('dateIFT07')
     record.recommendations = request.POST.get('recommendations')
-    record.signature = request.POST.get('signature')
     record.examiner = request.POST.get('examiner')
     record.license_num = request.POST.get('license_num')
     record.date = request.POST.get('date')
