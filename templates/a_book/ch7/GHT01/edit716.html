@@ -3,49 +3,51 @@
 {% block title %}VII. Отчет о результатах летной проверки - GHT.01{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Соблюдение правил осмотрительности на земле и в полете</label>
-        <br>
-        <input type="text" name="circumspection" value="{{record.circumspection}}"/>
-    </p>
-    <p>
-        <label>Наблюдение за погодными условиями, ведение визуальной ориентировки</label>
-        <br>
-        <input type="text" name="weather" value="{{record.weather}}"/>
-    </p>
-    <p>
-        <label>Эксплуатация двигателя, систем и оборудования самолета</label>
-        <br>
-        <input type="text" name="exploitation" value="{{record.exploitation}}"/>
-    </p>
-    <p>
-        <label>Выполнение технологии производства полета</label>
-        <br>
-        <input type="text" name="technology" value="{{record.technology}}"/>
-    </p>
-    <p>
-        <label>Ведение радиосвязи и фразеология радиообмена</label>
-        <br>
-        <input type="text" name="radio" value="{{record.radio}}"/>
-    </p>
-    <p>
-        <label>Послеполетные процедуры</label>
-        <br>
-        <input type="text" name="afterflight_proc" value="{{record.afterflight_proc}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/GHT01'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Соблюдение правил осмотрительности на земле и в полете</label>
+            <br>
+            <input type="text" name="circumspection" value="{{record.circumspection}}"/>
+        </p>
+        <p>
+            <label>Наблюдение за погодными условиями, ведение визуальной ориентировки</label>
+            <br>
+            <input type="text" name="weather" value="{{record.weather}}"/>
+        </p>
+        <p>
+            <label>Эксплуатация двигателя, систем и оборудования самолета</label>
+            <br>
+            <input type="text" name="exploitation" value="{{record.exploitation}}"/>
+        </p>
+        <p>
+            <label>Выполнение технологии производства полета</label>
+            <br>
+            <input type="text" name="technology" value="{{record.technology}}"/>
+        </p>
+        <p>
+            <label>Ведение радиосвязи и фразеология радиообмена</label>
+            <br>
+            <input type="text" name="radio" value="{{record.radio}}"/>
+        </p>
+        <p>
+            <label>Послеполетные процедуры</label>
+            <br>
+            <input type="text" name="afterflight_proc" value="{{record.afterflight_proc}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/GHT01'">Отмена</button>
+</div>
 {% endblock content %}

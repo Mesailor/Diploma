@@ -3,39 +3,41 @@
 {% block title %}VII. Отчет о результатах летной проверки - GHT.01{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Имитация отказа двигателя после взлета/на кругу*</label>
-        <br>
-        <input type="text" name="eng_failure" value="{{record.eng_failure}}"/>
-    </p>
-    <p>
-        <label>Имитация вынужденной посадки вне аэродрома с неработающим двигателем</label>
-        <br>
-        <input type="text" name="no_eng_landing" value="{{record.no_eng_landing}}"/>
-    </p>
-    <p>
-        <label>Имитация вынужденной посадки с подбором площадки</label>
-        <br>
-        <input type="text" name="emerg_landing" value="{{record.emerg_landing}}"/>
-    </p>
-    <p>
-        <label>Имитация пожара двигателя на земле/в полете</label>
-        <br>
-        <input type="text" name="eng_fire" value="{{record.eng_fire}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/GHT01'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Имитация отказа двигателя после взлета/на кругу*</label>
+            <br>
+            <input type="text" name="eng_failure" value="{{record.eng_failure}}"/>
+        </p>
+        <p>
+            <label>Имитация вынужденной посадки вне аэродрома с неработающим двигателем</label>
+            <br>
+            <input type="text" name="no_eng_landing" value="{{record.no_eng_landing}}"/>
+        </p>
+        <p>
+            <label>Имитация вынужденной посадки с подбором площадки</label>
+            <br>
+            <input type="text" name="emerg_landing" value="{{record.emerg_landing}}"/>
+        </p>
+        <p>
+            <label>Имитация пожара двигателя на земле/в полете</label>
+            <br>
+            <input type="text" name="eng_fire" value="{{record.eng_fire}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/GHT01'">Отмена</button>
+</div>
 {% endblock content %}

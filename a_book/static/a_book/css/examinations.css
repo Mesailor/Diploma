@@ -1,0 +1,173 @@
+/*examinations*/
+.examinations {
+padding: 15px;
+padding-left: 30px;
+font-size: 19px;
+}
+
+.examinations h1 {
+height: 60px;
+}
+
+.examinations table {
+width: 98%;
+border: 2px solid black;
+border-collapse: collapse;
+}
+
+.examinations table td {
+text-align: left;
+border: 2px solid black;
+padding-left: 5px;
+}
+
+.examinations table th {
+border: 2px solid black;
+font-size: 17px;
+}
+
+.examinations table .col-last {
+width: 4%;
+border: 0;
+background: #e1e1fa;
+}
+
+.examinations input {
+border: 0;
+font-size: 15px;
+color: darkblue;
+font-style: italic;
+width: 99%;
+height: 60px;
+}
+
+.examinations textarea {
+border: 0;
+font-size: 17px;
+color: darkblue;
+font-style: italic;
+width: 100%;
+height: 60px;
+}
+
+.examinations .hint {
+font-size: 80%;
+position: relative;
+right: -215px;
+}
+
+.examinations .candidate {
+position: relative;
+left: -40%;
+}
+
+.examinations .type_n_number {
+position: relative;
+left: -17%;
+}
+
+.examinations .aerodrome {
+position: relative;
+left: -30%;
+}
+
+.examinations .date {
+position: relative;
+left: -15%;
+}
+
+.examinations .time {
+position: relative;
+left: -15%;
+}
+
+.examinations .sum_time {
+position: relative;
+left: -15%;
+}
+
+.examinations .result {
+position: relative;
+left: -15%;
+}
+
+.examinations .examiner {
+position: relative;
+left: -30%;
+}
+
+.examinations .attestation {
+position: relative;
+left: -20%;
+}
+
+.examinations .recommendations {
+position: relative;
+top: -20px;
+}
+
+.examinations .license_num {
+position: relative;
+left: -15%;
+}
+
+.examinations div.lines {
+width: 50%;
+}
+
+.examinations .img-delete {
+width: 20px;
+height: 20px;
+}
+
+.examinations .img-edit {
+width: 20px;
+height: 20px;
+}
+
+.examinations .img-save {
+width: 20px;
+height: 20px;
+}
+
+.examinations .img-cancel {
+width: 20px;
+height: 20px;
+}
+
+.examinations .img-create {
+width: 20px;
+height: 20px;
+}
+
+.examinations button {
+margin: 2px;
+}
+
+/*form*/
+.examinations.form p {
+margin: 10px;
+}
+
+.examinations.form input {
+border: 1px solid black;
+width: 65%;
+height: auto;
+}
+
+.examinations.form textarea {
+border: 1px solid black;
+}
+
+.examinations.form table {
+border: 0px;
+}
+
+.examinations.form th {
+border: 0px;
+}
+
+.examinations.form td {
+border: 0px;
+}
+/**/

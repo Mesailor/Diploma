@@ -3,49 +3,51 @@
 {% block title %}VII. Отчет о результатах летной проверки - GHT.01{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Взлет</label>
-        <br>
-        <input type="text" name="takeoff" value="{{record.takeoff}}"/>
-    </p>
-    <p>
-        <label>Полет по кругу</label>
-        <br>
-        <input type="text" name="circle_flight" value="{{record.circle_flight}}"/>
-    </p>
-    <p>
-        <label>Заход на посадку и посадка</label>
-        <br>
-        <input type="text" name="app_n_landing" value="{{record.app_n_landing}}"/>
-    </p>
-    <p>
-        <label>Взлет с короткой площадки/с боковым ветром*</label>
-        <br>
-        <input type="text" name="complicated_takeoff" value="{{record.complicated_takeoff}}"/>
-    </p>
-    <p>
-        <label>Посадка с боковым ветром/убранными закрылками/на площидку ограниченных размеров*</label>
-        <br>
-        <input type="text" name="complicated_landing" value="{{record.complicated_landing}}"/>
-    </p>
-    <p>
-        <label>Уход на второй круг</label>
-        <br>
-        <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/GHT01'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Взлет</label>
+            <br>
+            <input type="text" name="takeoff" value="{{record.takeoff}}"/>
+        </p>
+        <p>
+            <label>Полет по кругу</label>
+            <br>
+            <input type="text" name="circle_flight" value="{{record.circle_flight}}"/>
+        </p>
+        <p>
+            <label>Заход на посадку и посадка</label>
+            <br>
+            <input type="text" name="app_n_landing" value="{{record.app_n_landing}}"/>
+        </p>
+        <p>
+            <label>Взлет с короткой площадки/с боковым ветром*</label>
+            <br>
+            <input type="text" name="complicated_takeoff" value="{{record.complicated_takeoff}}"/>
+        </p>
+        <p>
+            <label>Посадка с боковым ветром/убранными закрылками/на площидку ограниченных размеров*</label>
+            <br>
+            <input type="text" name="complicated_landing" value="{{record.complicated_landing}}"/>
+        </p>
+        <p>
+            <label>Уход на второй круг</label>
+            <br>
+            <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/GHT01'">Отмена</button>
+</div>
 {% endblock content %}
