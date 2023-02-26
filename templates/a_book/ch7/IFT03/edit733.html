@@ -1,41 +1,43 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - IFT.03{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - IFT.03{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Прямолинейный горизонтальный полет</label>
-        <br>
-        <input type="text" name="stby_horiz" value="{{record.stby_horiz}}"/>
-    </p>
-    <p>
-        <label>Набор высоты и снижение</label>
-        <br>
-        <input type="text" name="stby_cl_n_des" value="{{record.stby_cl_n_des}}"/>
-    </p>
-    <p>
-        <label>Развороты для выхода на заданный курс</label>
-        <br>
-        <input type="text" name="stby_turns" value="{{record.stby_turns}}"/>
-    </p>
-    <p>
-        <label>Вывод самолета из сложного пространственного положения</label>
-        <br>
-        <input type="text" name="compl_spatial_pos" value="{{record.compl_spatial_pos}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/IFT03'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Прямолинейный горизонтальный полет</label>
+            <br>
+            <input type="text" name="stby_horiz" value="{{record.stby_horiz}}"/>
+        </p>
+        <p>
+            <label>Набор высоты и снижение</label>
+            <br>
+            <input type="text" name="stby_cl_n_des" value="{{record.stby_cl_n_des}}"/>
+        </p>
+        <p>
+            <label>Развороты для выхода на заданный курс</label>
+            <br>
+            <input type="text" name="stby_turns" value="{{record.stby_turns}}"/>
+        </p>
+        <p>
+            <label>Вывод самолета из сложного пространственного положения</label>
+            <br>
+            <input type="text" name="compl_spatial_pos" value="{{record.compl_spatial_pos}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/IFT03'">Отмена</button>
+</div>
 {% endblock content %}
