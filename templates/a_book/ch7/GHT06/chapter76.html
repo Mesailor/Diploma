@@ -1,387 +1,462 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - GHT.06{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - GHT.06{% endblock title %}
 
 {% block content %}
-<h1>ОТЧЕТ О РЕЗУЛЬТАТАХ ЛЕТНОЙ ПРОВЕРКИ - GHT06</h1>
+<div class="examinations">
+    {% load static %}
+    <h1 align="center">ОТЧЕТ О РЕЗУЛЬТАТАХ ЛЕТНОЙ ПРОВЕРКИ - GHT06</h1>
 
-{% if records0.count == 0 %}
-<p>Кандидат _________________________(Фамилия, Имя, Отчество)</p>
-<p>Тип и регистрационный номер воздушного судна _____________________________________</p>
-<p>Аэродром взлёта/посадки _______________________________</p>
-<p>Дата проверки _________________ Время полета ______________________ Общий налет __________________</p>
-<p>Общий результат проверки ___________(соответствует/не соответствует) требованиям, предъявляемым к коммерческому пилоту -
-    техника пилотирования.</p>
-<p>Экзаменатор _______________________________________________(Занимаемая должность, фамилия, инициалы)</p>
-<p><a href="/chapter7/GHT06/create/0">Добавить данные</a></p>
-{% else %}
-{% for record in records0 %}
-<p><a href="/chapter7/GHT06/delete/0/{{record.id}}">Удалить данные</a></p>
-<p><a href="/chapter7/GHT06/edit/0/{{record.id}}">Редактировать данные</a></p>
-<p>Кандидат - {{record.candidate}}</p>
-<p>Тип и регистрационный номер воздушного судна - {{record.type_n_number}}</p>
-<p>Аэродром взлёта/посадки - {{record.aerodrome}}</p>
-<p>Дата проверки - {{record.date}} Время полета - {{record.time}} Общий налет -{{record.sum_time}}</p>
-<p>Общий результат проверки - {{record.result}} требованиям, предъявляемым к коммерческому пилоту -
-    техника пилотирования.</p>
-<p>Экзаменатор - {{record.examiner}} </p>
-{% endfor %}
-{% endif %}
+    {% if records0.count == 0 %}
+    <p align="center">
+        <button class="link-create" onclick="document.location='/chapter7/GHT06/create/0'">
+            <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+        </button>
+    <p>Кандидат ________________________________________________________</p>
+    <p class="hint">(фамилия, имя, отчество)</p>
+    <p>Тип и регистрационный номер воздушного судна ______________________</p>
+    <p>Аэродром взлёта/посадки __________________________________________</p>
+    <p>Дата проверки ______________________</p>
+    <p>Время полета ______________________</p>
+    <p>Общий налет______________________</p>
+    <p>Общий результат проверки ___________________________</p>
+    <p class="hint">(соответствует/не соответствует)</p>
+    <p>требованиям, предъявляемым к коммерческому пилоту - техника пилотирования.</p>
+    <p>Экзаменатор _____________________________________________________</p>
+    <p class="hint">(занимаемая должность, фамилия, инициалы)</p>
 
+    {% else %}
+    {% for record in records0 %}
+    <p align="center">
+        <button class="link-edit" onclick="document.location='/chapter7/GHT06/edit/0/{{record.id}}'">
+            <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+        <button class="link-delete" onclick="document.location='/chapter7/GHT06/delete/0/{{record.id}}'">
+            <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+    </p>
+    <p>Кандидат ________________________________________________________
+        <span class="hand-write candidate">{{record.candidate}}</span></p>
+    <p class="hint">(фамилия, имя, отчество)</p>
+    <p>Тип и регистрационный номер воздушного судна ______________________
+        <span class="hand-write type_n_number">{{record.type_n_number}}</span></p>
+    <p>Аэродром взлёта/посадки __________________________________________
+        <span class="hand-write aerodrome">{{record.aerodrome}}</span></p>
+    <p>Дата проверки ______________________ <span class="hand-write date">{{record.date}}</span></p>
+    <p>Время полета ______________________<span class="hand-write time">{{record.time}}</span></p>
+    <p>Общий налет______________________<span class="hand-write sum_time">{{record.sum_time}}</span>
+    <p>
+    <p>Общий результат проверки ___________________________<span class="hand-write result">{{record.result}}</span></p>
+    <p class="hint">(соответствует/не соответствует)</p>
+    <p>требованиям, предъявляемым к коммерческому пилоту - техника пилотирования.</p>
+    <p>Экзаменатор _____________________________________________________
+        <span class="hand-write examiner">{{record.examiner}}</span></p>
+    <p class="hint">(занимаемая должность, фамилия, инициалы)</p>
+    {% endfor %}
+    {% endif %}
 
-<h3>РАЗДЕЛ 1. Предполетная подготовка</h3>
-{% if records1.count == 0 %}
-<p><a href="/chapter7/GHT06/create/1">Добавить данные</a></p>
+    <br>
+    <h3>РАЗДЕЛ 1. Предполетная подготовка</h3>
+    {% if records1.count == 0 %}
+    <p align="center">
+        <button class="link-create" onclick="document.location='/chapter7/GHT06/create/1'">
+            <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+        </button>
+    </p>
 
-<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
-    <thead>
-    <tr>
-        <td>№ п/п</td>
-        <td>Элементы, подлежащие оценке</td>
-        <td>Оценка (A-F)</td>
-        <td>Примечание</td>
-    </tr>
-    </thead>
-    <tr>
-        <td>1.1</td>
-        <td>Подготовка к полету</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.2</td>
-        <td>Знание РЛЭ самолета</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.3</td>
-        <td>Операции перед запуском</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.4</td>
-        <td>Запуск двигателя и проверки. Руление, процедуры перед взлетом</td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
-<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
-{% else %}
-{% for record in records1 %}
-<p><a href="/chapter7/GHT06/delete/1/{{record.id}}">Удалить данные</a></p>
-<p><a href="/chapter7/GHT06/edit/1/{{record.id}}">Редактировать данные</a></p>
-<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
-    <thead>
-    <tr>
-        <td>№ п/п</td>
-        <td>Элементы, подлежащие оценке</td>
-        <td>Оценка (A-F)</td>
-        <td>Примечание</td>
-    </tr>
-    </thead>
-    <tr>
-        <td>1.1</td>
-        <td>Подготовка к полету</td>
-        <td>{{record.preparation}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.2</td>
-        <td>Знание РЛЭ самолета</td>
-        <td>{{record.knowledge}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.3</td>
-        <td>Операции перед запуском</td>
-        <td>{{record.startup_prep}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.4</td>
-        <td>Запуск двигателя и проверки. Руление, процедуры перед взлетом</td>
-        <td>{{record.before_takeoff}}</td>
-        <td></td>
-    </tr>
-</table>
-<p>Аттестация по разделу: {{record.attestation}}</p>
-<p>Экзаменатор {{record.examiner}}</p>
-{% endfor %}
-{% endif %}
-<br>
-
-
-<h3>РАЗДЕЛ 2. Общая техника пилотирования</h3>
-{% if records2.count == 0 %}
-<p><a href="/chapter7/GHT06/create/2">Добавить данные</a></p>
-
-<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
-    <thead>
-    <tr>
-        <td>№ п/п</td>
-        <td>Элементы, подлежащие оценке</td>
-        <td>Оценка (A-F)</td>
-        <td>Примечание</td>
-    </tr>
-    </thead>
-    <tr>
-        <td>2.1</td>
-        <td>Набор высоты, горизонтальный полет, снижение, развороты на заданный курс</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.2</td>
-        <td>Виражи, глубокие виражи и развороты на заданный курс</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.3</td>
-        <td>Вывод из режима сваливания</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.4</td>
-        <td>Имитация аварийной посадки вне аэродрома с неработающим двигателем</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.5</td>
-        <td>Имитация вынужденной посадки с подбором площадки</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.6</td>
-        <td>Подготовка кандидата к действиям в аварийной обстановке</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.7</td>
-        <td>Вход в круг полетов</td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
-<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
-{% else %}
-{% for record in records2 %}
-<p><a href="/chapter7/GHT06/delete/2/{{record.id}}">Удалить данные</a></p>
-<p><a href="/chapter7/GHT06/edit/2/{{record.id}}">Редактировать данные</a></p>
-<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
-    <thead>
-    <tr>
-        <td>№ п/п</td>
-        <td>Элементы, подлежащие оценке</td>
-        <td>Оценка (A-F)</td>
-        <td>Примечание</td>
-    </tr>
-    </thead>
-    <tr>
-        <td>2.1</td>
-        <td>Набор высоты, горизонтальный полет, снижение, развороты на заданный курс</td>
-        <td>{{record.standard_maneuvers}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.2</td>
-        <td>Виражи, глубокие виражи и развороты на заданный курс</td>
-        <td>{{record.turns}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.3</td>
-        <td>Вывод из режима сваливания</td>
-        <td>{{record.stall}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.4</td>
-        <td>Имитация аварийной посадки вне аэродрома с неработающим двигателем</td>
-        <td>{{record.no_eng_landing}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.5</td>
-        <td>Имитация вынужденной посадки с подбором площадки</td>
-        <td>{{record.emerg_landing}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.6</td>
-        <td>Подготовка кандидата к действиям в аварийной обстановке</td>
-        <td>{{record.emerg_situation}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>2.7</td>
-        <td>Вход в круг полетов</td>
-        <td>{{record.circle_entering}}</td>
-        <td></td>
-    </tr>
-</table>
-<p>Аттестация по разделу: {{record.attestation}}</p>
-<p>Экзаменатор {{record.examiner}}</p>
-{% endfor %}
-{% endif %}
-<br>
+    <table border="1" align="center" cellpadding="7">
+        <thead>
+        <tr>
+            <td>№ п/п</td>
+            <td>Элементы, подлежащие оценке</td>
+            <td>Оценка (A-F)</td>
+            <td>Примечание</td>
+        </tr>
+        </thead>
+        <tr>
+            <td>1.1</td>
+            <td>Подготовка к полету</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.2</td>
+            <td>Знание РЛЭ самолета</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.3</td>
+            <td>Операции перед запуском</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.4</td>
+            <td>Запуск двигателя и проверки. Руление, процедуры перед взлетом</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <p>Аттестация по разделу: _____________________________</p>
+    <p class="hint">(сдал/не сдал)</p>
+    <p>Экзаменатор ______________________________________</p>
+    <p class="hint">(подпись, фамилия)</p>
+    {% else %}
+    {% for record in records1 %}
+    <p align="center">
+        <button class="link-edit" onclick="document.location='/chapter7/GHT06/edit/1/{{record.id}}'">
+            <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+        <button class="link-delete" onclick="document.location='/chapter7/GHT06/delete/1/{{record.id}}'">
+            <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+    </p>
+    <table border="1" align="center" cellpadding="7">
+        <thead>
+        <tr>
+            <td>№ п/п</td>
+            <td>Элементы, подлежащие оценке</td>
+            <td>Оценка (A-F)</td>
+            <td>Примечание</td>
+        </tr>
+        </thead>
+        <tr>
+            <td>1.1</td>
+            <td>Подготовка к полету</td>
+            <td class="hand-write">{{record.preparation}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.2</td>
+            <td>Знание РЛЭ самолета</td>
+            <td class="hand-write">{{record.knowledge}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.3</td>
+            <td>Операции перед запуском</td>
+            <td class="hand-write">{{record.startup_prep}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.4</td>
+            <td>Запуск двигателя и проверки. Руление, процедуры перед взлетом</td>
+            <td class="hand-write">{{record.before_takeoff}}</td>
+            <td></td>
+        </tr>
+    </table>
+    <p>Аттестация по разделу: _____________________________
+        <span class="hand-write attestation">{{record.attestation}}</span></p>
+    <p class="hint">(сдал/не сдал)</p>
+    <p>Экзаменатор ______________________________________
+        <span class="hand-write examiner">{{record.examiner}}</span></p>
+    <p class="hint">(подпись, фамилия)</p>
+    {% endfor %}
+    {% endif %}
+    <br>
 
 
-<h3>РАЗДЕЛ 3. Выполнение полетов по кругу</h3>
-{% if records3.count == 0 %}
-<p><a href="/chapter7/GHT06/create/3">Добавить данные</a></p>
+    <h3>РАЗДЕЛ 2. Общая техника пилотирования</h3>
+    {% if records2.count == 0 %}
+    <p align="center">
+        <button class="link-create" onclick="document.location='/chapter7/GHT06/create/2'">
+            <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+        </button>
+    </p>
 
-<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
-    <thead>
-    <tr>
-        <td>№ п/п</td>
-        <td>Элементы, подлежащие оценке</td>
-        <td>Оценка (A-F)</td>
-        <td>Примечание</td>
-    </tr>
-    </thead>
-    <tr>
-        <td>3.1</td>
-        <td>Взлет</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.2</td>
-        <td>Имитация отказа двигателя после взлета или при полете по кругу</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.3</td>
-        <td>Полет по кругу</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.4</td>
-        <td>Полет по кругу на малой высоте</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.5</td>
-        <td>Заход на посадку и посадка</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.6</td>
-        <td>Заход на посадку и посадка на короткую площадку</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.7</td>
-        <td>Уход на второй круг</td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
-<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
-{% else %}
-{% for record in records3 %}
-<p><a href="/chapter7/GHT06/delete/3/{{record.id}}">Удалить данные</a></p>
-<p><a href="/chapter7/GHT06/edit/3/{{record.id}}">Редактировать данные</a></p>
-<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
-    <thead>
-    <tr>
-        <td>№ п/п</td>
-        <td>Элементы, подлежащие оценке</td>
-        <td>Оценка (A-F)</td>
-        <td>Примечание</td>
-    </tr>
-    </thead>
-    <tr>
-        <td>3.1</td>
-        <td>Взлет</td>
-        <td>{{record.takeoff}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.2</td>
-        <td>Имитация отказа двигателя после взлета или при полете по кругу</td>
-        <td>{{record.eng_failure}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.3</td>
-        <td>Полет по кругу</td>
-        <td>{{record.circle_flight}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.4</td>
-        <td>Полет по кругу на малой высоте</td>
-        <td>{{record.circle_low_alt}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.5</td>
-        <td>Заход на посадку и посадка</td>
-        <td>{{record.app_n_landing}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.6</td>
-        <td>Заход на посадку и посадка на короткую площадку</td>
-        <td>{{record.short_rw}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>3.7</td>
-        <td>Уход на второй круг</td>
-        <td>{{record.missed_approach}}</td>
-        <td></td>
-    </tr>
-</table>
-<p>Аттестация по разделу: {{record.attestation}}</p>
-<p>Экзаменатор {{record.examiner}}</p>
-{% endfor %}
-{% endif %}
-<br>
+    <table border="1" align="center" cellpadding="7">
+        <thead>
+        <tr>
+            <td>№ п/п</td>
+            <td>Элементы, подлежащие оценке</td>
+            <td>Оценка (A-F)</td>
+            <td>Примечание</td>
+        </tr>
+        </thead>
+        <tr>
+            <td>2.1</td>
+            <td>Набор высоты, горизонтальный полет, снижение, развороты на заданный курс</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.2</td>
+            <td>Виражи, глубокие виражи и развороты на заданный курс</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.3</td>
+            <td>Вывод из режима сваливания</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.4</td>
+            <td>Имитация аварийной посадки вне аэродрома с неработающим двигателем</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.5</td>
+            <td>Имитация вынужденной посадки с подбором площадки</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.6</td>
+            <td>Подготовка кандидата к действиям в аварийной обстановке</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.7</td>
+            <td>Вход в круг полетов</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <p>Аттестация по разделу: _____________________________</p>
+    <p class="hint">(сдал/не сдал)</p>
+    <p>Экзаменатор ______________________________________</p>
+    <p class="hint">(подпись, фамилия)</p>
+    {% else %}
+    {% for record in records2 %}
+    <p align="center">
+        <button class="link-edit" onclick="document.location='/chapter7/GHT06/edit/2/{{record.id}}'">
+            <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+        <button class="link-delete" onclick="document.location='/chapter7/GHT06/delete/2/{{record.id}}'">
+            <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+    </p>
+    <table border="1" align="center" cellpadding="7">
+        <thead>
+        <tr>
+            <td>№ п/п</td>
+            <td>Элементы, подлежащие оценке</td>
+            <td>Оценка (A-F)</td>
+            <td>Примечание</td>
+        </tr>
+        </thead>
+        <tr>
+            <td>2.1</td>
+            <td>Набор высоты, горизонтальный полет, снижение, развороты на заданный курс</td>
+            <td class="hand-write">{{record.standard_maneuvers}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.2</td>
+            <td>Виражи, глубокие виражи и развороты на заданный курс</td>
+            <td class="hand-write">{{record.turns}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.3</td>
+            <td>Вывод из режима сваливания</td>
+            <td class="hand-write">{{record.stall}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.4</td>
+            <td>Имитация аварийной посадки вне аэродрома с неработающим двигателем</td>
+            <td class="hand-write">{{record.no_eng_landing}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.5</td>
+            <td>Имитация вынужденной посадки с подбором площадки</td>
+            <td class="hand-write">{{record.emerg_landing}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.6</td>
+            <td>Подготовка кандидата к действиям в аварийной обстановке</td>
+            <td class="hand-write">{{record.emerg_situation}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2.7</td>
+            <td>Вход в круг полетов</td>
+            <td class="hand-write">{{record.circle_entering}}</td>
+            <td></td>
+        </tr>
+    </table>
+    <p>Аттестация по разделу: _____________________________
+        <span class="hand-write attestation">{{record.attestation}}</span></p>
+    <p class="hint">(сдал/не сдал)</p>
+    <p>Экзаменатор ______________________________________
+        <span class="hand-write examiner">{{record.examiner}}</span></p>
+    <p class="hint">(подпись, фамилия)</p>
+    {% endfor %}
+    {% endif %}
+    <br>
 
 
-<h3>РЕЗУЛЬТАТЫ ЛЕТНОЙ ПРОВЕРКИ GHT.06</h3>
-{% if records4.count == 0 %}
-<p><a href="/chapter7/GHT06/create/4">Добавить данные</a></p>
+    <h3>РАЗДЕЛ 3. Выполнение полетов по кругу</h3>
+    {% if records3.count == 0 %}
+    <p align="center">
+        <button class="link-create" onclick="document.location='/chapter7/GHT06/create/3'">
+            <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+        </button>
+    </p>
 
-<p>Общий результат проверки - ___________</p>
-<p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
-<p>___________________________________________________________________________________</p>
-<p>___________________________________________________________________________________</p>
-<p>___________________________________________________________________________________</p>
-<p>Подпись экзаменатора______________________________</p>
-<p>Фамилия_________________________________________</p>
-<p>Номер пилотского свидетельства_____________________</p>
-<p>Дата_____________________________________________</p>
-{% else %}
-{% for record in records4 %}
-<p><a href="/chapter7/GHT06/delete/4/{{record.id}}">Удалить данные</a></p>
-<p><a href="/chapter7/GHT06/edit/4/{{record.id}}">Редактировать данные</a></p>
-<p>Общий результат проверки - {{record.attestation}}</p>
-<p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
-<p>{{record.recommendations}}</p>
-<p>Подпись экзаменатора </p>
-<img src="{{record.signature}}"> <!-- Необходимо наладить ссылку, чтобы изображение выводилось корректно -->
-<p>Фамилия {{record.examiner}}</p>
-<p>Номер пилотского свидетельства {{record.license_num}}</p>
-<p>Дата {{record.date}}</p>
-{% endfor %}
-{% endif %}
+    <table border="1" align="center" cellpadding="7">
+        <thead>
+        <tr>
+            <td>№ п/п</td>
+            <td>Элементы, подлежащие оценке</td>
+            <td>Оценка (A-F)</td>
+            <td>Примечание</td>
+        </tr>
+        </thead>
+        <tr>
+            <td>3.1</td>
+            <td>Взлет</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.2</td>
+            <td>Имитация отказа двигателя после взлета или при полете по кругу</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.3</td>
+            <td>Полет по кругу</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.4</td>
+            <td>Полет по кругу на малой высоте</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.5</td>
+            <td>Заход на посадку и посадка</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.6</td>
+            <td>Заход на посадку и посадка на короткую площадку</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.7</td>
+            <td>Уход на второй круг</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <p>Аттестация по разделу: _____________________________</p>
+    <p class="hint">(сдал/не сдал)</p>
+    <p>Экзаменатор ______________________________________</p>
+    <p class="hint">(подпись, фамилия)</p>
+    {% else %}
+    {% for record in records3 %}
+    <p align="center">
+        <button class="link-edit" onclick="document.location='/chapter7/GHT06/edit/3/{{record.id}}'">
+            <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+        <button class="link-delete" onclick="document.location='/chapter7/GHT06/delete/3/{{record.id}}'">
+            <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+    </p>
+    <table border="1" align="center" cellpadding="7">
+        <thead>
+        <tr>
+            <td>№ п/п</td>
+            <td>Элементы, подлежащие оценке</td>
+            <td>Оценка (A-F)</td>
+            <td>Примечание</td>
+        </tr>
+        </thead>
+        <tr>
+            <td>3.1</td>
+            <td>Взлет</td>
+            <td class="hand-write">{{record.takeoff}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.2</td>
+            <td>Имитация отказа двигателя после взлета или при полете по кругу</td>
+            <td class="hand-write">{{record.eng_failure}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.3</td>
+            <td>Полет по кругу</td>
+            <td class="hand-write">{{record.circle_flight}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.4</td>
+            <td>Полет по кругу на малой высоте</td>
+            <td class="hand-write">{{record.circle_low_alt}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.5</td>
+            <td>Заход на посадку и посадка</td>
+            <td class="hand-write">{{record.app_n_landing}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.6</td>
+            <td>Заход на посадку и посадка на короткую площадку</td>
+            <td class="hand-write">{{record.short_rw}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3.7</td>
+            <td>Уход на второй круг</td>
+            <td class="hand-write">{{record.missed_approach}}</td>
+            <td></td>
+        </tr>
+    </table>
+    <p>Аттестация по разделу: _____________________________
+        <span class="hand-write attestation">{{record.attestation}}</span></p>
+    <p class="hint">(сдал/не сдал)</p>
+    <p>Экзаменатор ______________________________________
+        <span class="hand-write examiner">{{record.examiner}}</span></p>
+    <p class="hint">(подпись, фамилия)</p>
+    {% endfor %}
+    {% endif %}
+    <br>
 
+
+    <h3>РЕЗУЛЬТАТЫ ЛЕТНОЙ ПРОВЕРКИ GHT.06</h3>
+    {% if records4.count == 0 %}
+    <p align="center">
+        <button class="link-create" onclick="document.location='/chapter7/GHT06/create/4'">
+            <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+        </button>
+    </p>
+
+    <p>Общий результат проверки - ________________________</p>
+    <p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
+    <p>_______________________________________________________________________________________________________________</p>
+    <p>Фамилия_________________________________________</p>
+    <p>Номер пилотского свидетельства_____________________</p>
+    <p>Дата_____________________________________________</p>
+    {% else %}
+    {% for record in records4 %}
+    <p align="center">
+        <button class="link-edit" onclick="document.location='/chapter7/GHT06/edit/4/{{record.id}}'">
+            <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+        <button class="link-delete" onclick="document.location='/chapter7/GHT06/delete/4/{{record.id}}'">
+            <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+    </p>
+    <p>Общий результат проверки - ________________________
+        <span class="hand-write attestation">{{record.attestation}}</span></p>
+    <p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
+    <p>_______________________________________________________________________________________________________________</p>
+    <p><span class="hand-write recommendations">{{record.recommendations}}</span></p>
+    <p>Фамилия_________________________________________
+        <span class="hand-write examiner">{{record.examiner}}</span></p>
+    <p>Номер пилотского свидетельства_____________________
+        <span class="hand-write license_num">{{record.license_num}}</span></p>
+    <p>Дата_____________________________________________
+        <span class="hand-write date">{{record.date}}</span></p>
+    {% endfor %}
+    {% endif %}
+</div>
 {% endblock content %}

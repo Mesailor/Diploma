@@ -1,56 +1,58 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - GHT.06{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - GHT.06{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Взлет</label>
-        <br>
-        <input type="text" name="takeoff" value="{{record.takeoff}}"/>
-    </p>
-    <p>
-        <label>Имитация отказа двигателя после взлета или при полете по кругу</label>
-        <br>
-        <input type="text" name="eng_failure" value="{{record.eng_failure}}"/>
-    </p>
-    <p>
-        <label>Полет по кругу</label>
-        <br>
-        <input type="text" name="circle_flight" value="{{record.circle_flight}}"/>
-    </p>
-    <p>
-        <label>Полет по кругу на малой высоте</label>
-        <br>
-        <input type="text" name="circle_low_alt" value="{{record.circle_low_alt}}"/>
-    </p>
-    <p>
-        <label>Заход на посадку и посадка</label>
-        <br>
-        <input type="text" name="app_n_landing" value="{{record.app_n_landing}}"/>
-    </p>
-    <p>
-        <label>Заход на посадку и посадка на короткую площадку</label>
-        <br>
-        <input type="text" name="short_rw" value="{{record.short_rw}}"/>
-    </p>
-    <p>
-        <label>Уход на второй круг</label>
-        <br>
-        <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/GHT06'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Взлет</label>
+            <br>
+            <input type="text" name="takeoff" value="{{record.takeoff}}"/>
+        </p>
+        <p>
+            <label>Имитация отказа двигателя после взлета или при полете по кругу</label>
+            <br>
+            <input type="text" name="eng_failure" value="{{record.eng_failure}}"/>
+        </p>
+        <p>
+            <label>Полет по кругу</label>
+            <br>
+            <input type="text" name="circle_flight" value="{{record.circle_flight}}"/>
+        </p>
+        <p>
+            <label>Полет по кругу на малой высоте</label>
+            <br>
+            <input type="text" name="circle_low_alt" value="{{record.circle_low_alt}}"/>
+        </p>
+        <p>
+            <label>Заход на посадку и посадка</label>
+            <br>
+            <input type="text" name="app_n_landing" value="{{record.app_n_landing}}"/>
+        </p>
+        <p>
+            <label>Заход на посадку и посадка на короткую площадку</label>
+            <br>
+            <input type="text" name="short_rw" value="{{record.short_rw}}"/>
+        </p>
+        <p>
+            <label>Уход на второй круг</label>
+            <br>
+            <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/GHT06'">Отмена</button>
+</div>
 {% endblock content %}
