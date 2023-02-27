@@ -1,217 +1,261 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - NFT.04{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - NFT.04{% endblock title %}
 
 {% block content %}
-<h1>ОТЧЕТ О РЕЗУЛЬТАТАХ ЛЕТНОЙ ПРОВЕРКИ - NFT.04</h1>
+<div class="examinations">
+    {% load static %}
+    <h1>ОТЧЕТ О РЕЗУЛЬТАТАХ ЛЕТНОЙ ПРОВЕРКИ - NFT.04</h1>
 
-{% if records0.count == 0 %}
-<p>Кандидат _________________________(Фамилия, Имя, Отчество)</p>
-<p>Тип и регистрационный номер воздушного судна _____________________________________</p>
-<p>Аэродром взлёта/посадки _______________________________</p>
-<p>Дата проверки _________________ Время полета ______________________ Общий налет __________________</p>
-<p>Общий результат проверки ___________(соответствует/не соответствует) требованиям к уровню подготовки пилота
-    коммерческой авиации - ночные полеты.</p>
-<p>Экзаменатор _______________________________________________(Занимаемая должность, фамилия, инициалы)</p>
-<p><a href="/chapter7/NFT04/create/0">Добавить данные</a></p>
-{% else %}
-{% for record in records0 %}
-<p><a href="/chapter7/NFT04/delete/0/{{record.id}}">Удалить данные</a></p>
-<p><a href="/chapter7/NFT04/edit/0/{{record.id}}">Редактировать данные</a></p>
-<p>Кандидат - {{record.candidate}}</p>
-<p>Тип и регистрационный номер воздушного судна - {{record.type_n_number}}</p>
-<p>Аэродром взлёта/посадки - {{record.aerodrome}}</p>
-<p>Дата проверки - {{record.date}} Время полета - {{record.time}} Общий налет -{{record.sum_time}}</p>
-<p>Общий результат проверки - {{record.result}} требованиям к уровню подготовки пилота
-    коммерческой авиации - ночные полеты.</p>
-<p>Экзаменатор - {{record.examiner}} </p>
-{% endfor %}
-{% endif %}
-
-
-<h3>РАЗДЕЛ 1. Предполетная подготовка. Полет по кругу.</h3>
-{% if records1.count == 0 %}
-<p><a href="/chapter7/NFT04/create/1">Добавить данные</a></p>
-
-<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
-    <thead>
-    <tr>
-        <td>№ п/п</td>
-        <td>Элементы, подлежащие оценке</td>
-        <td>Оценка (A-F)</td>
-        <td>Примечание</td>
-    </tr>
-    </thead>
-    <tr>
-        <td>1.1</td>
-        <td>Подготовка к полету</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.2</td>
-        <td>Осмотры и проверки</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.3</td>
-        <td>Запуск двигателя, проверки и руление перед взлетом</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.4</td>
-        <td>Взлет в ночное время, набор высоты</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.5</td>
-        <td>Полет по кругу в ночное время</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.6</td>
-        <td>Посадка в ночное время</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.7</td>
-        <td>Заход на посадку без использования системы визуальной индикации глиссады.</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.8</td>
-        <td>Уход на второй круг</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.9</td>
-        <td>Знание действий при отказе радио и электрооборудования</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.10</td>
-        <td>Знание действий при отказе двигателя</td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-<p>Аттестация по разделу:__________________(сдал/не сдал)</p>
-<p>Экзаменатор_______________________________________(подпись, фамилия)</p>
-{% else %}
-{% for record in records1 %}
-<p><a href="/chapter7/NFT04/delete/1/{{record.id}}">Удалить данные</a></p>
-<p><a href="/chapter7/NFT04/edit/1/{{record.id}}">Редактировать данные</a></p>
-<table border="1" align="center" cellpadding="7" cellspacing="1" width="70%">
-    <thead>
-    <tr>
-        <td>№ п/п</td>
-        <td>Элементы, подлежащие оценке</td>
-        <td>Оценка (A-F)</td>
-        <td>Примечание</td>
-    </tr>
-    </thead>
-    <tr>
-        <td>1.1</td>
-        <td>Подготовка к полету</td>
-        <td>{{record.preparation}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.2</td>
-        <td>Осмотры и проверки</td>
-        <td>{{record.inspection}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.3</td>
-        <td>Запуск двигателя, проверки и руление перед взлетом</td>
-        <td>{{record.startup}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.4</td>
-        <td>Взлет в ночное время, набор высоты</td>
-        <td>{{record.takeoff}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.5</td>
-        <td>Полет по кругу в ночное время</td>
-        <td>{{record.circle_flight}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.6</td>
-        <td>Посадка в ночное время</td>
-        <td>{{record.landing}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.7</td>
-        <td>Заход на посадку без использования системы визуальной индикации глиссады.</td>
-        <td>{{record.approach}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.8</td>
-        <td>Уход на второй круг</td>
-        <td>{{record.missed_approach}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.9</td>
-        <td>Знание действий при отказе радио и электрооборудования</td>
-        <td>{{record.radio_failure}}</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>1.10</td>
-        <td>Знание действий при отказе двигателя</td>
-        <td>{{record.eng_failure}}</td>
-        <td></td>
-    </tr>
-</table>
-<p>Аттестация по разделу: {{record.attestation}}</p>
-<p>Экзаменатор {{record.examiner}}</p>
-{% endfor %}
-{% endif %}
-<br>
+    {% if records0.count == 0 %}
+    <p align="center">
+        <button class="link-create" onclick="document.location='/chapter7/NFT04/create/0'">
+            <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+        </button>
+    <p>Кандидат ________________________________________________________</p>
+    <p class="hint">(фамилия, имя, отчество)</p>
+    <p>Тип и регистрационный номер воздушного судна ______________________</p>
+    <p>Аэродром взлёта/посадки __________________________________________</p>
+    <p>Дата проверки ______________________</p>
+    <p>Время полета ______________________</p>
+    <p>Общий налет______________________</p>
+    <p>Общий результат проверки ___________________________</p>
+    <p class="hint">(соответствует/не соответствует)</p>
+    <p>требованиям к уровню подготовки пилота коммерческой авиации - ночные полеты.</p>
+    <p>Экзаменатор _____________________________________________________</p>
+    <p class="hint">(занимаемая должность, фамилия, инициалы)</p>
+    {% else %}
+    {% for record in records0 %}
+    <p align="center">
+        <button class="link-edit" onclick="document.location='/chapter7/NFT04/edit/0/{{record.id}}'">
+            <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+        <button class="link-delete" onclick="document.location='/chapter7/NFT04/delete/0/{{record.id}}'">
+            <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+    </p>
+    <p>Кандидат ________________________________________________________
+        <span class="hand-write candidate">{{record.candidate}}</span></p>
+    <p class="hint">(фамилия, имя, отчество)</p>
+    <p>Тип и регистрационный номер воздушного судна ______________________
+        <span class="hand-write type_n_number">{{record.type_n_number}}</span></p>
+    <p>Аэродром взлёта/посадки __________________________________________
+        <span class="hand-write aerodrome">{{record.aerodrome}}</span></p>
+    <p>Дата проверки ______________________ <span class="hand-write date">{{record.date}}</span></p>
+    <p>Время полета ______________________<span class="hand-write time">{{record.time}}</span></p>
+    <p>Общий налет______________________<span class="hand-write sum_time">{{record.sum_time}}</span>
+    <p>Общий результат проверки ___________________________<span class="hand-write result">{{record.result}}</span></p>
+    <p class="hint">(соответствует/не соответствует)</p>
+    <p>требованиям к уровню подготовки пилота коммерческой авиации - ночные полеты.</p>
+    <p>Экзаменатор _____________________________________________________
+        <span class="hand-write examiner">{{record.examiner}}</span></p>
+    <p class="hint">(занимаемая должность, фамилия, инициалы)</p>
+    {% endfor %}
+    {% endif %}
 
 
-<h3>РЕЗУЛЬТАТЫ ЛЕТНОЙ ПРОВЕРКИ NFT.04</h3>
-{% if records2.count == 0 %}
-<p><a href="/chapter7/NFT04/create/2">Добавить данные</a></p>
+    <h3>РАЗДЕЛ 1. Предполетная подготовка. Полет по кругу.</h3>
+    {% if records1.count == 0 %}
+    <p align="center">
+        <button class="link-create" onclick="document.location='/chapter7/NFT04/create/1'">
+            <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+        </button>
+    </p>
 
-<p>Общий результат проверки - ___________</p>
-<p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
-<p>___________________________________________________________________________________</p>
-<p>___________________________________________________________________________________</p>
-<p>___________________________________________________________________________________</p>
-<p>Подпись экзаменатора______________________________</p>
-<p>Фамилия_________________________________________</p>
-<p>Номер пилотского свидетельства_____________________</p>
-<p>Дата_____________________________________________</p>
-{% else %}
-{% for record in records2 %}
-<p><a href="/chapter7/NFT04/delete/2/{{record.id}}">Удалить данные</a></p>
-<p><a href="/chapter7/NFT04/edit/2/{{record.id}}">Редактировать данные</a></p>
-<p>Общий результат проверки - {{record.attestation}}</p>
-<p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
-<p>{{record.recommendations}}</p>
-<p>Подпись экзаменатора </p>
-<img src="{{record.signature}}"> <!-- Необходимо наладить ссылку, чтобы изображение выводилось корректно -->
-<p>Фамилия {{record.examiner}}</p>
-<p>Номер пилотского свидетельства {{record.license_num}}</p>
-<p>Дата {{record.date}}</p>
-{% endfor %}
-{% endif %}
+    <table border="1" align="center" cellpadding="7">
+        <thead>
+        <tr>
+            <td>№ п/п</td>
+            <td>Элементы, подлежащие оценке</td>
+            <td>Оценка (A-F)</td>
+            <td>Примечание</td>
+        </tr>
+        </thead>
+        <tr>
+            <td>1.1</td>
+            <td>Подготовка к полету</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.2</td>
+            <td>Осмотры и проверки</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.3</td>
+            <td>Запуск двигателя, проверки и руление перед взлетом</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.4</td>
+            <td>Взлет в ночное время, набор высоты</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.5</td>
+            <td>Полет по кругу в ночное время</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.6</td>
+            <td>Посадка в ночное время</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.7</td>
+            <td>Заход на посадку без использования системы визуальной индикации глиссады.</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.8</td>
+            <td>Уход на второй круг</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.9</td>
+            <td>Знание действий при отказе радио и электрооборудования</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.10</td>
+            <td>Знание действий при отказе двигателя</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <p>Аттестация по разделу: _____________________________</p>
+    <p class="hint">(сдал/не сдал)</p>
+    <p>Экзаменатор ______________________________________</p>
+    <p class="hint">(подпись, фамилия)</p>
+    {% else %}
+    {% for record in records1 %}
+    <p align="center">
+        <button class="link-edit" onclick="document.location='/chapter7/NFT04/edit/1/{{record.id}}'">
+            <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+        <button class="link-delete" onclick="document.location='/chapter7/NFT04/delete/1/{{record.id}}'">
+            <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+    </p>
+    <table border="1" align="center" cellpadding="7">
+        <thead>
+        <tr>
+            <td>№ п/п</td>
+            <td>Элементы, подлежащие оценке</td>
+            <td>Оценка (A-F)</td>
+            <td>Примечание</td>
+        </tr>
+        </thead>
+        <tr>
+            <td>1.1</td>
+            <td>Подготовка к полету</td>
+            <td class="hand-write">{{record.preparation}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.2</td>
+            <td>Осмотры и проверки</td>
+            <td class="hand-write">{{record.inspection}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.3</td>
+            <td>Запуск двигателя, проверки и руление перед взлетом</td>
+            <td class="hand-write">{{record.startup}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.4</td>
+            <td>Взлет в ночное время, набор высоты</td>
+            <td class="hand-write">{{record.takeoff}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.5</td>
+            <td>Полет по кругу в ночное время</td>
+            <td class="hand-write">{{record.circle_flight}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.6</td>
+            <td>Посадка в ночное время</td>
+            <td class="hand-write">{{record.landing}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.7</td>
+            <td>Заход на посадку без использования системы визуальной индикации глиссады.</td>
+            <td class="hand-write">{{record.approach}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.8</td>
+            <td>Уход на второй круг</td>
+            <td class="hand-write">{{record.missed_approach}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.9</td>
+            <td>Знание действий при отказе радио и электрооборудования</td>
+            <td class="hand-write">{{record.radio_failure}}</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>1.10</td>
+            <td>Знание действий при отказе двигателя</td>
+            <td class="hand-write">{{record.eng_failure}}</td>
+            <td></td>
+        </tr>
+    </table>
+    <p>Аттестация по разделу: _____________________________
+        <span class="hand-write attestation">{{record.attestation}}</span></p>
+    <p class="hint">(сдал/не сдал)</p>
+    <p>Экзаменатор ______________________________________
+        <span class="hand-write examiner">{{record.examiner}}</span></p>
+    <p class="hint">(подпись, фамилия)</p>
+    {% endfor %}
+    {% endif %}
+    <br>
 
+
+    <h3>РЕЗУЛЬТАТЫ ЛЕТНОЙ ПРОВЕРКИ NFT.04</h3>
+    {% if records2.count == 0 %}
+    <p align="center">
+        <button class="link-create" onclick="document.location='/chapter7/NFT04/create/2'">
+            <img class="img-create" src="{% static 'a_book/images/create.png' %}" alt="Добавить запись">
+        </button>
+    </p>
+    <p>Общий результат проверки - ________________________</p>
+    <p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
+    <p>_______________________________________________________________________________________________________________</p>
+    <p>Фамилия_________________________________________</p>
+    <p>Номер пилотского свидетельства_____________________</p>
+    <p>Дата_____________________________________________</p>
+    {% else %}
+    {% for record in records2 %}
+    <p align="center">
+        <button class="link-edit" onclick="document.location='/chapter7/NFT04/edit/2/{{record.id}}'">
+            <img class="img-edit" src="{% static 'a_book/images/edit.png' %}" alt="Редактировать"></button>
+        <button class="link-delete" onclick="document.location='/chapter7/NFT04/delete/2/{{record.id}}'">
+            <img class="img-delete" src="{% static 'a_book/images/delete.png' %}" alt="Удалить"></button>
+    </p>
+    <p>Общий результат проверки - ________________________
+        <span class="hand-write attestation">{{record.attestation}}</span></p>
+    <p>РЕКОМЕНДАЦИИ (подробно указать слабые места, на которые следует обратить внимание):</p>
+    <p>_______________________________________________________________________________________________________________</p>
+    <p><span class="hand-write recommendations">{{record.recommendations}}</span></p>
+    <p>Фамилия_________________________________________
+        <span class="hand-write examiner">{{record.examiner}}</span></p>
+    <p>Номер пилотского свидетельства_____________________
+        <span class="hand-write license_num">{{record.license_num}}</span></p>
+    <p>Дата_____________________________________________
+        <span class="hand-write date">{{record.date}}</span></p>
+    {% endfor %}
+    {% endif %}
+</div>
 {% endblock content %}

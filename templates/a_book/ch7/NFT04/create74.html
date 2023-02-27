@@ -1,14 +1,16 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - NFT.04{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - NFT.04{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{form}}
-    </table>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/NFT04'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <table>
+            {{form}}
+        </table>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/NFT04'">Отмена</button>
+</div>
 {% endblock content %}
