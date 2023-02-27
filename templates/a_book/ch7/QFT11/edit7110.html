@@ -1,51 +1,53 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - QFT.11{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - QFT.11{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Кандидат</label>
-        <br>
-        <input type="text" name="candidate" value="{{record.candidate}}"/>
-    </p>
-    <p>
-        <label>Тип и регистрационный номер ВС</label>
-        <br>
-        <input type="text" name="type_n_number" value="{{record.type_n_number}}"/>
-    </p>
-    <p>
-        <label>Аэродром взлета/посадки</label>
-        <br>
-        <input type="text" name="aerodrome" value="{{record.aerodrome}}"/>
-    </p>
-    <p>
-        <label>Дата проверки</label>
-        <br>
-        <input type="text" name="date" value="{{record.date}}"/>
-    </p>
-    <p>
-        <label>Время полета</label>
-        <br>
-        <input type="text" name="time" value="{{record.time}}"/>
-    </p>
-    <p>
-        <label>Общий налет</label>
-        <br>
-        <input type="text" name="sum_time" value="{{record.sum_time}}"/>
-    </p>
-    <p>
-        <label>Общий результат проверки</label>
-        <br>
-        <input type="text" name="result" value="{{record.result}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Кандидат</label>
+            <br>
+            <input type="text" name="candidate" value="{{record.candidate}}"/>
+        </p>
+        <p>
+            <label>Тип и регистрационный номер ВС</label>
+            <br>
+            <input type="text" name="type_n_number" value="{{record.type_n_number}}"/>
+        </p>
+        <p>
+            <label>Аэродром взлета/посадки</label>
+            <br>
+            <input type="text" name="aerodrome" value="{{record.aerodrome}}"/>
+        </p>
+        <p>
+            <label>Дата проверки</label>
+            <br>
+            <input type="text" name="date" value="{{record.date}}"/>
+        </p>
+        <p>
+            <label>Время полета</label>
+            <br>
+            <input type="text" name="time" value="{{record.time}}"/>
+        </p>
+        <p>
+            <label>Общий налет</label>
+            <br>
+            <input type="text" name="sum_time" value="{{record.sum_time}}"/>
+        </p>
+        <p>
+            <label>Общий результат проверки</label>
+            <br>
+            <input type="text" name="result" value="{{record.result}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+</div>
 {% endblock content %}

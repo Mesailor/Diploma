@@ -1,56 +1,58 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - QFT.11{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - QFT.11{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Выход на воздушную трассу</label>
-        <br>
-        <input type="text" name="airway_entrance" value="{{record.airway_entrance}}"/>
-    </p>
-    <p>
-        <label>Навигация по воздушным тарссам</label>
-        <br>
-        <input type="text" name="airway_navigation" value="{{record.airway_navigation}}"/>
-    </p>
-    <p>
-        <label>Полет в зоне ожидания</label>
-        <br>
-        <input type="text" name="hold_area" value="{{record.hold_area}}"/>
-    </p>
-    <p>
-        <label>Точный заход на посадку</label>
-        <br>
-        <input type="text" name="precision_app" value="{{record.precision_app}}"/>
-    </p>
-    <p>
-        <label>Неточный заход на посадку</label>
-        <br>
-        <input type="text" name="nonprecision_app" value="{{record.nonprecision_app}}"/>
-    </p>
-    <p>
-        <label>Уход на второй круг</label>
-        <br>
-        <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
-    </p>
-    <p>
-        <label>Полет по кругу на малой высоте</label>
-        <br>
-        <input type="text" name="low_alt_circle" value="{{record.low_alt_circle}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Выход на воздушную трассу</label>
+            <br>
+            <input type="text" name="airway_entrance" value="{{record.airway_entrance}}"/>
+        </p>
+        <p>
+            <label>Навигация по воздушным тарссам</label>
+            <br>
+            <input type="text" name="airway_navigation" value="{{record.airway_navigation}}"/>
+        </p>
+        <p>
+            <label>Полет в зоне ожидания</label>
+            <br>
+            <input type="text" name="hold_area" value="{{record.hold_area}}"/>
+        </p>
+        <p>
+            <label>Точный заход на посадку</label>
+            <br>
+            <input type="text" name="precision_app" value="{{record.precision_app}}"/>
+        </p>
+        <p>
+            <label>Неточный заход на посадку</label>
+            <br>
+            <input type="text" name="nonprecision_app" value="{{record.nonprecision_app}}"/>
+        </p>
+        <p>
+            <label>Уход на второй круг</label>
+            <br>
+            <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
+        </p>
+        <p>
+            <label>Полет по кругу на малой высоте</label>
+            <br>
+            <input type="text" name="low_alt_circle" value="{{record.low_alt_circle}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+</div>
 {% endblock content %}

@@ -1,41 +1,43 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - QFT.11{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - QFT.11{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Обычный взлет</label>
-        <br>
-        <input type="text" name="takeoff" value="{{record.takeoff}}"/>
-    </p>
-    <p>
-        <label>Полет по кругу и посадка</label>
-        <br>
-        <input type="text" name="landing" value="{{record.landing}}"/>
-    </p>
-    <p>
-        <label>Имитация отказа двигателя в полете</label>
-        <br>
-        <input type="text" name="eng_failure" value="{{record.eng_failure}}"/>
-    </p>
-    <p>
-        <label>Посадка с имитацией отказа одного двигателя</label>
-        <br>
-        <input type="text" name="one_eng_landing" value="{{record.one_eng_landing}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Обычный взлет</label>
+            <br>
+            <input type="text" name="takeoff" value="{{record.takeoff}}"/>
+        </p>
+        <p>
+            <label>Полет по кругу и посадка</label>
+            <br>
+            <input type="text" name="landing" value="{{record.landing}}"/>
+        </p>
+        <p>
+            <label>Имитация отказа двигателя в полете</label>
+            <br>
+            <input type="text" name="eng_failure" value="{{record.eng_failure}}"/>
+        </p>
+        <p>
+            <label>Посадка с имитацией отказа одного двигателя</label>
+            <br>
+            <input type="text" name="one_eng_landing" value="{{record.one_eng_landing}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+</div>
 {% endblock content %}

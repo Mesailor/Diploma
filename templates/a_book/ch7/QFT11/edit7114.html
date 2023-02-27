@@ -1,51 +1,53 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - QFT.11{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - QFT.11{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Радиообмен</label>
-        <br>
-        <input type="text" name="radio" value="{{record.radio}}"/>
-    </p>
-    <p>
-        <label>Контроль параметров и наблюдение в полете</label>
-        <br>
-        <input type="text" name="observation" value="{{record.observation}}"/>
-    </p>
-    <p>
-        <label>Визуальное маневрирование</label>
-        <br>
-        <input type="text" name="visual_maneuvering" value="{{record.visual_maneuvering}}"/>
-    </p>
-    <p>
-        <label>Организация работы экипажа</label>
-        <br>
-        <input type="text" name="team_work" value="{{record.team_work}}"/>
-    </p>
-    <p>
-        <label>Уход на второй круг</label>
-        <br>
-        <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
-    </p>
-    <p>
-        <label>Действия в аварийной ситуации</label>
-        <br>
-        <input type="text" name="emergency" value="{{record.emergency}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Радиообмен</label>
+            <br>
+            <input type="text" name="radio" value="{{record.radio}}"/>
+        </p>
+        <p>
+            <label>Контроль параметров и наблюдение в полете</label>
+            <br>
+            <input type="text" name="observation" value="{{record.observation}}"/>
+        </p>
+        <p>
+            <label>Визуальное маневрирование</label>
+            <br>
+            <input type="text" name="visual_maneuvering" value="{{record.visual_maneuvering}}"/>
+        </p>
+        <p>
+            <label>Организация работы экипажа</label>
+            <br>
+            <input type="text" name="team_work" value="{{record.team_work}}"/>
+        </p>
+        <p>
+            <label>Уход на второй круг</label>
+            <br>
+            <input type="text" name="missed_approach" value="{{record.missed_approach}}"/>
+        </p>
+        <p>
+            <label>Действия в аварийной ситуации</label>
+            <br>
+            <input type="text" name="emergency" value="{{record.emergency}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+</div>
 {% endblock content %}

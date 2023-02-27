@@ -1,36 +1,38 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - QFT.11{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - QFT.11{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Подготовка к полету</label>
-        <br>
-        <input type="text" name="preparation" value="{{record.preparation}}"/>
-    </p>
-    <p>
-        <label>Осмотр и проверки</label>
-        <br>
-        <input type="text" name="inspection" value="{{record.inspection}}"/>
-    </p>
-    <p>
-        <label>Запуск двигателей и руление</label>
-        <br>
-        <input type="text" name="startup" value="{{record.startup}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Подготовка к полету</label>
+            <br>
+            <input type="text" name="preparation" value="{{record.preparation}}"/>
+        </p>
+        <p>
+            <label>Осмотр и проверки</label>
+            <br>
+            <input type="text" name="inspection" value="{{record.inspection}}"/>
+        </p>
+        <p>
+            <label>Запуск двигателей и руление</label>
+            <br>
+            <input type="text" name="startup" value="{{record.startup}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/QFT11'">Отмена</button>
+</div>
 {% endblock content %}
