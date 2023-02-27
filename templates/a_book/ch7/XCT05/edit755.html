@@ -1,36 +1,38 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - XCT.05{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - XCT.05{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Точность выдерживания режима полета</label>
-        <br>
-        <input type="text" name="accuracy" value="{{record.accuracy}}"/>
-    </p>
-    <p>
-        <label>Ведение осмотрительности, наблюдение и контроль</label>
-        <br>
-        <input type="text" name="circumspection" value="{{record.circumspection}}"/>
-    </p>
-    <p>
-        <label>Коммерческий подход к полету</label>
-        <br>
-        <input type="text" name="commercial" value="{{record.commercial}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/XCT05'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Точность выдерживания режима полета</label>
+            <br>
+            <input type="text" name="accuracy" value="{{record.accuracy}}"/>
+        </p>
+        <p>
+            <label>Ведение осмотрительности, наблюдение и контроль</label>
+            <br>
+            <input type="text" name="circumspection" value="{{record.circumspection}}"/>
+        </p>
+        <p>
+            <label>Коммерческий подход к полету</label>
+            <br>
+            <input type="text" name="commercial" value="{{record.commercial}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/XCT05'">Отмена</button>
+</div>
 {% endblock content %}
