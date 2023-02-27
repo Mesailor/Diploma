@@ -1,41 +1,43 @@
 {% extends 'a_book/base.html' %}
 
-{% block title %}VII. Отчет о результатах летной проверки - XCT.02{% endblock title %}
+{% block title %}Отчет о результатах летной проверки - XCT.02{% endblock title %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-    <p>
-        <label>Изучение района полета и метеоусловий</label>
-        <br>
-        <input type="text" name="research" value="{{record.research}}"/>
-    </p>
-    <p>
-        <label>Планирование маршрута и подготовка карты</label>
-        <br>
-        <input type="text" name="planning" value="{{record.planning}}"/>
-    </p>
-    <p>
-        <label>Подготовка рабочего плана полета</label>
-        <br>
-        <input type="text" name="flight_plan" value="{{record.flight_plan}}"/>
-    </p>
-    <p>
-        <label>Знание эксплуатационных процедур</label>
-        <br>
-        <input type="text" name="operating_proc" value="{{record.operating_proc}}"/>
-    </p>
-    <p>
-        <label>Аттестация по разделу</label>
-        <br>
-        <input type="text" name="attestation" value="{{record.attestation}}"/>
-    </p>
-    <p>
-        <label>Экзаменатор</label>
-        <br>
-        <input type="text" name="examiner" value="{{record.examiner}}"/>
-    </p>
-    <input type="submit" value="Сохранить">
-</form>
-<button onclick="document.location='/chapter7/XCT02'">Отмена</button>
+<div class="examinations form">
+    <form method="POST">
+        {% csrf_token %}
+        <p>
+            <label>Изучение района полета и метеоусловий</label>
+            <br>
+            <input type="text" name="research" value="{{record.research}}"/>
+        </p>
+        <p>
+            <label>Планирование маршрута и подготовка карты</label>
+            <br>
+            <input type="text" name="planning" value="{{record.planning}}"/>
+        </p>
+        <p>
+            <label>Подготовка рабочего плана полета</label>
+            <br>
+            <input type="text" name="flight_plan" value="{{record.flight_plan}}"/>
+        </p>
+        <p>
+            <label>Знание эксплуатационных процедур</label>
+            <br>
+            <input type="text" name="operating_proc" value="{{record.operating_proc}}"/>
+        </p>
+        <p>
+            <label>Аттестация по разделу</label>
+            <br>
+            <input type="text" name="attestation" value="{{record.attestation}}"/>
+        </p>
+        <p>
+            <label>Экзаменатор</label>
+            <br>
+            <input type="text" name="examiner" value="{{record.examiner}}"/>
+        </p>
+        <button>Сохранить</button>
+    </form>
+    <button onclick="document.location='/chapter7/XCT02'">Отмена</button>
+</div>
 {% endblock content %}
